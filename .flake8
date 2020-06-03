@@ -1,0 +1,6 @@
+[flake8]
+# align with black
+max-line-length = 88
+# E203 clashes with black, see https://github.com/PyCQA/pycodestyle/pull/914
+# W503 is already deprecated: https://www.flake8rules.com/rules/W503.html
+ignore = E203, W503

@@ -1,0 +1,6 @@
+# These dependencies live in a separate file
+# to avoid them getting picked up by automatic scans, e.g.
+# whitesource.
+# These dependencies are never shipped, but only used locally
+# on a developer's workstation or on Jenkins for development.
+tox==3.14.5
