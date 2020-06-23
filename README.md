@@ -148,5 +148,5 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [installing pip]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-pip
 [SDK documentation]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/
 [SDK security guide]: ./docs/source/security.rst
-[github issues]: TODO
+[github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
