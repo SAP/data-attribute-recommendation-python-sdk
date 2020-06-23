@@ -20,8 +20,8 @@ First, let's train a model with :class:`~sap.aibus.dar.client.flow.create.Create
     from sap.aibus.dar.client.workflow.model import ModelCreator
 
     creator = ModelCreator.construct_from_credentials(
-        dar_url='https://data-attribute-recommendation-internalproduction.cfapps.sap.hana.ondemand.com',
-        clientid="sb-e52aad05-411c-4b52-a3cc-3d1c162e2f8d!b7898|dar-v3-std!b4321",
+        dar_url='https://sap-ai-business-services.cfapps.sap.hana.ondemand.com',
+        clientid="sb-abcdefgh-ijkl-mnop-q1rs-tu2v345w6y7z!b8901|dar-v3-std!b234",
         clientsecret="XXXXXXXXXXX",
         uaa_url="https://abcd.authentication.sap.hana.ondemand.com"
     )
