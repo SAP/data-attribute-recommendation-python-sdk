@@ -1,12 +1,13 @@
 # data-attribute-recommendation-python-sdk
 
 A client SDK for the Data Attribute Recommendation service on SAP Cloud Platform.
-Part of [SAP AI Business Services].
+Part of [SAP AI Business Services]. Read the full documentation for the SDK (https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/).
 
 # Description
 
 <!-- More badges will be added here, i.e. code coverage and CircleCI -->
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Documentation Status](https://readthedocs.org/projects/data-attribute-recommendation-python-sdk/badge/?version=latest)](https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/?badge=latest)
 
 Goals of this SDK:
 
@@ -117,7 +118,8 @@ SDK package as a first test:
 ```
 
 <!-- TODO: add links to SDK documentation -->
-To use the SDK, please refer to the [SDK documentation].
+To use the SDK, please refer to the [SDK documentation]. In particular, consider 
+the [SDK security guide].
 
 # How to obtain support
 
@@ -144,6 +146,7 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [python.org downloads]: https://www.python.org/downloads/
 [installing virtualenv]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-virtualenv
 [installing pip]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-pip
-[SDK documentation]: TODO
-[github issues]: TODO
+[SDK documentation]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/
+[SDK security guide]: ./docs/source/security.rst
+[github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
