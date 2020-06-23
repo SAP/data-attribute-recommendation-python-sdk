@@ -111,6 +111,10 @@ RETRY
 
 See :ref:`retry`.
 
+SECURITY GUIDE
+**************
+
+See :ref:`security guide`.
 
 Table of Contents
 =================
@@ -119,6 +123,7 @@ Table of Contents
     :caption: Contents:
 
     retry.rst
+    security.rst
 
 
 
