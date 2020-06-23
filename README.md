@@ -1,4 +1,4 @@
-# data-attribute-recommendation-python-sdk    [![Documentation Status](https://readthedocs.org/projects/data-attribute-recommendation-python-sdk/badge/?version=latest)](https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/?badge=latest)
+# data-attribute-recommendation-python-sdk
 
 A client SDK for the Data Attribute Recommendation service on SAP Cloud Platform.
 Part of [SAP AI Business Services]. Read the full documentation for the SDK (https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/).
@@ -7,6 +7,7 @@ Part of [SAP AI Business Services]. Read the full documentation for the SDK (htt
 
 <!-- More badges will be added here, i.e. code coverage and CircleCI -->
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Documentation Status](https://readthedocs.org/projects/data-attribute-recommendation-python-sdk/badge/?version=latest)](https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/?badge=latest)
 
 Goals of this SDK:
 
