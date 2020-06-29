@@ -1,0 +1,9 @@
+language: python
+python:
+  - "3.6"
+# command to install dependencies
+install:
+  - pip install -r requirements-test.txt && pip install tox-travis
+# command to run tests
+script:
+  - tox
