@@ -4,13 +4,22 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
-# command to install dependencies
-install:
-  - pip install -r requirements-test.txt
-  - pip install tox-travis
-  - pip install -r requirements-dev.txt
+
+
 # command to run tests
-script:
-  - pyenv global 3.7.1 # Make Python available to pre-commit
-  - pre-commit run --all-files
-  - tox
+jobs:
+  include:
+    - stage: Linting
+      python: "3.7"
+      install:
+        - pip install -r requirements-dev.txt
+      script:
+        - pyenv global 3.7.1 # Make Python available to pre-commit
+        - pre-commit run --all-files
+    - stage: Unit Tests
+      install:
+        - pip install -r requirements-test.txt
+        - pip install tox-travis
+      script: tox
+    - stage: deploy
+      script: ./deploy
