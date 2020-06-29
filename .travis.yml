@@ -11,5 +11,6 @@ install:
   - pip install -r requirements-dev.txt
 # command to run tests
 script:
+  - pyenv global 3.7.1 # Make Python available to pre-commit
   - pre-commit run --all-files
   - tox
