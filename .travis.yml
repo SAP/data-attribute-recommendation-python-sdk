@@ -7,7 +7,7 @@ python:
 
 stages:
   - linting
-  - unit tests
+  - test
 
 # command to run tests
 jobs:
@@ -19,10 +19,8 @@ jobs:
       script:
         - pyenv global 3.7.1 # Make Python available to pre-commit
         - pre-commit run --all-files
-    - stage: unit tests
+    - stage: test
       install:
         - pip install -r requirements-test.txt
         - pip install tox-travis
       script: tox
-    - stage: deploy
-      script: ./deploy
