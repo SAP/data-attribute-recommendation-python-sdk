@@ -30,3 +30,6 @@ deploy:
   username: __token__
   password:
     secure: K0ExrJP+kneqCO5DKhv6+rzUXaKOoj0ORtCS/WS5MPndgLqRB77k0zWZj7ju/xI/5XvCk+SyxFHBbTA+izKyllsk/BmWngVcCcpoEJPhpTMDkd1cXbGwWDhV+ZNsCCxofx23g/877shbpWhsvqY4lZxGUfF1oFu9j0hJw6FhXasE46J8T0x2T6gGJ5DDnnKyXY8LI3jL7pS+tA19QXtR1pNrPSFeyIbwHsCStx4FWpdjA+5NzD/CSQvYlj7nwFtf5GSSbepcccgqYsQDmd5l3S6b8Wn3Cn959K8UWXwjEWRUQ/mSpdx7x6pYAGKxdIaMhloTzpK+24vuQ+oOwOPdD88Ii1UkEv+YRFupPKDqDflDx0t3F75WpuV9+a3vdij1Ge+HI8u/kzmijk3grV992+9FikwaNjAm7yHwjy29Mit1FAzJQKD9CfdoievEweUi+ewFb0hXlA6jxcUtpaxqVpc1acJ1dcYekhiGSkBGZX9UvjALsneAUZuQUbxfpPoMTXoUPNj4ADEeOwU77ksTnZALl8QnrNOIUZMQyEczz87X+DLV7B05foz6CwIxElJodxHm3dqqDBMZbeYL36kezd2KLXPGaNq5WOE7z36KJeSVLhob0+8k00POavYlxeSjVe8KckBgk9Q+l2UdBtCkSfJoV8M2MXJUOOg+rG6bMCQ=
+  on:
+    tags: true # use `git tag -a "a-tag" -m "a message" && git push --tags` to release.
+    branch: master
