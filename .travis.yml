@@ -15,12 +15,7 @@ python:
 install:
 - pip install -r requirements-test.txt
 - pip install tox-travis
-- pip install coveralls
 script: tox
-
-after_success:
-  - find .
-  - coveralls
 
 jobs:
   include:
