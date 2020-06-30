@@ -19,6 +19,7 @@ install:
 script: tox
 
 after_success:
+  - find .
   - coveralls
 
 jobs:
