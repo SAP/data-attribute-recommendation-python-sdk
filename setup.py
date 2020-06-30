@@ -7,11 +7,20 @@ def get_version():
         version_str = ver_file.readline().rstrip()
     return version_str
 
+def get_long_version():
+    # read the contents of your README file
+    from os import path
+    this_directory = path.abspath(path.dirname(__file__))
+    with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+        long_description = f.read()
+
 
 setup(
     name="data-attribute-recommendation-sdk",
     version=get_version(),
     description="Data Attribute Recommendation Python SDK",
+    long_description=get_long_version(),
+    long_description_content_type='text/markdown',
     author="Michael Haas",
     author_email="michael.haas01@sap.com",
     url="https://github.com/sap/data-attribute-recommendation-python-sdk",

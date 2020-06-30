@@ -16,7 +16,7 @@ Part of [SAP AI Business Services].
 Goals of this SDK:
 
 * Enable easy consumption of the Data Attribute Recommendation service
-* Provide convenient higher-level abstraction on top of the APIs
+* Provide convenient higher-level abstraction on top of the service APIs
 * Serve as reference implementation for other programming languages
 
 ## Resources
