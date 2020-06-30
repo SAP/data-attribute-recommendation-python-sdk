@@ -34,7 +34,7 @@ jobs:
       username: __token__
       distributions: "sdist bdist_wheel"
       password:
-        secure: K0ExrJP+kneqCO5DKhv6+rzUXaKOoj0ORtCS/WS5MPndgLqRB77k0zWZj7ju/xI/5XvCk+SyxFHBbTA+izKyllsk/BmWngVcCcpoEJPhpTMDkd1cXbGwWDhV+ZNsCCxofx23g/877shbpWhsvqY4lZxGUfF1oFu9j0hJw6FhXasE46J8T0x2T6gGJ5DDnnKyXY8LI3jL7pS+tA19QXtR1pNrPSFeyIbwHsCStx4FWpdjA+5NzD/CSQvYlj7nwFtf5GSSbepcccgqYsQDmd5l3S6b8Wn3Cn959K8UWXwjEWRUQ/mSpdx7x6pYAGKxdIaMhloTzpK+24vuQ+oOwOPdD88Ii1UkEv+YRFupPKDqDflDx0t3F75WpuV9+a3vdij1Ge+HI8u/kzmijk3grV992+9FikwaNjAm7yHwjy29Mit1FAzJQKD9CfdoievEweUi+ewFb0hXlA6jxcUtpaxqVpc1acJ1dcYekhiGSkBGZX9UvjALsneAUZuQUbxfpPoMTXoUPNj4ADEeOwU77ksTnZALl8QnrNOIUZMQyEczz87X+DLV7B05foz6CwIxElJodxHm3dqqDBMZbeYL36kezd2KLXPGaNq5WOE7z36KJeSVLhob0+8k00POavYlxeSjVe8KckBgk9Q+l2UdBtCkSfJoV8M2MXJUOOg+rG6bMCQ=
+        secure: "Yo1GgXnDX8br7Gwy7IbIbTowfbuATV8hwMoWeQEfXb/rkPxJuElbGDb6xEy19E3qojxMbeY2Lm5ahyRXBcQmekyzG4/xa4aLqxa08TEYbH/QQi3T7pFaIpBdPwHE3e3dsKZIFJwFwPymjIBZGC79CQkkD2g2+9GvSSJVkc5OMY/q1rVeWeKxbNmLiSu9kIIusBt1nkmrctLaNNN6fRvjII61bxkujpmBjWGZcNmcVHqxXqEVplfAOhBymalrhl6ABtlzKxLoBWJchqILLsVGoIhHIcUFkA7PyH90UfR5k2mWh7W5kh44vbY4F/OV2Dr875RNc/BYfnNe/RofxtIg1B9Z5JLVpGXsUhfWBqDcymym+ugTdYwEL2D4S2cWEK5sSur+cb/Ib/CAwYUaVf6eWJERzsPKs+5bfHHpkphDUIs7Rp6Mf5bkPgiUgbyWQ0Wdx5a7WXqwHCVpskCDreCF54X4FQuHeSxXrOVQ1GnknpTm5ZCJhuB5ged1a6BmhzF4LbhalHZjmYqy37j+jCLAa8QrpoUkhvPrSKyUQVHnj8P8yw2jydHDdyuWoibwL+rbrHHeX66QreV/utBODfbx2j3tMzkAU8QqKsmP9hWnHFx5Lz6Dl/m8MniKbs7B3vMG3MCJsPz2nawHC/wlDeRqTTARZ+Fpc7VHzj2/ra8Egos="
       on:
         tags: true # use `git tag -a "a-tag" -m "a message" && git push --tags` to release.
         branch: master
