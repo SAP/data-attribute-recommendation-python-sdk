@@ -26,7 +26,7 @@ jobs:
     - pyenv global 3.7.1
     - pre-commit run --all-files
   - stage: test
-    name: "Python 3.8.0 on Windows"
+    name: "Python: 3.8 on Windows"
     # https://docs.travis-ci.com/user/languages/python/#running-python-tests-on-multiple-operating-systems
     os: windows
     language: shell       # 'language: python' is an error on Travis CI Windows
