@@ -5,9 +5,13 @@ Part of [SAP AI Business Services]. Read the full documentation for the SDK (htt
 
 # Description
 
-<!-- More badges will be added here, i.e. code coverage and CircleCI -->
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Build Status](https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk.svg?branch=master)](https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk)
 [![Documentation Status](https://readthedocs.org/projects/data-attribute-recommendation-python-sdk/badge/?version=latest)](https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/?badge=latest)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/data-attribute-recommendation-sdk)
+[![PyPI version](https://badge.fury.io/py/data-attribute-recommendation-sdk.svg)](https://badge.fury.io/py/data-attribute-recommendation-sdk)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
 Goals of this SDK:
 

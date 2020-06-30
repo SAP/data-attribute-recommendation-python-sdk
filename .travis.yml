@@ -21,11 +21,11 @@ install:
   - pip install tox-travis
 script: tox
 
-# command to run tests
+# configure additional linting stage
 jobs:
   include:
     - stage: linting
-      python: "3.7"
+      python: "3.7" # limit to single run, using python 3.7
       install:
         - pip install -r requirements-dev.txt
       script:
