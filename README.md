@@ -1,7 +1,7 @@
 # data-attribute-recommendation-python-sdk
 
 A client SDK for the Data Attribute Recommendation service on SAP Cloud Platform.
-Part of [SAP AI Business Services]. Read the full documentation for the SDK (https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/).
+Part of [SAP AI Business Services].
 
 # Description
 
@@ -24,6 +24,7 @@ Goals of this SDK:
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**
 * [Data Attribute Recommendation documentation]
 * [Blog Articles on Data Attribute Recommendation]
+* [Documentation for this SDK][SDK documentation]
 
 # Requirements
 
