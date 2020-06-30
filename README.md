@@ -31,7 +31,8 @@ To use the SDK, you will need a recent version of Python. We actively support
 and test Python 3.5 up to Python 3.8. We aim to support all officially supported
 Python version. This includes any Python version not
 listed as `end-of-life` in the
-[Python Developer's Guide](https://devguide.python.org/#branchstatus).
+[Python Developer's Guide](https://devguide.python.org/#branchstatus). You can check
+the [Travis builds] to see which environments are actively tested.
 
 Additionally, the `pip` and `virtualenv` tools should be installed. See
 the [installation instructions][pip and virtual environments].
@@ -151,6 +152,7 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [installing virtualenv]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-virtualenv
 [installing pip]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-pip
 [SDK documentation]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/
-[SDK security guide]: ./docs/source/security.rst
+[SDK security guide]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/security.html
 [github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
+[Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
