@@ -11,7 +11,7 @@ python:
 - '3.6'
 - '3.7'
 - '3.8'
-- pypy3
+- 'pypy3'
 install:
 - pip install -r requirements-test.txt
 - pip install tox-travis
@@ -19,7 +19,7 @@ script: tox
 jobs:
   include:
   - stage: linting
-    python: '3.7'
+    python: '3.7' # only run once.
     install:
     - pip install -r requirements-dev.txt
     script:
@@ -33,12 +33,16 @@ jobs:
       - choco install python --version 3.8.2
       - python -m pip install --upgrade pip
     env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-
-deploy:
-  provider: pypi
-  username: __token__
-  password:
-    secure: K0ExrJP+kneqCO5DKhv6+rzUXaKOoj0ORtCS/WS5MPndgLqRB77k0zWZj7ju/xI/5XvCk+SyxFHBbTA+izKyllsk/BmWngVcCcpoEJPhpTMDkd1cXbGwWDhV+ZNsCCxofx23g/877shbpWhsvqY4lZxGUfF1oFu9j0hJw6FhXasE46J8T0x2T6gGJ5DDnnKyXY8LI3jL7pS+tA19QXtR1pNrPSFeyIbwHsCStx4FWpdjA+5NzD/CSQvYlj7nwFtf5GSSbepcccgqYsQDmd5l3S6b8Wn3Cn959K8UWXwjEWRUQ/mSpdx7x6pYAGKxdIaMhloTzpK+24vuQ+oOwOPdD88Ii1UkEv+YRFupPKDqDflDx0t3F75WpuV9+a3vdij1Ge+HI8u/kzmijk3grV992+9FikwaNjAm7yHwjy29Mit1FAzJQKD9CfdoievEweUi+ewFb0hXlA6jxcUtpaxqVpc1acJ1dcYekhiGSkBGZX9UvjALsneAUZuQUbxfpPoMTXoUPNj4ADEeOwU77ksTnZALl8QnrNOIUZMQyEczz87X+DLV7B05foz6CwIxElJodxHm3dqqDBMZbeYL36kezd2KLXPGaNq5WOE7z36KJeSVLhob0+8k00POavYlxeSjVe8KckBgk9Q+l2UdBtCkSfJoV8M2MXJUOOg+rG6bMCQ=
-  on:
-    tags: true # use `git tag -a "a-tag" -m "a message" && git push --tags` to release.
-    branch: master
+  - stage: deploy
+    python: '3.7' # only run once
+    install: skip
+    script: skip
+    deploy:
+      provider: pypi
+      username: __token__
+      distributions: "sdist bdist_wheel"
+      password:
+        secure: K0ExrJP+kneqCO5DKhv6+rzUXaKOoj0ORtCS/WS5MPndgLqRB77k0zWZj7ju/xI/5XvCk+SyxFHBbTA+izKyllsk/BmWngVcCcpoEJPhpTMDkd1cXbGwWDhV+ZNsCCxofx23g/877shbpWhsvqY4lZxGUfF1oFu9j0hJw6FhXasE46J8T0x2T6gGJ5DDnnKyXY8LI3jL7pS+tA19QXtR1pNrPSFeyIbwHsCStx4FWpdjA+5NzD/CSQvYlj7nwFtf5GSSbepcccgqYsQDmd5l3S6b8Wn3Cn959K8UWXwjEWRUQ/mSpdx7x6pYAGKxdIaMhloTzpK+24vuQ+oOwOPdD88Ii1UkEv+YRFupPKDqDflDx0t3F75WpuV9+a3vdij1Ge+HI8u/kzmijk3grV992+9FikwaNjAm7yHwjy29Mit1FAzJQKD9CfdoievEweUi+ewFb0hXlA6jxcUtpaxqVpc1acJ1dcYekhiGSkBGZX9UvjALsneAUZuQUbxfpPoMTXoUPNj4ADEeOwU77ksTnZALl8QnrNOIUZMQyEczz87X+DLV7B05foz6CwIxElJodxHm3dqqDBMZbeYL36kezd2KLXPGaNq5WOE7z36KJeSVLhob0+8k00POavYlxeSjVe8KckBgk9Q+l2UdBtCkSfJoV8M2MXJUOOg+rG6bMCQ=
+      on:
+        tags: true # use `git tag -a "a-tag" -m "a message" && git push --tags` to release.
+        branch: master
