@@ -19,6 +19,10 @@ Goals of this SDK:
 * Provide convenient higher-level abstraction on top of the service APIs
 * Serve as reference implementation for other programming languages
 
+## Release Notes
+
+See [CHANGELOG.md].
+
 ## Resources
 
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**
@@ -132,7 +136,7 @@ the [SDK security guide].
 For issues with the SDK itself, such as installation problems, please file
 an [issue in Github][github issues].
 
-For issues experienced with using the service, please refer to [Getting Support] in
+For issues experienced using the service, please refer to [Getting Support] in
 the main documentation on the SAP Help Portal.
 
 # License
@@ -157,3 +161,4 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
 [Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
+[CHANGELOG.md]: ./CHANGELOG.md
