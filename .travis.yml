@@ -1,11 +1,17 @@
 cache:
   directories:
   - "$HOME/.cache/pre-commit"
+# For the conditionals below: the `branch` corresponds to the base branches:
+# for PRs. See https://docs.travis-ci.com/user/conditions-v1 for details.
+
 stages:
-- "system tests"
-- linting
-- test
-- deploy
+- name: "system tests"
+  if: branch = master AND type != pull_request
+- name: linting
+- name: test
+- name: deploy
+  if: branch = master AND type != pull_request AND tag =~ ^rel/.*$
+
 language: python
 python:
 - '3.5'
@@ -17,18 +23,6 @@ install:
 - pip install -r requirements-test.txt
 - pip install tox-travis
 script: tox
-
-env:
-  global:
-    # DAR_CLIENT_ID
-    - secure: "eT6zcQaKWSPwycwHRB5o+aO9eSQBOU8ai22sqPOJz580OUA30wT9PJLUeL2R8w91oY6Nkxopm6kmX1hWcrgQUbzGzTfCbuRVu6LdX3tvKuWEcXYAWXbcFne9d15PnKEeHEj59S1+77xXJCLUsgv1AERlHpSFWh9Wy6ZjAsDQX5OxpnOuUQUkRdTWs93swVV280Zcph6oLWMQe42zFqvehagNqdXGYDxd+9cZFvxB4jFk3KBwBXKSlQIaV2oRKQNlKb3S00XNMLGVN3FUMJLwl8PNzlz19nhtllgpqjykd6YeReJXhPVy+NKQ7Syhd0BurShnj2aHZHbtBK+h3Hy3fnJQ+ZNYR4Z0Oj7VWMYlCzGYedfbj6qfKVCEI80eNHAa2jZ/nCOZRgU/0nZCuWwvrqdI6dIVz9j3ep4JS38J/E9V5OTmQNp2sZ6poLvqIENUln3K5g/HhHvjZuoF8/A8/gSOKOfGFb2tVcDFd05B3zd19cpqCx98EeNXBw6r97fKaxcWGTaiXerFlEzMV7XJKpPTuhaPKktssAZwEojSwEjDYIUXtSwkyVdAnNkGHu3EKY9Rk9LOpuMEFzAnH54qiM86IyyIIRhLrnfFm8bomAjD9ouztAbcGrCfJ1dBXzCi//0uu4owhiGwUU+kvbmVRmE6vJ2QK3driWz5BCnWSBM="
-    # DAR_CLIENT_SECRET
-    - secure: "YGGg493MQrcOHNgVUZfyDUrXHxRem2vwyDSnXD+5kFrMEGOlui2ICE8ND+/sMwA0QpuCh5oydjLd2IRIAJJylzcBB+ZLvVZ4ez/xVfdoF/uHdjPjETs5xw2HVMxigS8rdygF9h1QxeweluDIG4cSLa8M6bdQHNmfDpXZtjMVT9BxpNRkmOgjAiBe/EhjvSVm74OKAPgsgD8Fpq/tk1sHU0UC3hfR570SR099UgErN1dzjFzB3v8WH8LJcpkmvXXB7KDSInQTGBSIqa97tFlpAcr7SmH3sdAnaEmyfjrER0++PIAMp3DU7frF6tR2L+VJKhyEdFqm36O4s+BPDC7vas+zTzxabb7zytDThMY3Xe7M18xf916w1Uuz6ksrXQZySsS5jzwMDuinLlLXIYTOmct+Iaykix3p59cadqjqbnHb+4ycKyw14YM4ftx0/9nHuWdFN210bIlylDsIULAtZTkWhnrPuin9mLkVIUdvROh3W9WBTmWwE0tOhsRjoaVXh23+SldUJVYerF1hIqh2ETHw0jPTKhcc1BbEeV1Eb3CZNKdwLN6weLJKW60DPZl2oxXZutrXrR1H7aa5m71OX3e/N/udS0R2YFk7VawjIeDN9DW3dWcvqwoZ/cEX8SutGaPQrp2XxedfIPB42gzY+ivJ987amqk1+ODE21EnymM="
-    # DAR_AUTH_URL
-    - secure: "GNzN78NM9I7ky6eUPPLGD7tE+srhaZ4SfslahGy82Yxur3u54RsnkzrJW/s6anc69+OnttKRdgQcFLl3GGOUeeRrnQ48ROgqdf7KIuUSpc0Jzf6fkqOHflwhtMDdVEoxrg+AKTZ2MxsGWVVeL7sWTl0qhQSlNiRHGEzspI49TQ7Gf+wXJKoc9ivJRdEW57zWVzWB0JnJidjrLQ7Ll8A1J1HlWgQlocOKWcpWbmDSPZnHDb7M3xGuY+odVLBSqh45Zki43l/sutufFTg8AcQXvFjN7TJoZBsaavvwanUDcAYpWInmJp+MDAgfqp0P+1VVij34q+rBQa61B6HCBPDa3chzfjPfTUlrUhsAQGCqkpW3SwjLZqtvLSp5wgqiBbiUfQGNG3YPXcjC+5pFdJ6vvdx/QxBtN/CLdiabhdxWiWElHi196RgPdC/+4yhHCq+j26lFks3U1ELU5P48+jEVgoZ7WeaqQvhgOBiMOZ3zoLlHUd15lX9qF2saCI16yoxx5wB7o+FOgy/2klJ/zyy7XZY3nzg0V0pWLe+ZmfAsCqmz1O8ne80tUmcVCRGiChAltE1AxMWjvTr1Vm4D9nIXcdJ6iMEf4LRXbKqr02lmuNI3NsBRK2Za8p7ZTiFZ86AfILt0xxDZpqeD7wYZ8UG6d3IAR8P2UJfPcAwOwqWVAkQ="
-    # DAR_URL
-    - secure: "QCiCCVQCUnOLJHFUp4fxSsu3BeTCL8ny2P3lmljPNmUrCnipQdJKTKQ6tHWQjU2kkprfh/R8z2S1T9vXTWHnMiyhE1sNrsrXa9ePUXN8+i5kqis5sb8fAu5vU++xt5ZVJj/ln6lq7SBr+HQ+l24UZ9H9Te3bS5ggg3Dww0qE17cz4qDc75uoJSV+Z8Or9ivIqlOu3UbeHe5eUEBN8HUZHWmdGhBudxI7UpZwMZeHiUpbat8+hRfuieBPDxATUqLkYugCZdwFmeEMvNEtNyDTbvhT675IMJy0rzSKxHlvHEwjYPqsO+Z4TpdNlkCUbgbD9GahmftSr2cU1DsWGPribi7hNNDoSIjX9PoPUzHO5Idv2P4xsVJVEhClR3ef5VSvvw2v+jvIgKauHGuwn4vYCe7D+xGlWYXITAwCV1dwm0z9A5/3ZsHo0LQQTTXtRmqny/6AQOPu/TfLk0viTR7c/HCvQQa31HtgizrsJ/rA0HYHdb3Uif+N/9CM2jRw2zv24/CwzJND2L7ag8a8ewkixBntQtEvM6/ltUXUhmBaoV3n3WEfmNdmlGN5/TKUgrrs3/eZoN8nQ9P2iTLeSG9SVqk0sh5CQwou16FqQiDGg4k5fAahTHJYry2UPEPTSrMpmTtd8cdGBLXNDZEYW5T0gxXh0xLzLWmVwOMA603ZLPA="
-
 
 jobs:
   include:
@@ -45,6 +39,19 @@ jobs:
     # also handled via tox
     script:
       - tox -e system_tests
+    env:
+      global:
+        # DAR_CLIENT_ID
+        - secure: "eT6zcQaKWSPwycwHRB5o+aO9eSQBOU8ai22sqPOJz580OUA30wT9PJLUeL2R8w91oY6Nkxopm6kmX1hWcrgQUbzGzTfCbuRVu6LdX3tvKuWEcXYAWXbcFne9d15PnKEeHEj59S1+77xXJCLUsgv1AERlHpSFWh9Wy6ZjAsDQX5OxpnOuUQUkRdTWs93swVV280Zcph6oLWMQe42zFqvehagNqdXGYDxd+9cZFvxB4jFk3KBwBXKSlQIaV2oRKQNlKb3S00XNMLGVN3FUMJLwl8PNzlz19nhtllgpqjykd6YeReJXhPVy+NKQ7Syhd0BurShnj2aHZHbtBK+h3Hy3fnJQ+ZNYR4Z0Oj7VWMYlCzGYedfbj6qfKVCEI80eNHAa2jZ/nCOZRgU/0nZCuWwvrqdI6dIVz9j3ep4JS38J/E9V5OTmQNp2sZ6poLvqIENUln3K5g/HhHvjZuoF8/A8/gSOKOfGFb2tVcDFd05B3zd19cpqCx98EeNXBw6r97fKaxcWGTaiXerFlEzMV7XJKpPTuhaPKktssAZwEojSwEjDYIUXtSwkyVdAnNkGHu3EKY9Rk9LOpuMEFzAnH54qiM86IyyIIRhLrnfFm8bomAjD9ouztAbcGrCfJ1dBXzCi//0uu4owhiGwUU+kvbmVRmE6vJ2QK3driWz5BCnWSBM="
+        # DAR_CLIENT_SECRET
+        - secure: "YGGg493MQrcOHNgVUZfyDUrXHxRem2vwyDSnXD+5kFrMEGOlui2ICE8ND+/sMwA0QpuCh5oydjLd2IRIAJJylzcBB+ZLvVZ4ez/xVfdoF/uHdjPjETs5xw2HVMxigS8rdygF9h1QxeweluDIG4cSLa8M6bdQHNmfDpXZtjMVT9BxpNRkmOgjAiBe/EhjvSVm74OKAPgsgD8Fpq/tk1sHU0UC3hfR570SR099UgErN1dzjFzB3v8WH8LJcpkmvXXB7KDSInQTGBSIqa97tFlpAcr7SmH3sdAnaEmyfjrER0++PIAMp3DU7frF6tR2L+VJKhyEdFqm36O4s+BPDC7vas+zTzxabb7zytDThMY3Xe7M18xf916w1Uuz6ksrXQZySsS5jzwMDuinLlLXIYTOmct+Iaykix3p59cadqjqbnHb+4ycKyw14YM4ftx0/9nHuWdFN210bIlylDsIULAtZTkWhnrPuin9mLkVIUdvROh3W9WBTmWwE0tOhsRjoaVXh23+SldUJVYerF1hIqh2ETHw0jPTKhcc1BbEeV1Eb3CZNKdwLN6weLJKW60DPZl2oxXZutrXrR1H7aa5m71OX3e/N/udS0R2YFk7VawjIeDN9DW3dWcvqwoZ/cEX8SutGaPQrp2XxedfIPB42gzY+ivJ987amqk1+ODE21EnymM="
+        # DAR_AUTH_URL
+        - secure: "GNzN78NM9I7ky6eUPPLGD7tE+srhaZ4SfslahGy82Yxur3u54RsnkzrJW/s6anc69+OnttKRdgQcFLl3GGOUeeRrnQ48ROgqdf7KIuUSpc0Jzf6fkqOHflwhtMDdVEoxrg+AKTZ2MxsGWVVeL7sWTl0qhQSlNiRHGEzspI49TQ7Gf+wXJKoc9ivJRdEW57zWVzWB0JnJidjrLQ7Ll8A1J1HlWgQlocOKWcpWbmDSPZnHDb7M3xGuY+odVLBSqh45Zki43l/sutufFTg8AcQXvFjN7TJoZBsaavvwanUDcAYpWInmJp+MDAgfqp0P+1VVij34q+rBQa61B6HCBPDa3chzfjPfTUlrUhsAQGCqkpW3SwjLZqtvLSp5wgqiBbiUfQGNG3YPXcjC+5pFdJ6vvdx/QxBtN/CLdiabhdxWiWElHi196RgPdC/+4yhHCq+j26lFks3U1ELU5P48+jEVgoZ7WeaqQvhgOBiMOZ3zoLlHUd15lX9qF2saCI16yoxx5wB7o+FOgy/2klJ/zyy7XZY3nzg0V0pWLe+ZmfAsCqmz1O8ne80tUmcVCRGiChAltE1AxMWjvTr1Vm4D9nIXcdJ6iMEf4LRXbKqr02lmuNI3NsBRK2Za8p7ZTiFZ86AfILt0xxDZpqeD7wYZ8UG6d3IAR8P2UJfPcAwOwqWVAkQ="
+        # DAR_URL
+        - secure: "QCiCCVQCUnOLJHFUp4fxSsu3BeTCL8ny2P3lmljPNmUrCnipQdJKTKQ6tHWQjU2kkprfh/R8z2S1T9vXTWHnMiyhE1sNrsrXa9ePUXN8+i5kqis5sb8fAu5vU++xt5ZVJj/ln6lq7SBr+HQ+l24UZ9H9Te3bS5ggg3Dww0qE17cz4qDc75uoJSV+Z8Or9ivIqlOu3UbeHe5eUEBN8HUZHWmdGhBudxI7UpZwMZeHiUpbat8+hRfuieBPDxATUqLkYugCZdwFmeEMvNEtNyDTbvhT675IMJy0rzSKxHlvHEwjYPqsO+Z4TpdNlkCUbgbD9GahmftSr2cU1DsWGPribi7hNNDoSIjX9PoPUzHO5Idv2P4xsVJVEhClR3ef5VSvvw2v+jvIgKauHGuwn4vYCe7D+xGlWYXITAwCV1dwm0z9A5/3ZsHo0LQQTTXtRmqny/6AQOPu/TfLk0viTR7c/HCvQQa31HtgizrsJ/rA0HYHdb3Uif+N/9CM2jRw2zv24/CwzJND2L7ag8a8ewkixBntQtEvM6/ltUXUhmBaoV3n3WEfmNdmlGN5/TKUgrrs3/eZoN8nQ9P2iTLeSG9SVqk0sh5CQwou16FqQiDGg4k5fAahTHJYry2UPEPTSrMpmTtd8cdGBLXNDZEYW5T0gxXh0xLzLWmVwOMA603ZLPA="
+    on:
+      branch: master
+
   - stage: deploy
     python: '3.7' # only run once
     install: skip
