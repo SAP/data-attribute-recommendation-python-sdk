@@ -5,6 +5,11 @@ cache:
 # For the conditionals below: the `branch` corresponds to the base branches:
 # for PRs. See https://docs.travis-ci.com/user/conditions-v1 for details.
 
+# Only build on master OR for PRs. Otherwise, we will run the same tests twice: once
+# for the PR, once for the branch.
+if: branch = master OR type != push
+
+
 env:
     global:
       # DAR_CLIENT_ID
@@ -17,10 +22,11 @@ env:
       - secure: "QCiCCVQCUnOLJHFUp4fxSsu3BeTCL8ny2P3lmljPNmUrCnipQdJKTKQ6tHWQjU2kkprfh/R8z2S1T9vXTWHnMiyhE1sNrsrXa9ePUXN8+i5kqis5sb8fAu5vU++xt5ZVJj/ln6lq7SBr+HQ+l24UZ9H9Te3bS5ggg3Dww0qE17cz4qDc75uoJSV+Z8Or9ivIqlOu3UbeHe5eUEBN8HUZHWmdGhBudxI7UpZwMZeHiUpbat8+hRfuieBPDxATUqLkYugCZdwFmeEMvNEtNyDTbvhT675IMJy0rzSKxHlvHEwjYPqsO+Z4TpdNlkCUbgbD9GahmftSr2cU1DsWGPribi7hNNDoSIjX9PoPUzHO5Idv2P4xsVJVEhClR3ef5VSvvw2v+jvIgKauHGuwn4vYCe7D+xGlWYXITAwCV1dwm0z9A5/3ZsHo0LQQTTXtRmqny/6AQOPu/TfLk0viTR7c/HCvQQa31HtgizrsJ/rA0HYHdb3Uif+N/9CM2jRw2zv24/CwzJND2L7ag8a8ewkixBntQtEvM6/ltUXUhmBaoV3n3WEfmNdmlGN5/TKUgrrs3/eZoN8nQ9P2iTLeSG9SVqk0sh5CQwou16FqQiDGg4k5fAahTHJYry2UPEPTSrMpmTtd8cdGBLXNDZEYW5T0gxXh0xLzLWmVwOMA603ZLPA="
 
 stages:
-- name: "system tests"
-  if: type = pull_request
+
 - name: linting
 - name: test
+- name: "system tests"
+  if: branch = master AND type != pull_request
 - name: deploy
   if: branch = master AND type != pull_request AND tag =~ ^rel/.*$
 
