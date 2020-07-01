@@ -21,8 +21,8 @@ python:
 - '3.8'
 - 'pypy3'
 install:
-- pip install -r requirements-test.txt
-- pip install tox-travis
+- pip3 install -r requirements-test.txt
+- pip3 install tox-travis
 script: tox
 
 jobs:
@@ -50,9 +50,22 @@ jobs:
         - secure: "GNzN78NM9I7ky6eUPPLGD7tE+srhaZ4SfslahGy82Yxur3u54RsnkzrJW/s6anc69+OnttKRdgQcFLl3GGOUeeRrnQ48ROgqdf7KIuUSpc0Jzf6fkqOHflwhtMDdVEoxrg+AKTZ2MxsGWVVeL7sWTl0qhQSlNiRHGEzspI49TQ7Gf+wXJKoc9ivJRdEW57zWVzWB0JnJidjrLQ7Ll8A1J1HlWgQlocOKWcpWbmDSPZnHDb7M3xGuY+odVLBSqh45Zki43l/sutufFTg8AcQXvFjN7TJoZBsaavvwanUDcAYpWInmJp+MDAgfqp0P+1VVij34q+rBQa61B6HCBPDa3chzfjPfTUlrUhsAQGCqkpW3SwjLZqtvLSp5wgqiBbiUfQGNG3YPXcjC+5pFdJ6vvdx/QxBtN/CLdiabhdxWiWElHi196RgPdC/+4yhHCq+j26lFks3U1ELU5P48+jEVgoZ7WeaqQvhgOBiMOZ3zoLlHUd15lX9qF2saCI16yoxx5wB7o+FOgy/2klJ/zyy7XZY3nzg0V0pWLe+ZmfAsCqmz1O8ne80tUmcVCRGiChAltE1AxMWjvTr1Vm4D9nIXcdJ6iMEf4LRXbKqr02lmuNI3NsBRK2Za8p7ZTiFZ86AfILt0xxDZpqeD7wYZ8UG6d3IAR8P2UJfPcAwOwqWVAkQ="
         # DAR_URL
         - secure: "QCiCCVQCUnOLJHFUp4fxSsu3BeTCL8ny2P3lmljPNmUrCnipQdJKTKQ6tHWQjU2kkprfh/R8z2S1T9vXTWHnMiyhE1sNrsrXa9ePUXN8+i5kqis5sb8fAu5vU++xt5ZVJj/ln6lq7SBr+HQ+l24UZ9H9Te3bS5ggg3Dww0qE17cz4qDc75uoJSV+Z8Or9ivIqlOu3UbeHe5eUEBN8HUZHWmdGhBudxI7UpZwMZeHiUpbat8+hRfuieBPDxATUqLkYugCZdwFmeEMvNEtNyDTbvhT675IMJy0rzSKxHlvHEwjYPqsO+Z4TpdNlkCUbgbD9GahmftSr2cU1DsWGPribi7hNNDoSIjX9PoPUzHO5Idv2P4xsVJVEhClR3ef5VSvvw2v+jvIgKauHGuwn4vYCe7D+xGlWYXITAwCV1dwm0z9A5/3ZsHo0LQQTTXtRmqny/6AQOPu/TfLk0viTR7c/HCvQQa31HtgizrsJ/rA0HYHdb3Uif+N/9CM2jRw2zv24/CwzJND2L7ag8a8ewkixBntQtEvM6/ltUXUhmBaoV3n3WEfmNdmlGN5/TKUgrrs3/eZoN8nQ9P2iTLeSG9SVqk0sh5CQwou16FqQiDGg4k5fAahTHJYry2UPEPTSrMpmTtd8cdGBLXNDZEYW5T0gxXh0xLzLWmVwOMA603ZLPA="
-    on:
+     on:
       branch: master
-
+  - stage: test
+    name: "Python: 3.8 on Windows"
+    # https://docs.travis-ci.com/user/languages/python/#running-python-tests-on-multiple-operating-systems
+    os: windows
+    language: shell       # 'language: python' is an error on Travis CI Windows
+    before_install:
+      - choco install python --version 3.8.2
+      - python -m pip install --upgrade pip
+    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+  - stage: test
+    name: "Python: 3.7.4 on macOS"
+    os: osx
+    osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
+    language: shell       # 'language: python' is an error on Travis CI macOS
   - stage: deploy
     python: '3.7' # only run once
     install: skip
@@ -62,7 +75,7 @@ jobs:
       username: __token__
       distributions: "sdist bdist_wheel"
       password:
-        secure: K0ExrJP+kneqCO5DKhv6+rzUXaKOoj0ORtCS/WS5MPndgLqRB77k0zWZj7ju/xI/5XvCk+SyxFHBbTA+izKyllsk/BmWngVcCcpoEJPhpTMDkd1cXbGwWDhV+ZNsCCxofx23g/877shbpWhsvqY4lZxGUfF1oFu9j0hJw6FhXasE46J8T0x2T6gGJ5DDnnKyXY8LI3jL7pS+tA19QXtR1pNrPSFeyIbwHsCStx4FWpdjA+5NzD/CSQvYlj7nwFtf5GSSbepcccgqYsQDmd5l3S6b8Wn3Cn959K8UWXwjEWRUQ/mSpdx7x6pYAGKxdIaMhloTzpK+24vuQ+oOwOPdD88Ii1UkEv+YRFupPKDqDflDx0t3F75WpuV9+a3vdij1Ge+HI8u/kzmijk3grV992+9FikwaNjAm7yHwjy29Mit1FAzJQKD9CfdoievEweUi+ewFb0hXlA6jxcUtpaxqVpc1acJ1dcYekhiGSkBGZX9UvjALsneAUZuQUbxfpPoMTXoUPNj4ADEeOwU77ksTnZALl8QnrNOIUZMQyEczz87X+DLV7B05foz6CwIxElJodxHm3dqqDBMZbeYL36kezd2KLXPGaNq5WOE7z36KJeSVLhob0+8k00POavYlxeSjVe8KckBgk9Q+l2UdBtCkSfJoV8M2MXJUOOg+rG6bMCQ=
+        secure: "Yo1GgXnDX8br7Gwy7IbIbTowfbuATV8hwMoWeQEfXb/rkPxJuElbGDb6xEy19E3qojxMbeY2Lm5ahyRXBcQmekyzG4/xa4aLqxa08TEYbH/QQi3T7pFaIpBdPwHE3e3dsKZIFJwFwPymjIBZGC79CQkkD2g2+9GvSSJVkc5OMY/q1rVeWeKxbNmLiSu9kIIusBt1nkmrctLaNNN6fRvjII61bxkujpmBjWGZcNmcVHqxXqEVplfAOhBymalrhl6ABtlzKxLoBWJchqILLsVGoIhHIcUFkA7PyH90UfR5k2mWh7W5kh44vbY4F/OV2Dr875RNc/BYfnNe/RofxtIg1B9Z5JLVpGXsUhfWBqDcymym+ugTdYwEL2D4S2cWEK5sSur+cb/Ib/CAwYUaVf6eWJERzsPKs+5bfHHpkphDUIs7Rp6Mf5bkPgiUgbyWQ0Wdx5a7WXqwHCVpskCDreCF54X4FQuHeSxXrOVQ1GnknpTm5ZCJhuB5ged1a6BmhzF4LbhalHZjmYqy37j+jCLAa8QrpoUkhvPrSKyUQVHnj8P8yw2jydHDdyuWoibwL+rbrHHeX66QreV/utBODfbx2j3tMzkAU8QqKsmP9hWnHFx5Lz6Dl/m8MniKbs7B3vMG3MCJsPz2nawHC/wlDeRqTTARZ+Fpc7VHzj2/ra8Egos="
       on:
         tags: true # use `git tag -a "a-tag" -m "a message" && git push --tags` to release.
         branch: master
