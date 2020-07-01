@@ -1,12 +1,13 @@
 cache:
   directories:
   - "$HOME/.cache/pre-commit"
+
 # For the conditionals below: the `branch` corresponds to the base branches:
 # for PRs. See https://docs.travis-ci.com/user/conditions-v1 for details.
 
 stages:
 - name: "system tests"
-  if: branch = master AND type != pull_request
+  if: type = pull_request
 - name: linting
 - name: test
 - name: deploy
