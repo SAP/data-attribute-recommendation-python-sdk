@@ -2,6 +2,7 @@ cache:
   directories:
   - "$HOME/.cache/pre-commit"
 stages:
+- "system tests"
 - linting
 - test
 - deploy
@@ -16,6 +17,15 @@ install:
 - pip install -r requirements-test.txt
 - pip install tox-travis
 script: tox
+
+env:
+  global:
+    - secure: "BdXNMHrNriudbk7Qu8M6tfdk+dG+gcyDxMQWo52+KE6IT7IZMkcwdi8t6hBP6W+0KvivUzTOqBQ/CjLGDFrCFUcCLxQBuQgE6FyZJtPp3RScgoos0P5nf0qkyyRJj8V+hwfCD2u516dh7zGz9Oc2+qDrXTDvVjVYWJIbBTVMfYOn39m+MRp8T0cP2SS1rwNFW6NMZEv4kd4PGGbz3bTsRl+37hHqKs6420pSxLlw9+4RZ6Vv+RwJaROx8wUWfQo44egv7u+5mukdlQVXlgy8riX1yS2UZibndDzhKuF1ux5t7isPDgb3uLQHTrSXJfiGsNZ9OTig9mJ7t72KteZZPL2eiJu5mKcnK2PnyTLRaPXzIDy9RESydDGrJmvrfvhf9A3qFputWRg9GQXSrQsLMAFnJYu+ZvVQ+UEtJL8AkEDhoNlrfm4iwsJlSo94xad21GciRK65KmKo873H+ZHbp09Pu3mQgLG+TZjFMrQso5fsfBWpZ2kDQmE3of3YxCn7atSNBIlMVgaEQVkc8+q35455HareeAgKfQvYwDPN0r+RJMaZ+lb8/uG9dZXpaHiNUhmsM883NeyuLQeRop3ywQM5pV2VL344OfrCrSbiTlsq/i/Na1RhHwX+iPsseHQOt/Yo0rT+sky5bwDflIRslpIXTYjQLYJnrHqbicgVEwY="
+    - secure: "UuZUoIhl4u+v6iw6HsfxQILx3BUuOossdlPv4HPR6ztsZ4GaZEj0ZOrD98ZrtD+fR/JOqxd9nCz2Wy2/eT5cQpdKji2Nv/1o3kQgEcfqsluy+hz+IEyRXnaS9QDV9mtSKZeId94mnUIQyrNljVM7n3dOZZIMqK7C/vBEG/d9lomXJJSw6/MtIOodnN/HwYMlrQoZ2D0RT8psHPoPH7DcyGS4wpVIXMiWJz1dTr6B4NNymNbKBC+mjE1w3Ecm/Yd54RshVZsSQ/IrwNoL9pOvHedDp+XFNw3c8rMGycG9vKwA9ZT2OVOvvUQ6wJ+2tNyPlJ9LdwuZl6Zvjanpvn2Dq2pfOK6+H4WrzX5hhiqddlhAcUmoeMlT4tla8J6jaaz2zFvvZqgY38sqORqMT0GUjKNwQ8TS6QdfO9vAJY6PV6Ck9cPm3ayUI+EnGSCvd0Udbtx3tjWjcAv7ejcifRT5ZQ48eUyS4K2BxDg4Q3epgg0yVDqhp9UZnRRCizy8gE7DySoV3Q4DfmcuGuiqjhuyBfrHZNrXGulU8k/xkQ60BNi50O29AQSu3PDbx67KSO2WTY1ygKFgl1bl5UCmnlS4uFlnrIIq8m9AKIt6KlpkmOODVkPimfP9Vblj+FLUXnU71zwmVEFHF0PsISwdofezGb6rRno1e7VmDFZAY2La3WU="
+    - secure: "GLlAz1DOJgsxlaIc+5AQfjUasBDhfFhYpzxY9d1EctXtgSayFgeSftsEf4d/zWPybJlGcbhZn8O0ZSpOzds8bqyfxwnfHIDOsRAIHMFidrjAMpKge/ycFFaRL9HFkni+t2tes3/9JRX/qvKZ1b1iE2jK/GTOdgDOtTLipoIbCDgoK+w8+pCb09OMyZOZRtPkVh75HT+lkyXqYKjusi5zywp/Rh/vs1Q1OzD+oIakvPQ0R46Q10jgUYJySVBME+f5kE1oycaNY1yDY6uHT3jWAXCrbkGWY0fr76HrE36VUsau0XT1oWK9aDbjwSopfpo43ajo2jvAx06AqozCUETgIuJgguxSQapKeg2lDhwUrFpaSR3D0ed4xp4k5HNnyc1fTTcSQ3lLwiaCoL6CDI0QzEM/mUjviDFmrenYhz36lxLZnBKk2UgHP20w+erhLNr7ZUhnlx4Yzh+j87EH0TBKYrZ4j2qx56KdtWDFBmNo3BC5VrVJjP8dg3k4zdsjPc8XOiLPsINCjMMuXGse/eJZfsB0AgE/cU842x2aQmPQj+CC7majRDKPZUTFgi6hLZGORxQv7gIEhqeQO8Vie/FTRMfre8/NtZwD+UDQwoZaLsKTsgkBlWrXAs12ZTt9He6V+U+z9reZ5fb8Mn0Y61A6HnVkyvD3nJD03mk/N9mykVI="
+    - secure: "RbOXobS293Xwi4JmCjEFQM49ijsYqvLnGqmiUXJZsqrxQvor/fmuJjc+jaVmEI2+U/bgQePfq1Ki4MTlKiuljTRM5LrhM6Kiqf0cyUs+HmXVRL2isEmaPj+/WFxbLHpZXXHJq9oJBPFRerqSe5ZCrchr+e5BtTV4hSpUzynYPz+WVSt0nqB4AIx7TVAO7lnCrVXbq4swjzfgoVq8qIEKTU3J4EMKQ+ErMmP5Y/sLjIZH1NNmEL9wKvUxAscEnMrpREigNVpoX3A31j6hcUjI02eyFQcc6dca6sDh9prld4hpB5xOSos0M6irBi/3oEhAkYhEdhS9X9q7CNxzO/xsz+lOLV3CVUZjpdEKHJTpTzHsmD/dyeheuGt2ez4R6HfmHyb9OPUAYNo36OcAw6z93o9lrwbKtHmbVQT+EiMlSfW/o05dSlh4PDTQ0srbNkwWBAR74DzfZkVPYY8+G0DoN+PUAUWSNzsLQ7WBpD9DOJdh7IRhx8bXnZYcgnFGrlMvOg9IVFRXtdua/dR1qyrx9rEx4MrmWzQPE7LcdwX5IkyaVmxXWj3+GFW+BbJxt5co3y7BdtGFn25LB8Xb1Gc0qnsNskJBTbp195363NskLSRpjnMOcQ5reZNjXBNIVs733WiibQvSY17heGdkXa77x5NFP0sG6+UzGk/hI+K9sqo="
+
+
 jobs:
   include:
   - stage: linting
@@ -25,6 +35,12 @@ jobs:
     script:
     - pyenv global 3.7.1
     - pre-commit run --all-files
+  - stage: system tests
+    python: '3.7' # only run once.
+    # use install: from global test stage, since system tests are
+    # also handled via tox
+    script:
+      - tox -e system_tests
   - stage: deploy
     python: '3.7' # only run once
     install: skip
