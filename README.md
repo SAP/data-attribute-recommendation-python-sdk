@@ -6,6 +6,7 @@ Part of [SAP AI Business Services].
 # Description
 
 [![Build Status](https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk.svg?branch=master)](https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk)
+[![Coverage Status](https://coveralls.io/repos/github/SAP/data-attribute-recommendation-python-sdk/badge.svg?branch=master)](https://coveralls.io/github/SAP/data-attribute-recommendation-python-sdk?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/data-attribute-recommendation-python-sdk/badge/?version=latest)](https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/?badge=latest)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/data-attribute-recommendation-sdk)
 [![PyPI version](https://badge.fury.io/py/data-attribute-recommendation-sdk.svg)](https://badge.fury.io/py/data-attribute-recommendation-sdk)
