@@ -18,12 +18,21 @@ Getting Started
 First, let's train a model with :class:`~sap.aibus.dar.client.flow.create.CreateModel`::
 
     from sap.aibus.dar.client.workflow.model import ModelCreator
+    import json
+
+    # Read file with service key
+    with open('dar_service_key.json', 'r') as sk_file:
+        sk_data = sk_file.read()
+
+    # Load from file
+    json_data = json.loads(sk_data)
+
 
     creator = ModelCreator.construct_from_credentials(
-        dar_url='https://sap-ai-business-services.cfapps.sap.hana.ondemand.com',
-        clientid="sb-abcdefgh-ijkl-mnop-q1rs-tu2v345w6y7z!b8901|dar-v3-std!b234",
-        clientsecret="XXXXXXXXXXX",
-        uaa_url="https://abcd.authentication.sap.hana.ondemand.com"
+        dar_url = json_data['url'],
+        clientid = json_data['uaa']['clientid'],
+        clientsecret = json_data['uaa']['clientsecret'],
+        uaa_url = json_data['uaa']['url'],
     )
 
     new_schema = {
