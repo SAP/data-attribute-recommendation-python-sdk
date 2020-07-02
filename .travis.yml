@@ -26,10 +26,10 @@ notifications:
       evgeny.arnautov@sap.com
 
 stages:
-- name: "system tests"
-  if: branch = master AND type = pull_request
 - name: linting
 - name: test
+- name: "system tests"
+  if: branch = master AND type != pull_request
 - name: deploy
   if: branch = master AND type != pull_request AND tag =~ ^rel/.*$
 
