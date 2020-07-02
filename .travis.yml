@@ -10,7 +10,9 @@ cache:
 
 # Only build on master OR for PRs. Otherwise, we will run the same tests twice: once
 # for the PR, once for the branch.
-if: branch = master OR type != push
+# If your builds do not start when you expect them to start, go here to understand why:
+# https://travis-ci.com/github/SAP/data-attribute-recommendation-python-sdk/requests
+if: branch = master OR tag =~ ^rel/.*$ OR type != push
 
 os: linux
 dist: xenial
@@ -105,6 +107,3 @@ jobs:
       distributions: "sdist bdist_wheel"
       password:
         secure: "Yo1GgXnDX8br7Gwy7IbIbTowfbuATV8hwMoWeQEfXb/rkPxJuElbGDb6xEy19E3qojxMbeY2Lm5ahyRXBcQmekyzG4/xa4aLqxa08TEYbH/QQi3T7pFaIpBdPwHE3e3dsKZIFJwFwPymjIBZGC79CQkkD2g2+9GvSSJVkc5OMY/q1rVeWeKxbNmLiSu9kIIusBt1nkmrctLaNNN6fRvjII61bxkujpmBjWGZcNmcVHqxXqEVplfAOhBymalrhl6ABtlzKxLoBWJchqILLsVGoIhHIcUFkA7PyH90UfR5k2mWh7W5kh44vbY4F/OV2Dr875RNc/BYfnNe/RofxtIg1B9Z5JLVpGXsUhfWBqDcymym+ugTdYwEL2D4S2cWEK5sSur+cb/Ib/CAwYUaVf6eWJERzsPKs+5bfHHpkphDUIs7Rp6Mf5bkPgiUgbyWQ0Wdx5a7WXqwHCVpskCDreCF54X4FQuHeSxXrOVQ1GnknpTm5ZCJhuB5ged1a6BmhzF4LbhalHZjmYqy37j+jCLAa8QrpoUkhvPrSKyUQVHnj8P8yw2jydHDdyuWoibwL+rbrHHeX66QreV/utBODfbx2j3tMzkAU8QqKsmP9hWnHFx5Lz6Dl/m8MniKbs7B3vMG3MCJsPz2nawHC/wlDeRqTTARZ+Fpc7VHzj2/ra8Egos="
-      on:
-        tags: true # use `git tag -a "a-tag" -m "a message" && git push --tags` to release.
-        branch: master
