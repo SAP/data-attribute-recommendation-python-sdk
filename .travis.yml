@@ -107,3 +107,7 @@ jobs:
       distributions: "sdist bdist_wheel"
       password:
         secure: "Yo1GgXnDX8br7Gwy7IbIbTowfbuATV8hwMoWeQEfXb/rkPxJuElbGDb6xEy19E3qojxMbeY2Lm5ahyRXBcQmekyzG4/xa4aLqxa08TEYbH/QQi3T7pFaIpBdPwHE3e3dsKZIFJwFwPymjIBZGC79CQkkD2g2+9GvSSJVkc5OMY/q1rVeWeKxbNmLiSu9kIIusBt1nkmrctLaNNN6fRvjII61bxkujpmBjWGZcNmcVHqxXqEVplfAOhBymalrhl6ABtlzKxLoBWJchqILLsVGoIhHIcUFkA7PyH90UfR5k2mWh7W5kh44vbY4F/OV2Dr875RNc/BYfnNe/RofxtIg1B9Z5JLVpGXsUhfWBqDcymym+ugTdYwEL2D4S2cWEK5sSur+cb/Ib/CAwYUaVf6eWJERzsPKs+5bfHHpkphDUIs7Rp6Mf5bkPgiUgbyWQ0Wdx5a7WXqwHCVpskCDreCF54X4FQuHeSxXrOVQ1GnknpTm5ZCJhuB5ged1a6BmhzF4LbhalHZjmYqy37j+jCLAa8QrpoUkhvPrSKyUQVHnj8P8yw2jydHDdyuWoibwL+rbrHHeX66QreV/utBODfbx2j3tMzkAU8QqKsmP9hWnHFx5Lz6Dl/m8MniKbs7B3vMG3MCJsPz2nawHC/wlDeRqTTARZ+Fpc7VHzj2/ra8Egos="
+      on:
+        # Limitation on branches is done in the "stages" section, so if
+        # the stage is executed, we always want to deploy
+        all_branches: true
