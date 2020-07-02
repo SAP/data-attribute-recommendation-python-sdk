@@ -1,4 +1,6 @@
 # pylint: disable=missing-module-docstring,missing-function-docstring
+from os import path
+
 from setuptools import find_packages, setup
 
 
@@ -8,10 +10,20 @@ def get_version():
     return version_str
 
 
+def get_long_version():
+    # read the contents of your README file
+    this_directory = path.abspath(path.dirname(__file__))
+    with open(path.join(this_directory, "README.md"), encoding="utf-8") as filehandle:
+        long_description = filehandle.read()
+    return long_description
+
+
 setup(
     name="data-attribute-recommendation-sdk",
     version=get_version(),
     description="Data Attribute Recommendation Python SDK",
+    long_description=get_long_version(),
+    long_description_content_type="text/markdown",
     author="Michael Haas",
     author_email="michael.haas01@sap.com",
     url="https://github.com/sap/data-attribute-recommendation-python-sdk",
@@ -24,11 +36,13 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python:: 3 :: Only",
+        "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
         "Environment :: Console",
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",

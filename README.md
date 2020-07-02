@@ -5,20 +5,31 @@ Part of [SAP AI Business Services].
 
 # Description
 
-<!-- More badges will be added here, i.e. code coverage and CircleCI -->
+[![Build Status](https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk.svg?branch=master)](https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk)
+[![Coverage Status](https://coveralls.io/repos/github/SAP/data-attribute-recommendation-python-sdk/badge.svg?branch=master)](https://coveralls.io/github/SAP/data-attribute-recommendation-python-sdk?branch=master)
+[![Documentation Status](https://readthedocs.org/projects/data-attribute-recommendation-python-sdk/badge/?version=latest)](https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/?badge=latest)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/data-attribute-recommendation-sdk)
+[![PyPI version](https://badge.fury.io/py/data-attribute-recommendation-sdk.svg)](https://badge.fury.io/py/data-attribute-recommendation-sdk)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
 Goals of this SDK:
 
 * Enable easy consumption of the Data Attribute Recommendation service
-* Provide convenient higher-level abstraction on top of the APIs
+* Provide convenient higher-level abstraction on top of the service APIs
 * Serve as reference implementation for other programming languages
+
+## Release Notes
+
+See [CHANGELOG.md].
 
 ## Resources
 
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**
 * [Data Attribute Recommendation documentation]
 * [Blog Articles on Data Attribute Recommendation]
+* [Documentation for this SDK][SDK documentation]
 
 # Requirements
 
@@ -26,7 +37,8 @@ To use the SDK, you will need a recent version of Python. We actively support
 and test Python 3.5 up to Python 3.8. We aim to support all officially supported
 Python version. This includes any Python version not
 listed as `end-of-life` in the
-[Python Developer's Guide](https://devguide.python.org/#branchstatus).
+[Python Developer's Guide](https://devguide.python.org/#branchstatus). You can check
+the [Travis builds] to see which environments are actively tested.
 
 Additionally, the `pip` and `virtualenv` tools should be installed. See
 the [installation instructions][pip and virtual environments].
@@ -99,7 +111,7 @@ The name of the virtualenv is now part of your shell prompt.
 Finally, install the SDK and its dependencies:
 
 ```shell script
-(dar-sdk-venv) $ pip install data-attribute-recommendation-python-sdk
+(dar-sdk-venv) $ pip install data-attribute-recommendation-sdk
 ```
 
 If you receive an error message `command not found: pip`, then refer to
@@ -117,14 +129,15 @@ SDK package as a first test:
 ```
 
 <!-- TODO: add links to SDK documentation -->
-To use the SDK, please refer to the [SDK documentation].
+To use the SDK, please refer to the [SDK documentation]. In particular, consider 
+the [SDK security guide].
 
 # How to obtain support
 
 For issues with the SDK itself, such as installation problems, please file
 an [issue in Github][github issues].
 
-For issues experienced with using the service, please refer to [Getting Support] in
+For issues experienced using the service, please refer to [Getting Support] in
 the main documentation on the SAP Help Portal.
 
 # License
@@ -144,6 +157,9 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [python.org downloads]: https://www.python.org/downloads/
 [installing virtualenv]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-virtualenv
 [installing pip]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-pip
-[SDK documentation]: TODO
-[github issues]: TODO
+[SDK documentation]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/
+[SDK security guide]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/security.html
+[github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
+[Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
+[CHANGELOG.md]: ./CHANGELOG.md
