@@ -36,9 +36,9 @@ stages:
 - name: linting
 - name: test
 - name: "system tests"
-  if: branch = master AND type != pull_request
+  if:  type != pull_request AND (branch = master OR tag =~ ^rel/.*$)
 - name: deploy
-  if: branch = master AND type != pull_request AND tag =~ ^rel/.*$
+  if: type != pull_request AND tag =~ ^rel/.*$
 
 language: python
 python:
