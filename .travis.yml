@@ -15,6 +15,16 @@ if: branch = master OR type != push
 os: linux
 dist: xenial
 
+notifications:
+  email:
+    if: branch = master AND type != pull_request
+    on_failure: always
+    recipients:
+      michael.haas01@sap.com
+      karthik.muthuswamy@sap.com
+      francesco.alda@sap.com
+      evgeny.arnautov@sap.com
+
 stages:
 - name: linting
 - name: test
