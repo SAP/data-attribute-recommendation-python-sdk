@@ -111,7 +111,7 @@ The name of the virtualenv is now part of your shell prompt.
 Finally, install the SDK and its dependencies:
 
 ```shell script
-(dar-sdk-venv) $ pip install data-attribute-recommendation-python-sdk
+(dar-sdk-venv) $ pip install data-attribute-recommendation-sdk
 ```
 
 If you receive an error message `command not found: pip`, then refer to
