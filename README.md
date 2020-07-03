@@ -120,7 +120,6 @@ If you receive an error message `command not found: pip`, then refer to
 Congratulations! You have sucessfully installed the SDK. You may now import the
 SDK package as a first test:
 
-<!-- TODO: after refactoring, adapt the packages here -->
 ```
 (dar-sdk-venv) $ python3
 >>> from sap.aibus.dar.client.data_manager_constants import DataManagerPaths
@@ -144,7 +143,7 @@ the main documentation on the SAP Help Portal.
 
 Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
 This file and all other files in this repository are licensed under the
-Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file.
+Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 
 [Tutorials on Data Attribute Recommendation]: https://developers.sap.com/mission.cp-aibus-data-attribute.html
 [SAP AI Business Services]: https://help.sap.com/viewer/product/SAP_AI_BUS/SHIP/en-US
@@ -163,3 +162,4 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
 [Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
 [CHANGELOG.md]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
+[LICENSE]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/LICENSE
