@@ -49,7 +49,15 @@ setup(
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Typing :: Typed",
+        "License :: OSI Approved :: Apache Software License",
     ],
+    project_urls={
+        "Documentation": "https://data-attribute-recommendation-python-sdk."
+        + "readthedocs.io/en/latest/",
+        "Source": "https://github.com/SAP/data-attribute-recommendation-python-sdk",
+        "Issue Tracker": "https://github.com/SAP/"
+        + "data-attribute-recommendation-python-sdk/issues",
+    },
 )
 
 # List of classifiers:

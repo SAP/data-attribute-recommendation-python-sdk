@@ -45,7 +45,7 @@ the [installation instructions][pip and virtual environments].
 
 To use the SDK, you will need to have a service instance of the
 Data Attribute Recommendation service. For existing users of
-the SAP Cloud Platform, please see the [Inital Setup].
+the SAP Cloud Platform, please see the [Initial Setup].
 
 If you are new to SAP Cloud Platform and Data Attribute Recommendation,
 consider one of the following options:
@@ -152,7 +152,7 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [Blog Articles on Data Attribute Recommendation]: https://blogs.sap.com/tags/73554900100800002858/
 [SAP Store]: https://www.sapstore.com/solutions/43157/Data-Attribute-Recommendation
 [Initial Setup]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/e8d18fbd1c0445e4a39dd1b66d942962.html
-[PyPI]: https://pypi.org/
+[PyPI]: https://pypi.org/project/data-attribute-recommendation-sdk/
 [pip and virtual environments]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 [python.org downloads]: https://www.python.org/downloads/
 [installing virtualenv]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-virtualenv
@@ -162,4 +162,4 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
 [Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
-[CHANGELOG.md]: ./CHANGELOG.md
+[CHANGELOG.md]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
