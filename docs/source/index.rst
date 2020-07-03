@@ -65,7 +65,7 @@ To download the dataset, execute:
   $ curl \
     -o bestBuy.csv \
     'https://raw.githubusercontent.com/SAP-samples/data-attribute-recommendation-postman-tutorial-sample/master/Tutorial_Example_Dataset.csv'
-  $ head -n2 bestBuy.csv
+  $ head -n2 bestBuy.csv # look at first two lines
   description,manufacturer,price,level1_category,level2_category,level3_category
   Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack,Duracell,5.49,Connected Home & Housewares,Housewares,Household Batteries
 
