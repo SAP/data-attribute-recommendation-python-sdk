@@ -17,12 +17,15 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 
-project = "DAR Client"
-copyright = "2020, DAR Team"
-author = "DAR Team"
+project = "Data Attribute Recommendation Python SDK"
+copyright = "2020 SAP SE or an SAP affiliate company."
+author = "Data Attribute Recommendation team"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+# We cannot update this automatically here; but
+# readthedocs.io will maintain the versions based on
+# the git hook
+# release = "0.0.1"
 
 # -- General configuration ---------------------------------------------------
 
