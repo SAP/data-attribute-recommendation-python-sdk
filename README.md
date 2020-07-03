@@ -45,7 +45,7 @@ the [installation instructions][pip and virtual environments].
 
 To use the SDK, you will need to have a service instance of the
 Data Attribute Recommendation service. For existing users of
-the SAP Cloud Platform, please see the [Inital Setup].
+the SAP Cloud Platform, please see the [Initial Setup].
 
 If you are new to SAP Cloud Platform and Data Attribute Recommendation,
 consider one of the following options:
