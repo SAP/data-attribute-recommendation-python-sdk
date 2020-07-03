@@ -1,8 +1,8 @@
-Welcome to DAR Client's documentation!
-======================================
+Welcome to Data Attribute Recommendation Python SDK documentation!
+==================================================================
 
-The DAR Client
-**************
+The SDK
+*******
 
 Features
 --------
