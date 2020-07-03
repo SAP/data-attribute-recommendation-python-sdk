@@ -1,11 +1,14 @@
-Creating a new Release of the SDK
-==================================
+Creating a new release of the Data Attribute Recommendation SDK
+===============================================================
 
 *This document describes how to publish a new release of the SDK
-to `pypi.org`_ and is not applicable to simple use of the SDK.*
+to `pypi.org`_ and does not apply to simple use of the SDK.*
 
 To create a new release of the Data Attribute Recommendation Python SDK and
-publish it to `pypi.org`_, follow these steps:
+publish it to `pypi.org`_, you will need to have *Write* access to the
+`GitHub repository`_.
+
+Follow these steps to create a release:
 
 - Update `version.txt`_ with the desired version number
 - Update the `CHANGELOG.md`_
@@ -22,6 +25,9 @@ publish it to `pypi.org`_, follow these steps:
 - Create a tag against the latest master with the desired version number
   and push the tag. This triggers the build and deploy on Travis.
 
+  - No special permissions for pypi.org are required. Travis has access
+    to a token which grants permission to publish to `pypi.org`.
+
 .. code-block:: shell
 
   $ git pull
@@ -37,7 +43,7 @@ publish it to `pypi.org`_, follow these steps:
 
 
 
-
+.. _GitHub repository: https://github.com/SAP/data-attribute-recommendation-python-sdk
 .. _pypi.org: https://pypi.org/project/data-attribute-recommendation-sdk/
 .. _version.txt: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/version.txt
 .. _CHANGELOG.md: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
