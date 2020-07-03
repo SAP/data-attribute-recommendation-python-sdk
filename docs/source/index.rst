@@ -403,13 +403,150 @@ requests.
 Running Inference requests against the model
 ++++++++++++++++++++++++++++++++++++++++++++
 
-TBD
+Inference requests are performed using the
+:class:`~sap.aibus.dar.client.inference_client.InferenceClient`.
 
-Revisiting Model Creation - SDK Details
-++++++++++++++++++++++++++++++++++++++++
+The input to the
+:meth:`~sap.aibus.dar.client.inference_client.InferenceClient.create_inference_request`
+is simply the Model name and the list of objects to be classified.
 
-TBD
+Run the following script to predict the categories for some data:
 
+.. code-block:: python
+
+    import json
+    import logging
+    import pprint
+
+    from sap.aibus.dar.client.inference_client import InferenceClient
+
+    # Show some output while the script is working
+    logging.basicConfig(level=logging.INFO)
+
+    MODEL_NAME = "bestbuy-category-prediction"
+
+    # Read file with service key
+    with open('dar_service_key.json', 'r') as sk_file:
+        sk_data = sk_file.read()
+
+    # Load from file
+    json_data = json.loads(sk_data)
+
+    inference_client = InferenceClient.construct_from_credentials(
+        dar_url=json_data['url'],
+        clientid=json_data['uaa']['clientid'],
+        clientsecret=json_data['uaa']['clientsecret'],
+        uaa_url=json_data['uaa']['url'],
+    )
+
+    # The code passes two objects to be classified. Each object
+    # must have all features described in the DatasetSchema used
+    # during training.
+    objects_to_be_classified = [
+        {
+            "objectId": "optional-identifier-1",
+            "features": [
+                {"name": "manufacturer", "value": "Energizer"},
+                {"name": "description", "value": "Alkaline batteries; 1.5V"},
+                {"name": "price", "value":  "5.99"},
+            ],
+        },
+        {
+            "objectId": "optional-identifier-2",
+            "features": [
+                {"name": "manufacturer", "value": "Eidos"},
+                {"name": "description", "value": "Unravel a grim conspiracy at the brink of Revolution"},
+                {"name": "price", "value":  "19.99"},
+            ],
+        },
+    ]
+
+    inference_response = inference_client.create_inference_request(
+        model_name=MODEL_NAME,
+        objects=objects_to_be_classified
+    )
+
+    pprint.pprint(inference_response)
+
+The script will print the API response obtained from the RESTful API:
+
+.. code-block:: python
+
+    {
+        'id': '09ade1bd-1da0-4060-45bd-185b31afba24',
+        'processedTime': '2020-07-03T15:22:28.124490+00:00',
+        'status': 'DONE',
+        'predictions': [
+            {
+                'labels': [
+                    {
+                        'name': 'level1_category',
+                        'results': [{
+                            'probability': 1.0,
+                            'value': 'Connected Home & '
+                                     'Housewares'
+                        }]
+                    },
+                    {
+                        'name': 'level2_category',
+                        'results': [{
+                            'probability': 0.99999976,
+                            'value': 'Housewares'
+                        }]
+                    },
+                    {
+                        'name': 'level3_category',
+                        'results': [{
+                            'probability': 0.9999862,
+                             'value': 'Household Batteries'
+                        }]
+                    }
+                ],
+                'objectId': 'optional-identifier-1'
+            },
+            {
+                'labels': [
+                    {
+                        'name': 'level1_category',
+                        'results': [{
+                            'probability': 0.99775535,
+                            'value': 'Video Games'
+                        }]
+                    },
+                    {
+                        'name': 'level2_category',
+                        'results': [{
+                            'probability': 0.5394639,
+                            'value': 'PlayStation 3'
+                        }]
+                    },
+                    {
+                        'name': 'level3_category',
+                        'results': [{
+                            'probability': 0.40110978,
+                            'value': 'PS3 Games'
+                        }]
+                    }
+                ],
+                'objectId': 'optional-identifier-2'
+            }
+        ]
+    }
+
+For each of the two objects sent to Inference endpoint, all three labels specified
+in the DatasetSchema are returned. Feel free to try this with your own input!
+
+.. note::
+
+    To see more than one prediction per label, pass the **top_n** parameter to the
+    :meth:`~sap.aibus.dar.client.inference_client.InferenceClient.create_inference_request`
+    method. This will then also return the n-best (second-best...) predictions.
+
+.. note::
+
+    To predict more than fifty objects at a time, consider the
+    :meth:`~sap.aibus.dar.client.inference_client.InferenceClient.do_bulk_inference` method.
+    This is especially useful for batch-processing, e.g. of CSV files.
 
 SDK API Documentation
 *********************
