@@ -5,7 +5,7 @@ Creating a new release of the Data Attribute Recommendation SDK
 to `pypi.org`_ and does not apply to simple use of the SDK.*
 
 To create a new release of the Data Attribute Recommendation Python SDK and
-publish it to `pypi.org`_, you will need to have *Write* access to the
+publish it to `pypi.org`_, you will need to have *write* access to the
 `GitHub repository`_.
 
 Follow these steps to create a release:
