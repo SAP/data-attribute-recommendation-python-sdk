@@ -1,16 +1,13 @@
-.. _index:
+Data Attribute Recommendation.. _index:
 
-Data Attribute Recommendation Python SDK documentation
+Data Attribute Recommendation Python SDK Documentation
 ======================================================
-
-The SDK
-*******
 
 Features
 --------
 
 - Easy to use
-- High-level flows on top of the basic DAR APIs
+- High-level flows on top of the basic Data Attribute Recommendation APIs
 - Fully type annotated for great autocomplete experience
 - Supports Python 3.5 up to 3.8
 
@@ -32,7 +29,6 @@ additional installation and troubleshooting guidance.
 .. _"Download and Installation" section in the README: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/README.md#download-and-installation
 
 Furthermore, this introduction assumes that you:
-
 * have access to a service instance of the Data Attribute Recommendation service
 * have a service key for the service
 
@@ -43,15 +39,15 @@ For more information, please see the `"Requirements" section in the README`_.
 The examples below are given for Linux or macOS based system, but should easily
 transfer to Windows.
 
-Training a model
+Train a model
 ++++++++++++++++
 
 As a first step, let's upload a dataset and train a model with
 :class:`~sap.aibus.dar.client.flow.create.CreateModel`. The following example
 uses a sample dataset based on a BestBuy dataset which contains product meta data along
-with the categories with a given product.
+with the categories for a given product.
 
-Obtaining the sample dataset
+Obtain sample dataset
 ++++++++++++++++++++++++++++
 
 You can download the sample dataset from the `samples repository for the Data Attribute
@@ -71,7 +67,7 @@ To download the dataset, execute:
   description,manufacturer,price,level1_category,level2_category,level3_category
   Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack,Duracell,5.49,Connected Home & Housewares,Housewares,Household Batteries
 
-Preparing the service key
+Prepare service key
 +++++++++++++++++++++++++
 
 With the dataset file in place, you will also need to obtain a service key for the
@@ -86,11 +82,10 @@ corresponding section `"Creating Service Keys" on the SAP Help Portal`_.
   Please ensure that your service key remains confidential
   and consider the information in `security guide`_.
 
-Uploading Data and Training a Model
+Upload data and train a model
 +++++++++++++++++++++++++++++++++++
 
 You should now have two files in place:
-
 * *bestBuy.csv*, which is the data we use to train the model
 * *dar_service_key.json*, which contains the credentials used to
   access the Data Attribute Recommendation service.
@@ -110,7 +105,7 @@ and execute the following code.
   Only one model with a given name may exist at a time. If this is not the
   first time you execute the example, you need to change the value of
   the *MODEL_NAME* variable. Further below, you will learn how to delete
-  an existing model to free up ressources and be able to reuse the name.
+  an existing model to free up resources and be able to reuse the name.
 
 .. code-block:: python
 
@@ -196,7 +191,7 @@ output (edited for brevity):
 
 
 The last lines will be the result of ``pprint.pprint(final_api_response)``. This is the response sent by the RESTful API
-when querying the Model status:
+when querying the model status:
 
 .. code-block:: python
 
@@ -220,12 +215,12 @@ deliver reasonable performance, even on a small example dataset.
     slightly.
 
 
-Deploying the Model
+Deploy the model
 ++++++++++++++++++++
 
 
-The Model has now been successfully trained. Before you can execute inference
-requests, you have to deploy the Model. This is done using the
+The model has now been successfully trained. Before you can execute inference
+requests, you have to deploy the model. This is done using the
 :class:`~sap.aibus.dar.client.model_manager_client.ModelManagerClient`.
 
 .. note::
@@ -305,9 +300,8 @@ Besides retrieving the full collection, you can also retrieve individual models:
 
 
 To actually deploy the model, two steps are required:
-
-* create a Deployment
-* wait for this Deployment to succeed
+* create a deployment
+* wait for this deployment to succeed
 
 Execute the following script:
 
@@ -367,7 +361,7 @@ This script will yield the following output (edited for brevity)::
 
 The deployment is in status **PENDING** right after creation. The following call to
 :meth:`~sap.aibus.dar.client.model_manager_client.ModelManagerClient.wait_for_deployment`.
-will poll the Deployment until it succeeds.
+will poll the deployment until it succeeds.
 
 ::
 
@@ -379,7 +373,7 @@ will poll the Deployment until it succeeds.
         'status': 'SUCCEEDED'
     }
 
-The Deployment is now in status **SUCCEEDED** and the Model can be used for Inference
+The deployment is now in status **SUCCEEDED** and the model can be used for inference
 requests.
 
 .. note::
@@ -402,7 +396,7 @@ requests.
     :meth:`~sap.aibus.dar.client.model_manager_client.ModelManagerClient.wait_for_deployment` to
     learn about possible error conditions.
 
-Running Inference requests against the model
+Run inference requests against the model
 ++++++++++++++++++++++++++++++++++++++++++++
 
 Inference requests are performed using the
@@ -410,7 +404,7 @@ Inference requests are performed using the
 
 The input to the
 :meth:`~sap.aibus.dar.client.inference_client.InferenceClient.create_inference_request`
-is simply the Model name and the list of objects to be classified.
+is simply the model name and the list of objects to be classified.
 
 Run the following script to predict the categories for some data:
 
@@ -535,7 +529,7 @@ The script will print the API response obtained from the RESTful API:
         ]
     }
 
-For each of the two objects sent to Inference endpoint, all three labels specified
+For each of the two objects sent to the inference endpoint, all three labels specified
 in the DatasetSchema are returned. Feel free to try this with your own input!
 
 .. note::

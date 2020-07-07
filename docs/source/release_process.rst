@@ -1,7 +1,7 @@
 .. _release_process:
 
 
-Creating a new release of the Data Attribute Recommendation SDK
+Creating a New Release of the Data Attribute Recommendation SDK
 ===============================================================
 
 *This document describes how to publish a new release of the SDK
@@ -18,7 +18,7 @@ Follow these steps to create a release:
 
   - Add a new heading with the new version number below *[Unreleased]*
   - The heading for the new version number should be a link to the
-    (non-existing) tag on Github
+    (non-existing) tag on GitHub
   - *[Unreleased]* becomes an empty section
   - Update the tag used in the URL for *[Unreleased]* to the new version number
     so that *[Unreleased]* points to the changes between the new version

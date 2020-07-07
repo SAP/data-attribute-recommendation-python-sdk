@@ -6,9 +6,9 @@ Resilience and Error Recovery
 Retrying HTTP Requests
 **********************
 
-The DAR client SDK will retry failed HTTP operations to some extent.
+The Data Attribute Recommendation client SDK will retry failed HTTP operations to some extent.
 
-Because the DAR service uses a RESTful API, the standard HTTP semantics apply.
+Because the Data Attribute Recommendation service uses a RESTful API, the standard HTTP semantics apply.
 
 This makes it safe by default to retry requests using the GET or DELETE methods
 since these methods are either safe or idempotent.
@@ -23,20 +23,20 @@ However, DELETE is an `idempotent method`_. A request can be repeated several ti
 will always be the same: the resource is gone. Note that all safe methods are also
 idempotent!
 
-These properties allow the DAR client SDK to retry many operations by default.
+These properties allow the Data Attribute Recommendation client SDK to retry many operations by default.
 
 .. _safe method: https://tools.ietf.org/html/rfc7231#section-4.2.1
 .. _idempotent method: https://tools.ietf.org/html/rfc7231#section-4.2.2
 
 
-Retrying POST requests
+Retrying POST Requests
 **********************
 
 POST requests are not idempotent. They can not be retried, at least not
 safely according to HTTP semantics.
 
-For the DAR client SDK, this contains all *create_* methods since these are implemented
-using POST. Where possible, the DAR client SDK provides a parameter to enable retry
+For the Data Attribute Recommendation client SDK, this contains all *create_* methods since these are implemented
+using POST. Where possible, the Data Attribute Recommendation client SDK provides a parameter to enable retry
 behavior on the method itself. Before using this manual override to force retries for
 POST, consider the trade-offs involved.
 
@@ -44,7 +44,7 @@ Consider the creation of a DatasetSchema using
 :meth:`DataManagerClient.create_dataset_schema`. In a scenario where
 the connection between client and server is dropped suddenly, the DatasetSchema may
 have been created successfully.
-On the client side, the DAR client SDK receives a "connection reset" error message
+On the client side, the Data Attribute Recommendation client SDK receives a "connection reset" error message
 and is unaware that the new DatasetSchema has been created.
 Implementing a naive retry simply based on HTTP semantics will lead to the creation
 of a second DatasetSchema, because the HTTP client is not aware that the first
@@ -59,7 +59,7 @@ If the risk of having an orphaned DatasetSchema is acceptable, then consider usi
 additional robustness.
 
 
-POST requests which acquire limited ressources
+POST Requests which Acquire Limited Resources
 -----------------------------------------------
 
 Note that not all *create_* methods implement a *retry* parameter. The `create_deployment`
@@ -71,7 +71,7 @@ successful, the second request will fail with a seemingly unrelated error relate
 the model already being deployed.
 
 See the documentation of the individual *create_* methods for details. For some tasks,
-the DAR client SDK provides higher-level methods which implement application-level retry
+the Data Attribute Recommendation client SDK provides higher-level methods which implement application-level retry
 including clean up of any singleton resources.
 
 Before Connection is Established
@@ -91,10 +91,7 @@ started via `create_` method calls and executed in the background. Their progres
 and success status is exposed not via HTTP status codes in the response sent by
 the API endpoint, but in the JSON body of the response.
 
-For this reason, these operations cannot be retried cannot be retried at all by the
-HTTP-level retry implmentation described above.
+For this reason, these operations cannot be retried at all by the HTTP-level retry implementation described above.
 
-The DAR client SDK provides higher-level methods which can handle restarting the
+The Data Attribute Recommendation client SDK provides higher-level methods which can handle restarting the
 individual processes, if desired.
-
-
