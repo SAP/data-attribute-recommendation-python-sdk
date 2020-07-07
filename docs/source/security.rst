@@ -4,7 +4,7 @@ Security Guide
 ==============
 
 This security guide applies to the Data Attribute Recommendation Python SDK only.
-In addition to this document, please carefully consider the `Security Guide  for the
+In addition to this document, please carefully consider the `Security Guide for the
 Data Attribute Recommendation service`_ itself.
 
 This guide makes two recommendations to keep your usage of the SDK secure:
