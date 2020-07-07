@@ -1,3 +1,2 @@
-# docs
-sphinx==2.4.1
+# see docs/requirements.txt
 pre-commit==2.2.0
