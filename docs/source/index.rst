@@ -86,6 +86,7 @@ Upload data and train a model
 +++++++++++++++++++++++++++++++++++
 
 You should now have two files in place:
+
 * *bestBuy.csv*, which is the data we use to train the model
 * *dar_service_key.json*, which contains the credentials used to
   access the Data Attribute Recommendation service.
