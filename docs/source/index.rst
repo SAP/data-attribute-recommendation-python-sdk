@@ -1,7 +1,7 @@
 .. _index:
 
-Welcome to Data Attribute Recommendation Python SDK documentation!
-==================================================================
+Data Attribute Recommendation Python SDK documentation
+======================================================
 
 The SDK
 *******
@@ -571,6 +571,7 @@ Table of Contents
     :maxdepth: 2
     :caption: Contents:
 
+    Introduction <self>
     api.rst
     retry.rst
     security.rst
