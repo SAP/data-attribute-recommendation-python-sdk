@@ -1,4 +1,4 @@
-# data-attribute-recommendation-python-sdk
+# Data Attribute Recommendation Python SDK
 
 A client SDK for the Data Attribute Recommendation service on SAP Cloud Platform.
 Part of [SAP AI Business Services].
