@@ -1,3 +1,5 @@
+.. _index:
+
 Welcome to Data Attribute Recommendation Python SDK documentation!
 ==================================================================
 

@@ -1,3 +1,6 @@
+.. _release_process:
+
+
 Creating a new release of the Data Attribute Recommendation SDK
 ===============================================================
 
