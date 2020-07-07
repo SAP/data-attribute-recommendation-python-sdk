@@ -1,0 +1,15 @@
+# Required
+version: 2
+
+python:
+  version: 3.7
+  # Install both sphinx AND the package itself; the package
+  # is required to install package dependencies. The autodoc package
+  # will import the code, which fails if the dependencies are not installed.
+  # This will in turn break internal links in the documentation.
+  install:
+    - requirements: docs/requirements.txt
+    - path: .
+
+sphinx:
+    fail_on_warning: true
