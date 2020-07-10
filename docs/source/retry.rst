@@ -54,10 +54,6 @@ A more advanced approach is to handle the error on the application level. In the
 scenario described above, an additional request can be made to check if the desired
 DatasetSchema was created. If the DatasetSchema is not there, a new request can be made.
 
-If the risk of having an orphaned DatasetSchema is acceptable, then consider using the
-*retry* parameter to :meth:`DataManagerClient.create_dataset_schema` to gain
-additional robustness.
-
 
 POST Requests which Acquire Limited Resources
 -----------------------------------------------
