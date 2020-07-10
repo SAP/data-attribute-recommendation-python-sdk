@@ -33,10 +33,10 @@ notifications:
 
 
 stages:
+- name: "system tests"
+  if:  type = pull_request
 - name: linting
 - name: test
-- name: "system tests"
-  if:  type != pull_request AND (branch = master OR tag =~ ^rel/.*$)
 - name: deploy
   if: type != pull_request AND tag =~ ^rel/.*$
 
