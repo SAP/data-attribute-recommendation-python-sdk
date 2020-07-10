@@ -1,0 +1,20 @@
+{
+  "github": {
+    "base_url": "https://github.com"
+  },
+  "workDir": "./traceability_workdir",
+  "outputDir": "./traceability_report",
+  "mapping": {
+    "local": ".traceability/traceability_mapping.json"
+  },
+  "testReport": [
+    {
+      "type": "xunit-xml",
+      "local": "./system_test_results/"
+    },
+    {
+      "type": "xunit-xml",
+      "local": "./test_results/py36/"
+    }
+  ]
+}

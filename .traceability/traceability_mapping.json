@@ -1,0 +1,44 @@
+[
+  {
+    "source_reference": "system_tests.system_tests.client.test_data_manager_client.TestDataManagerClient",
+    "github_keys": [
+      "SAP/data-attribute-recommendation-python-sdk#42"
+    ],
+    "filelocation": {
+      "git": {
+        "organization": "SAP",
+        "repository": "data-attribute-recommendation-python-sdk",
+        "branch": "master"
+      },
+      "relativePath": "./system_tests/client/test_data_manager_client.py"
+    }
+  },
+  {
+    "source_reference": "system_tests.system_tests.client.test_model_manager_client.TestModelManagerClient",
+    "github_keys": [
+      "SAP/data-attribute-recommendation-python-sdk#42"
+    ],
+    "filelocation": {
+      "git": {
+        "organization": "SAP",
+        "repository": "data-attribute-recommendation-python-sdk",
+        "branch": "master"
+      },
+      "relativePath": "./system_tests/client/test_model_manager_client.py"
+    }
+  },
+  {
+    "source_reference": "system_tests.system_tests.workflow.test_end_to_end.TestEndToEnd",
+    "github_keys": [
+      "SAP/data-attribute-recommendation-python-sdk#42"
+    ],
+    "filelocation": {
+      "git": {
+        "organization": "SAP",
+        "repository": "data-attribute-recommendation-python-sdk",
+        "branch": "master"
+      },
+      "relativePath": "./system_tests/workflow/test_end_to_end.py"
+    }
+  }
+]

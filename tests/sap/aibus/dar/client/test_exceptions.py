@@ -10,8 +10,6 @@ url = "http://localhost:4321/test/"
 
 
 class TestDARHTTPException:
-    url = "http://localhost:4321/test/"
-
     def test_basic(self):
         mock_response = create_mock_response()
 
@@ -130,7 +128,6 @@ class TestDARHTTPExceptionReason:
     # status line: https://tools.ietf.org/html/rfc7230#section-3.1.2
 
     def test_reason_works_iso8859_1(self):
-
         mock_response = create_mock_response()
         # ÄÖÜ encoded as ISO-8859-1
         mock_response.reason = b"\xc4\xd6\xdc"
