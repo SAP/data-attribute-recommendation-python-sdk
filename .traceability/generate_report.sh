@@ -7,7 +7,7 @@ if [[ ! -e "$CTM_CONFIG" ]]; then
     exit 1
 fi
 
-set -e
+set -ex
 
 export GOPATH="$HOME/go"
 go get github.com/SAP/quality-continuous-traceability-monitor
