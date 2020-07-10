@@ -74,7 +74,7 @@ jobs:
     - pre-commit run --all-files
   - stage: system tests
     os: windows
-    language: shell       # 'language: python' is an error on Travis CI Windows
+    language: go       # 'language: python' is an error on Travis CI Windows
     before_install:
       - choco install python --version 3.8.2
       - python -m pip install --upgrade pip
