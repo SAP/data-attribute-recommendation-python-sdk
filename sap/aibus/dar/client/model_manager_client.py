@@ -360,6 +360,8 @@ class ModelManagerClient(BaseClientWithSession):
         """
         Deletes a Deployment by ID.
 
+        To delete a Deployment by Model name, see :meth:`ensure_model_is_undeployed`.
+
         :param deployment_id: ID of the Deployment to be deleted
         :return: None
         """
