@@ -47,6 +47,13 @@ As a first step, let's upload a dataset and train a model with
 uses a sample dataset based on a BestBuy dataset which contains product meta data along
 with the categories for a given product.
 
+.. note::
+
+  Visit the `Concepts`_ page in the official Data Attribute Recommendation documentation
+  to learn about Models, Datasets and other terms.
+
+.. _Concepts: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/fe501df6d9f94361bfea066f9a6f6712.html
+
 Obtain sample dataset
 ++++++++++++++++++++++++++++
 
