@@ -1,4 +1,4 @@
-Data Attribute Recommendation.. _index:
+.. _index:
 
 Data Attribute Recommendation Python SDK Documentation
 ======================================================
