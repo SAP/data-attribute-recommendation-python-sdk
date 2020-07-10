@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+* Improvements to Documentation [#41]
+
 ## [0.6.4]
 
 ### Changed
@@ -37,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * First public release
 
 [Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.4...HEAD
+[#41]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/41
 [0.6.4]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.3...0.6.4
 [#40]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/40
 [#39]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/39
