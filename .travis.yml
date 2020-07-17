@@ -33,12 +33,12 @@ notifications:
 
 
 stages:
-- name: linting
-- name: test
+# - name: linting
+# - name: test
 - name: "system tests"
-  if:  type != pull_request AND (branch = master OR tag =~ ^rel/.*$)
-- name: deploy
-  if: type != pull_request AND tag =~ ^rel/.*$
+#  if:  type != pull_request AND (branch = master OR tag =~ ^rel/.*$)
+# - name: deploy
+#  if: type != pull_request AND tag =~ ^rel/.*$
 
 language: python
 python:
