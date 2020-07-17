@@ -1,6 +1,9 @@
+import pytest
+
 from sap.aibus.dar.client.model_manager_client import ModelManagerClient
 
 
+@pytest.mark.requirements(issues=["42"])
 class TestModelManagerClient:
     def test_model_templates(self, model_manager_client: ModelManagerClient):
         expected_model_template_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
