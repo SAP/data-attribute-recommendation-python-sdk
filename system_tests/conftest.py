@@ -90,7 +90,7 @@ def pytest_runtest_setup(item: Item):
     for requirement_marker in item.iter_markers("requirements"):
         if requirement_marker and "issues" in requirement_marker.kwargs:
             collected_issue_ids.extend(requirement_marker.kwargs.get("issues"))
-    # Only keep unique IDs and sorted them
+    # Only keep unique IDs and sort them
     item.issue_ids = sorted(set(collected_issue_ids))
 
 
