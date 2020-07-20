@@ -27,6 +27,7 @@ def inference_client():
     return prepare_client(DAR_URL, InferenceClient)
 
 
+@pytest.mark.requirement(issue="42")
 class TestInferenceClient:
     @property
     def objects(self):

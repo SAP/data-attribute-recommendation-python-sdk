@@ -1,8 +1,11 @@
 from io import BytesIO
 
+import pytest
+
 from sap.aibus.dar.client.data_manager_client import DataManagerClient
 
 
+@pytest.mark.requirements(issues=["42"])
 class TestDataManagerClient:
     new_schema = {
         "features": [
@@ -66,6 +69,7 @@ class TestDataManagerClient:
 
         assert after_deletion_count == new_count - 1
 
+    @pytest.mark.requirements(issues=["42"])
     def test_dataset_upload(self, data_manager_client: DataManagerClient):
         csv = """
 manufacturer,description,category,subcategory
