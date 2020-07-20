@@ -87,14 +87,9 @@ def pytest_configure(config):
 
 def pytest_runtest_setup(item: Item):
     collected_issue_ids = []  # type: List[str]
-    print("pytest_runtest_setup")
-    print(item)
     for requirement_marker in item.iter_markers("requirements"):
-        print("MARKER")
-        print(requirement_marker)
         if requirement_marker and "issues" in requirement_marker.kwargs:
             collected_issue_ids.extend(requirement_marker.kwargs.get("issues"))
-        print("GOT ISSUES")
     # Only keep unique IDs and sorted them
     item.issue_ids = sorted(set(collected_issue_ids))
 
