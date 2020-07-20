@@ -81,7 +81,7 @@ def model_creator(dar_url, credentials_source):
 def pytest_configure(config):
     config.addinivalue_line(
         "markers",
-        "requirements(issues=[issue1, issue2]): link to GitHub issue (traceability)",
+        "requirements(issues=[issue1, ...]): link to GitHub issue (traceability)",
     )
 
 
