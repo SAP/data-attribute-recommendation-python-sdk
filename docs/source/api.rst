@@ -5,7 +5,8 @@ API Documentation
 =================
 
 This document describes the Python API available in the SDK. The RESTful API
-exposed by the Data Attribute Recommendation service itself is described in the `SAP Help Portal`_.
+exposed by the Data Attribute Recommendation service itself is described in the
+`SAP Help Portal`_.
 
 The API exposed by the Python SDK either maps directly to a RESTful API
 of the service or provides a convenient wrapper around the RESTful API.
