@@ -8,7 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Improvements to Documentation [#41]
+* (Add here)
+
+## [0.6.5]
+
+### Changed
+
+* Improvements to Documentation [#41], [#50]
+* Generation of Traceability Reports [#48], [#49]
+
+[#41]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/41
+[#50]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/50
+[#48]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/48
+[#49]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/49
+
 
 ## [0.6.4]
 
@@ -39,9 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * First public release
-
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.4...HEAD
-[#41]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/41
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.5...HEAD
+[0.6.5]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.4...0.6.5
 [0.6.4]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.3...0.6.4
 [#40]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/40
 [#39]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/39
