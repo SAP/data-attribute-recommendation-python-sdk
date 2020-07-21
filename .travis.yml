@@ -111,8 +111,11 @@ jobs:
           # Limitation on branches is done in the "stages" section, so if
           # the stage is executed, we always want to deploy
           all_branches: true
+        skip_existing: true
       - provider: releases
         api_key:
+          # API key for a machine user specifically created for this task:
+          # https://github.com/dar-sdk-machine-user
           secure: "m0kXSf53vJY95nb7lrM4N4KTiSmNuSoHfS3swxhjuoEdCPuaYHkpkHjPYH6ZNIjBbFEMGw4YENEcUdyzlshPe/WIX5IQ1LjFTZ1U9wP8Iup0VNW9NAHn32Q9oRUFKdD5IeCtjvQwGdVZbAoJM7+IwX19qqhgkPf1VEPPcq3zW+J/aZNg1ayfH+79x60vybapeG7a8QNvxNATrHaO07+xuWIoDaSKZA0ggDn2zxdaDGk/1SJRZsu67YA0DqFAYB8CtspgewJg7MIrLQcHps9yq+vp1sPHiWy9SH87CDyG9+NMXBb2rnvsmRwxXI659wFOQqMWmCgSs/L3IMPBCGziSqgw7MG5hLVpyrmExINuag2yricm0RDPYVxnJKBz3a7J4pl1zudpdfudich8WDinJk7TJHR3tTgIFx1ASmA20RiY22NUvHWpRL88jNJn5LXDyOaT5bT7c6i9VwxpUq234DXLQ9iUMrbs5P576x/Px71dfJ8RLv52D4TmwQYVzgRdFeFI/TOvyvIKA4dYfGylpsueIScZTn5G0p9srzqpRT8gr1sOlIsBHjISppeyEG6C3uTuhaP/zu7o+soQtiMHWm7G2/5BpUBz7JwMODMnK1f4B4stQJYo7Kx+KsGPUrkJVst07klya44EYGS7Ik8Dm6YsNhvc0safYxxNK71cqGY="
         file: "system_test_results/traceability.html"
         skip_cleanup: true
