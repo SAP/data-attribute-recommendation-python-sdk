@@ -198,8 +198,8 @@ output (edited for brevity):
     INFO:sap.aibus.dar.client.workflow.model.ModelCreator:Training finished successfully. Job ID: 'bca5f678-c5d7-453c-af37-69505187dc9b'
 
 
-The last lines will be the result of ``pprint.pprint(final_api_response)``. This is the response sent by the RESTful API
-when querying the model status:
+The last lines will be the result of ``pprint.pprint(final_api_response)``.
+This is the response sent by the RESTful API when querying the model status:
 
 .. code-block:: python
 

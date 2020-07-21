@@ -54,8 +54,8 @@ The Data Attribute Recommendation service uses HTTPS for communication.
 
 With an outdated operating system or Python environment, it may be easier
 for a hypothetical man-in-the-middle attacker to find out the service key you are
-using or otherwise intercept or interfere with your communication with the Data Attribute
-Recommendation service.
+using or otherwise intercept or interfere with your communication with the Data
+Attribute Recommendation service.
 
 To avoid this possibility, two properties should hold:
 * The SDK should authenticate the remote side of the connection
@@ -66,9 +66,9 @@ HTTPS communication. Note that the SDK will reject non-HTTPS URLs.
 
 .. _requests: https://requests.readthedocs.io/en/master/
 
-Internally, the ``requests`` library uses the ``certifi`` library as a source of root `CA
-certificates`_. These are used to validate the TLS certificate presented by the remote
-server.
+Internally, the ``requests`` library uses the ``certifi`` library as a source of root
+`CA certificates`_. These are used to validate the TLS certificate presented by the
+remote server.
 The ``certifi`` library can and should be updated independently, as recommended
 by the `requests`_ documentation.
 Additionally, the ``requests`` packages also verifies that the host name inside the
