@@ -90,6 +90,7 @@ jobs:
           secure: "m0kXSf53vJY95nb7lrM4N4KTiSmNuSoHfS3swxhjuoEdCPuaYHkpkHjPYH6ZNIjBbFEMGw4YENEcUdyzlshPe/WIX5IQ1LjFTZ1U9wP8Iup0VNW9NAHn32Q9oRUFKdD5IeCtjvQwGdVZbAoJM7+IwX19qqhgkPf1VEPPcq3zW+J/aZNg1ayfH+79x60vybapeG7a8QNvxNATrHaO07+xuWIoDaSKZA0ggDn2zxdaDGk/1SJRZsu67YA0DqFAYB8CtspgewJg7MIrLQcHps9yq+vp1sPHiWy9SH87CDyG9+NMXBb2rnvsmRwxXI659wFOQqMWmCgSs/L3IMPBCGziSqgw7MG5hLVpyrmExINuag2yricm0RDPYVxnJKBz3a7J4pl1zudpdfudich8WDinJk7TJHR3tTgIFx1ASmA20RiY22NUvHWpRL88jNJn5LXDyOaT5bT7c6i9VwxpUq234DXLQ9iUMrbs5P576x/Px71dfJ8RLv52D4TmwQYVzgRdFeFI/TOvyvIKA4dYfGylpsueIScZTn5G0p9srzqpRT8gr1sOlIsBHjISppeyEG6C3uTuhaP/zu7o+soQtiMHWm7G2/5BpUBz7JwMODMnK1f4B4stQJYo7Kx+KsGPUrkJVst07klya44EYGS7Ik8Dm6YsNhvc0safYxxNK71cqGY="
         file: "system_test_results/traceability.html"
         on:
+          tags: true
           condition:  $TRAVIS_TAG =~ ^rel/.*$
       - provider: pypi
         skip_cleanup: true
@@ -98,6 +99,7 @@ jobs:
         password:
           secure: "Yo1GgXnDX8br7Gwy7IbIbTowfbuATV8hwMoWeQEfXb/rkPxJuElbGDb6xEy19E3qojxMbeY2Lm5ahyRXBcQmekyzG4/xa4aLqxa08TEYbH/QQi3T7pFaIpBdPwHE3e3dsKZIFJwFwPymjIBZGC79CQkkD2g2+9GvSSJVkc5OMY/q1rVeWeKxbNmLiSu9kIIusBt1nkmrctLaNNN6fRvjII61bxkujpmBjWGZcNmcVHqxXqEVplfAOhBymalrhl6ABtlzKxLoBWJchqILLsVGoIhHIcUFkA7PyH90UfR5k2mWh7W5kh44vbY4F/OV2Dr875RNc/BYfnNe/RofxtIg1B9Z5JLVpGXsUhfWBqDcymym+ugTdYwEL2D4S2cWEK5sSur+cb/Ib/CAwYUaVf6eWJERzsPKs+5bfHHpkphDUIs7Rp6Mf5bkPgiUgbyWQ0Wdx5a7WXqwHCVpskCDreCF54X4FQuHeSxXrOVQ1GnknpTm5ZCJhuB5ged1a6BmhzF4LbhalHZjmYqy37j+jCLAa8QrpoUkhvPrSKyUQVHnj8P8yw2jydHDdyuWoibwL+rbrHHeX66QreV/utBODfbx2j3tMzkAU8QqKsmP9hWnHFx5Lz6Dl/m8MniKbs7B3vMG3MCJsPz2nawHC/wlDeRqTTARZ+Fpc7VHzj2/ra8Egos="
         on:
+          tags: true
           condition:  $TRAVIS_TAG =~ ^rel/.*$
         skip_existing: true
   - stage: test
