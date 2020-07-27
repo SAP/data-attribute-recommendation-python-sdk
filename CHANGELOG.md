@@ -8,7 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* (Add here)
+* Documentation: add link to SAP community [#58]
+
+### Fixed
+
+* Log message missing model deployment ID [#59]
+
+[#58]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/58
+[#59]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/59
 
 ## [0.6.8]
 
