@@ -389,11 +389,17 @@ class ModelManagerClient(BaseClientWithSession):
         """
         deployment_id = self.lookup_deployment_id_by_model_name(model_name)
         if deployment_id is not None:
-            self.log.info("Deployment '%s' found for model_name '%s'. Undeploying!")
+            self.log.info(
+                "Deployment '%s' found for model_name '%s'. Undeploying!",
+                deployment_id,
+                model_name,
+            )
             self.delete_deployment_by_id(deployment_id)
             return deployment_id
 
-        self.log.info("No deployment found for model_name '%s'. Not undeploying.")
+        self.log.info(
+            "No deployment found for model_name '%s'. Not undeploying.", deployment_id
+        )
         return None
 
     def wait_for_deployment(self, deployment_id: str) -> dict:
