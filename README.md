@@ -127,7 +127,6 @@ SDK package as a first test:
 '/data-manager/api/v3/datasets'
 ```
 
-<!-- TODO: add links to SDK documentation -->
 To use the SDK, please refer to the [SDK documentation]. In particular, consider 
 the [SDK security guide].
 
@@ -135,6 +134,10 @@ the [SDK security guide].
 
 For issues with the SDK itself, such as installation problems, please file
 an [issue in Github][github issues].
+
+For questions on how to best use the SDK, consider asking a question in the
+SAP Community at **answers.sap.com** with the [`Data Attribute Recommendation` tag].
+When creating your question, add `Data Attribute Recommendation` as a primary tag.
 
 For issues experienced using the service, please refer to [Getting Support] in
 the main documentation on the SAP Help Portal.
@@ -163,3 +166,4 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 [Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
 [CHANGELOG.md]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
 [LICENSE]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/LICENSE
+[`Data Attribute Recommendation` tag]: https://answers.sap.com/tags/73554900100800002858

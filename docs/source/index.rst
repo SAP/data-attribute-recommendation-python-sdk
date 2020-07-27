@@ -575,6 +575,7 @@ Table of Contents
 
     Introduction <self>
     api.rst
+    support.rst
     retry.rst
     security.rst
     development.rst
