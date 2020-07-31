@@ -76,28 +76,28 @@ jobs:
     script:
     - pyenv global 3.7.1
     - pre-commit run --all-files
-  - stage: system tests
-    os: windows
-    language: shell       # 'language: python' is an error on Travis CI Windows
-    before_install:
-      - choco install python --version 3.8.2
-      - python -m pip install --upgrade pip
-    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-    # use install: from global test stage, since system tests are
-    # also handled via tox
-    script:
-      - tox -e system_tests
-    deploy:
-      - provider: releases
-        skip_cleanup: true
-        api_key:
-          # API key for a machine user specifically created for this task:
-          # https://github.com/dar-sdk-machine-user
-          secure: "m0kXSf53vJY95nb7lrM4N4KTiSmNuSoHfS3swxhjuoEdCPuaYHkpkHjPYH6ZNIjBbFEMGw4YENEcUdyzlshPe/WIX5IQ1LjFTZ1U9wP8Iup0VNW9NAHn32Q9oRUFKdD5IeCtjvQwGdVZbAoJM7+IwX19qqhgkPf1VEPPcq3zW+J/aZNg1ayfH+79x60vybapeG7a8QNvxNATrHaO07+xuWIoDaSKZA0ggDn2zxdaDGk/1SJRZsu67YA0DqFAYB8CtspgewJg7MIrLQcHps9yq+vp1sPHiWy9SH87CDyG9+NMXBb2rnvsmRwxXI659wFOQqMWmCgSs/L3IMPBCGziSqgw7MG5hLVpyrmExINuag2yricm0RDPYVxnJKBz3a7J4pl1zudpdfudich8WDinJk7TJHR3tTgIFx1ASmA20RiY22NUvHWpRL88jNJn5LXDyOaT5bT7c6i9VwxpUq234DXLQ9iUMrbs5P576x/Px71dfJ8RLv52D4TmwQYVzgRdFeFI/TOvyvIKA4dYfGylpsueIScZTn5G0p9srzqpRT8gr1sOlIsBHjISppeyEG6C3uTuhaP/zu7o+soQtiMHWm7G2/5BpUBz7JwMODMnK1f4B4stQJYo7Kx+KsGPUrkJVst07klya44EYGS7Ik8Dm6YsNhvc0safYxxNK71cqGY="
-        file: "system_test_results/traceability.html"
-        on:
-          tags: true
-          condition:  $TRAVIS_TAG =~ ^rel/.*$
+#  - stage: system tests
+#    os: windows
+#    language: shell       # 'language: python' is an error on Travis CI Windows
+#    before_install:
+#      - choco install python --version 3.8.2
+#      - python -m pip install --upgrade pip
+#    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+#    # use install: from global test stage, since system tests are
+#    # also handled via tox
+#    script:
+#      - tox -e system_tests
+#    deploy:
+#      - provider: releases
+#        skip_cleanup: true
+#        api_key:
+#          # API key for a machine user specifically created for this task:
+#          # https://github.com/dar-sdk-machine-user
+#          secure: "m0kXSf53vJY95nb7lrM4N4KTiSmNuSoHfS3swxhjuoEdCPuaYHkpkHjPYH6ZNIjBbFEMGw4YENEcUdyzlshPe/WIX5IQ1LjFTZ1U9wP8Iup0VNW9NAHn32Q9oRUFKdD5IeCtjvQwGdVZbAoJM7+IwX19qqhgkPf1VEPPcq3zW+J/aZNg1ayfH+79x60vybapeG7a8QNvxNATrHaO07+xuWIoDaSKZA0ggDn2zxdaDGk/1SJRZsu67YA0DqFAYB8CtspgewJg7MIrLQcHps9yq+vp1sPHiWy9SH87CDyG9+NMXBb2rnvsmRwxXI659wFOQqMWmCgSs/L3IMPBCGziSqgw7MG5hLVpyrmExINuag2yricm0RDPYVxnJKBz3a7J4pl1zudpdfudich8WDinJk7TJHR3tTgIFx1ASmA20RiY22NUvHWpRL88jNJn5LXDyOaT5bT7c6i9VwxpUq234DXLQ9iUMrbs5P576x/Px71dfJ8RLv52D4TmwQYVzgRdFeFI/TOvyvIKA4dYfGylpsueIScZTn5G0p9srzqpRT8gr1sOlIsBHjISppeyEG6C3uTuhaP/zu7o+soQtiMHWm7G2/5BpUBz7JwMODMnK1f4B4stQJYo7Kx+KsGPUrkJVst07klya44EYGS7Ik8Dm6YsNhvc0safYxxNK71cqGY="
+#        file: "system_test_results/traceability.html"
+#        on:
+#          tags: true
+#          condition:  $TRAVIS_TAG =~ ^rel/.*$
   - stage: test
     name: "Python: 3.8 on Windows"
     # https://docs.travis-ci.com/user/languages/python/#running-python-tests-on-multiple-operating-systems
