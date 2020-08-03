@@ -13,7 +13,7 @@ from sap.aibus.dar.client.workflow.model import ModelCreator
 logger = logging.getLogger("test")
 
 
-@pytest.mark.requirements(issues=["42"])
+@pytest.mark.requirements(issues=["42", "60"])
 class TestEndToEnd:
     """
     Tests an end-to-end scenario:
