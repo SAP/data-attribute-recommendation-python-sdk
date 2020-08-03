@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+* Mark package as type-annotated (PEP-561) [#46], [#63]
+
 ### Changed
 
 * Documentation: add link to SAP community [#58]
@@ -14,8 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Log message missing model deployment ID [#59]
 
+[#46]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/46
 [#58]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/58
 [#59]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/59
+[#63]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/63
 
 ## [0.6.8]
 
