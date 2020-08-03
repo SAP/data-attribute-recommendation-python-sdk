@@ -7,6 +7,7 @@ import pytest
 
 from sap.aibus.dar.client.base_client import BaseClient
 from sap.aibus.dar.client.data_manager_client import DataManagerClient
+from sap.aibus.dar.client.exceptions import ModelAlreadyExists, DARHTTPException
 from sap.aibus.dar.client.util.credentials import (
     StaticCredentialsSource,
     CredentialsSource,
@@ -35,6 +36,31 @@ def csv_data_stream():
             """
     data_stream = BytesIO(csv.strip().encode("utf-8"))
     return data_stream
+
+
+@pytest.fixture()
+def create_model():
+    create_model = ModelCreator.construct_from_jwt("https://abcd/", token="54321")
+    create_model.data_manager_client = create_autospec(DataManagerClient, instance=True)
+    create_model.model_manager_client = create_autospec(
+        ModelManagerClient, instance=True
+    )
+    return create_model
+
+
+@pytest.fixture()
+def model_resource():
+    return {
+        "jobId": "522de4e6-2609-4972-8f75-61e9262b86de",
+        "name": "my-model",
+        "createdAt": "2018-08-31T11:45:54+00:00",
+        "validationResult": {
+            "accuracy": 0.9,
+            "f1Score": 0.9,
+            "precision": 0.9,
+            "recall": 0.9,
+        },
+    }
 
 
 a_timestamp = datetime.datetime(
@@ -108,7 +134,7 @@ class TestModelCreator:
         # First part is still all a's
         assert formatted[:-uuid_len] == input_str[0 : 255 - uuid_len]
 
-    def test_create_model(self, csv_data_stream):
+    def test_create_model(self, csv_data_stream, create_model, model_resource):
         # inputs
         # model_name: str,
 
@@ -145,22 +171,21 @@ class TestModelCreator:
             "datasetSchemaId": new_dataset_schema_id,
         }
 
-        create_model = ModelCreator.construct_from_jwt("https://abcd/", token="54321")
-        create_model.data_manager_client = create_autospec(
-            DataManagerClient, instance=True
-        )
-        create_model.model_manager_client = create_autospec(
-            ModelManagerClient, instance=True
-        )
-
         create_model.format_dataset_name = Mock(return_value=dataset_name)
+
+        create_model.data_manager_client.create_dataset_schema.return_value = (
+            dataset_schema_created
+        )
+        create_model.data_manager_client.create_dataset.return_value = dataset_created
 
         dm = create_model.data_manager_client
 
-        dm.create_dataset_schema.return_value = dataset_schema_created
-        dm.create_dataset.return_value = dataset_created
-
         mm = create_model.model_manager_client
+
+        mm.read_model_by_name.side_effect = [
+            DARHTTPException(url="https://abcd/", response=Mock(status_code=404)),
+            model_resource,
+        ]
 
         # act
         result = create_model.create(
@@ -170,7 +195,7 @@ class TestModelCreator:
             model_name=model_name,
         )
 
-        assert result == mm.read_model_by_name.return_value
+        assert result == model_resource
 
         # Expected calls
         expected_create_dataset_schema = call(dataset_schema)
@@ -205,5 +230,46 @@ class TestModelCreator:
         expected_call_to_read_model_by_name = call(model_name=model_name)
 
         assert mm.read_model_by_name.call_args_list == [
-            expected_call_to_read_model_by_name
+            expected_call_to_read_model_by_name,
+            expected_call_to_read_model_by_name,
+        ]
+
+    def test_create_model_checks_for_existing_model(
+        self, csv_data_stream, create_model, model_resource
+    ):
+        """
+        If the model already exists, this should be an error.s
+        """
+        model_name = "my-model"
+
+        model_template_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
+
+        dataset_schema = {
+            "features": [
+                {"label": "manufacturer", "type": "CATEGORY"},
+                {"label": "description", "type": "TEXT"},
+            ],
+            "labels": [
+                {"label": "category", "type": "CATEGORY"},
+                {"label": "subcategory", "type": "CATEGORY"},
+            ],
+            "name": "test",
+        }
+
+        create_model.model_manager_client.read_model_by_name.return_value = (
+            model_resource
+        )
+
+        with pytest.raises(ModelAlreadyExists) as context:
+            create_model.create(
+                data_stream=csv_data_stream,
+                model_template_id=model_template_id,
+                dataset_schema=dataset_schema,
+                model_name=model_name,
+            )
+
+        assert "Model 'my-model' already exists" in str(context.value)
+
+        assert create_model.model_manager_client.read_model_by_name.call_args_list == [
+            call(model_name=model_name)
         ]

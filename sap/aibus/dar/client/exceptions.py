@@ -107,6 +107,20 @@ class DeploymentFailed(DARException):
     pass
 
 
+class ModelAlreadyExists(DARException):
+    """
+    Model already exists and must be deleted first.
+    """
+
+    def __init__(self, model_name):
+        msg = "Model '%s' already exists." % model_name
+        msg += (
+            "To re-use the name, please delete the model"
+            " first or choose a different name."
+        )
+        super(ModelAlreadyExists, self).__init__(msg)
+
+
 class DARHTTPException(DARException):
     """
     Error occured when talking to the DAR service over HTTP.
