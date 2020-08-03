@@ -234,27 +234,11 @@ class TestModelCreator:
             expected_call_to_read_model_by_name,
         ]
 
-    def test_create_model_checks_for_existing_model(
-        self, csv_data_stream, create_model, model_resource
-    ):
+    def test_create_model_checks_for_existing_model(self, create_model, model_resource):
         """
-        If the model already exists, this should be an error.s
+        If the model already exists, this should be an error.
         """
         model_name = "my-model"
-
-        model_template_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
-
-        dataset_schema = {
-            "features": [
-                {"label": "manufacturer", "type": "CATEGORY"},
-                {"label": "description", "type": "TEXT"},
-            ],
-            "labels": [
-                {"label": "category", "type": "CATEGORY"},
-                {"label": "subcategory", "type": "CATEGORY"},
-            ],
-            "name": "test",
-        }
 
         create_model.model_manager_client.read_model_by_name.return_value = (
             model_resource
@@ -262,13 +246,42 @@ class TestModelCreator:
 
         with pytest.raises(ModelAlreadyExists) as context:
             create_model.create(
-                data_stream=csv_data_stream,
-                model_template_id=model_template_id,
-                dataset_schema=dataset_schema,
+                data_stream=Mock(),
+                model_template_id=Mock(),
+                dataset_schema=Mock(),
                 model_name=model_name,
             )
 
         assert "Model 'my-model' already exists" in str(context.value)
+
+        assert create_model.model_manager_client.read_model_by_name.call_args_list == [
+            call(model_name=model_name)
+        ]
+
+    def test_create_model_forwards_exception(self, create_model, model_resource):
+        """
+        If ModelManagerClient.read_model_by_name raises a 404 in the initial check,
+        this means that the model is not there and execution and proceed. This is
+        tested in test_create_model above.
+
+        For all other status code, the exception should be re-raised as is.
+        This is tested here.
+        """
+        model_name = "my-model"
+
+        exc = DARHTTPException(url="https://abcd/", response=Mock(status_code=429))
+
+        create_model.model_manager_client.read_model_by_name.side_effect = exc
+
+        with pytest.raises(DARHTTPException) as context:
+            create_model.create(
+                data_stream=Mock(),
+                model_template_id=Mock(),
+                dataset_schema=Mock(),
+                model_name=model_name,
+            )
+
+        assert context.value == exc
 
         assert create_model.model_manager_client.read_model_by_name.call_args_list == [
             call(model_name=model_name)
