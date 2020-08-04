@@ -210,7 +210,7 @@ class ModelManagerClient(BaseClientWithSession):
         )
 
         def polling_function():
-            self.log.debug("Polling for status of job '%s'", job_id)
+            self.log.info("Polling for status of job '%s'", job_id)
             return self.read_job_by_id(job_id)
 
         self.log.info("Waiting for job '%s' to finish.", job_id)
