@@ -59,13 +59,13 @@ script: tox
 env:
     global:
       # DAR_CLIENT_ID
-      - secure: "eT6zcQaKWSPwycwHRB5o+aO9eSQBOU8ai22sqPOJz580OUA30wT9PJLUeL2R8w91oY6Nkxopm6kmX1hWcrgQUbzGzTfCbuRVu6LdX3tvKuWEcXYAWXbcFne9d15PnKEeHEj59S1+77xXJCLUsgv1AERlHpSFWh9Wy6ZjAsDQX5OxpnOuUQUkRdTWs93swVV280Zcph6oLWMQe42zFqvehagNqdXGYDxd+9cZFvxB4jFk3KBwBXKSlQIaV2oRKQNlKb3S00XNMLGVN3FUMJLwl8PNzlz19nhtllgpqjykd6YeReJXhPVy+NKQ7Syhd0BurShnj2aHZHbtBK+h3Hy3fnJQ+ZNYR4Z0Oj7VWMYlCzGYedfbj6qfKVCEI80eNHAa2jZ/nCOZRgU/0nZCuWwvrqdI6dIVz9j3ep4JS38J/E9V5OTmQNp2sZ6poLvqIENUln3K5g/HhHvjZuoF8/A8/gSOKOfGFb2tVcDFd05B3zd19cpqCx98EeNXBw6r97fKaxcWGTaiXerFlEzMV7XJKpPTuhaPKktssAZwEojSwEjDYIUXtSwkyVdAnNkGHu3EKY9Rk9LOpuMEFzAnH54qiM86IyyIIRhLrnfFm8bomAjD9ouztAbcGrCfJ1dBXzCi//0uu4owhiGwUU+kvbmVRmE6vJ2QK3driWz5BCnWSBM="
+      - secure: "RsV5fBK6NZdhQnxQZ2C7sbxfdi5tApcy1+gHG57xWm+fSjX7POXrX3B9S2u0GspCJaSiF6Dqw2Pvx4qlFVOWTDKg7zd0l6BPO4KUVtFiWekagHww4N1QL23R8ChcRwEDuqRK6p5BuBPWwm8TY4aDC5R7XEAFpozYZeb6vsEVflY34PSsy8U8YYjEpLY0tekqNPDqMs9ThpJcfmeVxr8tGYRzExrcWVelm7UXR0e45f5bx5yxL9uDqjHm9C5t78jQllwyNqL7lgx94F0CKncg9l5ob60VK9BzZsy58ITPgF3QxHN+Qk2EIr/n34X/G7yPqT9TxDWtuNhRNxWwSejuvk0OU0zdBMK5684zS1sA19hrl/Lh+iYtpEpkToZamGnIy4c+s1p3AiEbRjKhi+NQemu/SnJf1o0U6ITfyCoK/xvVjpFL7GU3F+B+4FJTz8IMlImWFY8JsR063N4AwyhugI8LoFjWjhD4k7xjf4pmIxQ6CVHgslOvIXBnB1f6hOGbWMhts1JItNOZMt2/6wVH6sUQajVeDyTgSPRXsrLPJvZ9eZ5gTpqx28yvzXd6XkwKrep/LhFM/+EaqADh//z0x96oO6uSkR+yQXFSVzq3UqRY8XQgQFND0xsgfz6ymv+KWX/Zru0I/b3NUg7+8g+iowQILD/o9v7gVDkvFAWxpmU="
       # DAR_CLIENT_SECRET
-      - secure: "YGGg493MQrcOHNgVUZfyDUrXHxRem2vwyDSnXD+5kFrMEGOlui2ICE8ND+/sMwA0QpuCh5oydjLd2IRIAJJylzcBB+ZLvVZ4ez/xVfdoF/uHdjPjETs5xw2HVMxigS8rdygF9h1QxeweluDIG4cSLa8M6bdQHNmfDpXZtjMVT9BxpNRkmOgjAiBe/EhjvSVm74OKAPgsgD8Fpq/tk1sHU0UC3hfR570SR099UgErN1dzjFzB3v8WH8LJcpkmvXXB7KDSInQTGBSIqa97tFlpAcr7SmH3sdAnaEmyfjrER0++PIAMp3DU7frF6tR2L+VJKhyEdFqm36O4s+BPDC7vas+zTzxabb7zytDThMY3Xe7M18xf916w1Uuz6ksrXQZySsS5jzwMDuinLlLXIYTOmct+Iaykix3p59cadqjqbnHb+4ycKyw14YM4ftx0/9nHuWdFN210bIlylDsIULAtZTkWhnrPuin9mLkVIUdvROh3W9WBTmWwE0tOhsRjoaVXh23+SldUJVYerF1hIqh2ETHw0jPTKhcc1BbEeV1Eb3CZNKdwLN6weLJKW60DPZl2oxXZutrXrR1H7aa5m71OX3e/N/udS0R2YFk7VawjIeDN9DW3dWcvqwoZ/cEX8SutGaPQrp2XxedfIPB42gzY+ivJ987amqk1+ODE21EnymM="
+      - secure: "cvvfl3dzAuHu5xfcdhSpobOZ4sj4ciKUzPdXTGLCk2lvhl4w08iLyl8MEz+gcRhQYfx2GwTY7QrNAKJxFhW170Uoc6PCg6zMdioHJT55mUo81SZ+cJd+pNWB5cbiTctI7cSG3y+jTjp7QpmLRA0GtrG0TMX3fAVAcXF0cR970X68Vrl9bDYe8cZJvYhkWdxfN1M093/FJ9L1wR9817atL2HrWhlCgkxSaFy+6nIF5RfqCqLxTc5BWoHwm5R/rbx3JrCRhAQZxay8nbnEYRXaIM42jYae0YYWYRTnboYGWtcxwwPey4W71sPTpHfvfS7gPG6dzOEg2JpDujRTcKhzKcsRsqFwWUrg0HUsQZOWvovMP/MIZ8uOQoaDoxHaV8HnT+JHdPcE9RetDqps8WODTpDek2gUTYB7gQeFpBCEW0CF59VWHX6nJrVan0iX/5rFUIYzNkBHtV+grlaXavC2jZ4LojUApM1kMg9ciZxgEr85cQ5H8MhfZLv7mS/T3ZsLr703d+0JGTHos5R18IHN0/MhHHYHo8jWZu02hg7RQU/PQ/jsBJCc178pxY9L1I6fp2HLYJyG9G+3vfMC31soeMB/OqC6r+wPXFH/9a36kwKBN13ad/0a6RXHTUmNOnKwpJLiO2aRi+jCKy78otQwbezz6OMpLN4Ft/+QXcElmmY="
       # DAR_AUTH_URL
-      - secure: "GNzN78NM9I7ky6eUPPLGD7tE+srhaZ4SfslahGy82Yxur3u54RsnkzrJW/s6anc69+OnttKRdgQcFLl3GGOUeeRrnQ48ROgqdf7KIuUSpc0Jzf6fkqOHflwhtMDdVEoxrg+AKTZ2MxsGWVVeL7sWTl0qhQSlNiRHGEzspI49TQ7Gf+wXJKoc9ivJRdEW57zWVzWB0JnJidjrLQ7Ll8A1J1HlWgQlocOKWcpWbmDSPZnHDb7M3xGuY+odVLBSqh45Zki43l/sutufFTg8AcQXvFjN7TJoZBsaavvwanUDcAYpWInmJp+MDAgfqp0P+1VVij34q+rBQa61B6HCBPDa3chzfjPfTUlrUhsAQGCqkpW3SwjLZqtvLSp5wgqiBbiUfQGNG3YPXcjC+5pFdJ6vvdx/QxBtN/CLdiabhdxWiWElHi196RgPdC/+4yhHCq+j26lFks3U1ELU5P48+jEVgoZ7WeaqQvhgOBiMOZ3zoLlHUd15lX9qF2saCI16yoxx5wB7o+FOgy/2klJ/zyy7XZY3nzg0V0pWLe+ZmfAsCqmz1O8ne80tUmcVCRGiChAltE1AxMWjvTr1Vm4D9nIXcdJ6iMEf4LRXbKqr02lmuNI3NsBRK2Za8p7ZTiFZ86AfILt0xxDZpqeD7wYZ8UG6d3IAR8P2UJfPcAwOwqWVAkQ="
+      - secure: "bK/Pv9kJWf7GloYFVoNPs4wyx7tDe8TqMHy5VpHFCdMbxPJ9Dn8eH6YmhwYGBsTdkFPU20oQ9dRo7p8VIFKRH84YXoKljawu3Yb97Y3W8k74twWojnoSboiTorinYf46ujJtnuT6Og3r8UPC9eUdjI7jcziOBX3UhmSmCGmjT1P0UvHcgz48eYAJToVZj2/GseDEO7T14nppIGocD4+M6eFbSArDty2GSxjQwm9Xvpbm47KftkRtnTOr4hM1QlD+H+Fo6RBLvBZI10Yhrq59tYph9OvvORFALRWP05DXsQRot5MA/xmtADkAJMN9FcC/XjI7k4zuoPHgy0Uw9Oapfgorfr/fKLd+zFQTAkQeLSHEyv44nflfKjQa/w+cALxRS6JZ+tVmh1ULj4Qo/wR1Dwt4sypL1y7IqOJnC7PjrJmf60jQgkKDtVQVJ0okwz+voZAqlOZFisDbcbIl+NU86TdBZJRQik2YZ94F7LVPy4VEqEKERGqaC83KDhqFgAI8ErNKf+DQKdCugbZXSYMW7tXBokAe9GjXnad8sRihQqIC9SeYgrY554aT7bzjYINFu/IXwkZ3deYeKci85zUskplUCSBjGrlP0wjSn3e+YbzWXc1MXGaqH4BqJb/Xge2p9bw+/6jMwgQIcu0q9/u+k94J4HdBB39brHOMaBbeiCw="
       # DAR_URL
-      - secure: "QCiCCVQCUnOLJHFUp4fxSsu3BeTCL8ny2P3lmljPNmUrCnipQdJKTKQ6tHWQjU2kkprfh/R8z2S1T9vXTWHnMiyhE1sNrsrXa9ePUXN8+i5kqis5sb8fAu5vU++xt5ZVJj/ln6lq7SBr+HQ+l24UZ9H9Te3bS5ggg3Dww0qE17cz4qDc75uoJSV+Z8Or9ivIqlOu3UbeHe5eUEBN8HUZHWmdGhBudxI7UpZwMZeHiUpbat8+hRfuieBPDxATUqLkYugCZdwFmeEMvNEtNyDTbvhT675IMJy0rzSKxHlvHEwjYPqsO+Z4TpdNlkCUbgbD9GahmftSr2cU1DsWGPribi7hNNDoSIjX9PoPUzHO5Idv2P4xsVJVEhClR3ef5VSvvw2v+jvIgKauHGuwn4vYCe7D+xGlWYXITAwCV1dwm0z9A5/3ZsHo0LQQTTXtRmqny/6AQOPu/TfLk0viTR7c/HCvQQa31HtgizrsJ/rA0HYHdb3Uif+N/9CM2jRw2zv24/CwzJND2L7ag8a8ewkixBntQtEvM6/ltUXUhmBaoV3n3WEfmNdmlGN5/TKUgrrs3/eZoN8nQ9P2iTLeSG9SVqk0sh5CQwou16FqQiDGg4k5fAahTHJYry2UPEPTSrMpmTtd8cdGBLXNDZEYW5T0gxXh0xLzLWmVwOMA603ZLPA="
+      - secure: "dWwqAu9C8s9opvLUWJr5wfgmSrjKonrTX1IocL4aF5n7RgXM5VnQfgVea86DBqYQcvT6PNsZIvmMjdmpxgit7dkw/RqdHfKLHZE059MFGREj0rHbbe+q+PTJxJtIw8fyUsV1fZ46axzhGeM5ug/9YDX3eXf5m48FElayid1AzYY6mYn2D4+U1dmh+66iEKsb/cRmE3UdoC92dt/VdBxfUKnyC0TI2TexLGybamFQBv/DxC52JYDiaSUwa4BDUu6Mqei//wDwJd73gNIS9lQ9a1FnGM9CBcwrdykaj5Yv8huLfjblfKvZYIl1yMxh0jmhXbJKo+/9zn8aSErXgGG67/1kxyusv4ebu6ivEvIUziKZQS7eE3Cy9xN+5OqHKKzpb1Zuaf+liWsyiqNRLYEsynzB6Rn/RuOg9eMdbaYdjpWby3BG6GF/M999v4ZV5CW3bqxYsq1MErV0CgHytqHDTFEVLvvrqWJTrO78L72xTFV6Jsaxu+lGVo07H+vvOF2JC2432/Kz8PLoG/hTCUyRpBevpv+qt+LVshbTFZKnrCwCLZsWyFA/kwXTcykZl5fF9AjNgyN0oLUH9PGXakNZqBqUVDiwglZYQS3VLt+rgYIcuvSOvsuHnUr+KRT659E6kvU05DJ/ZN9UbWn5yQOyS/FuTJcF28no9JwkdgndxSs="
 
 jobs:
   include:
@@ -76,28 +76,28 @@ jobs:
     script:
     - pyenv global 3.7.1
     - pre-commit run --all-files
-#  - stage: system tests
-#    os: windows
-#    language: shell       # 'language: python' is an error on Travis CI Windows
-#    before_install:
-#      - choco install python --version 3.8.2
-#      - python -m pip install --upgrade pip
-#    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-#    # use install: from global test stage, since system tests are
-#    # also handled via tox
-#    script:
-#      - tox -e system_tests
-#    deploy:
-#      - provider: releases
-#        skip_cleanup: true
-#        api_key:
-#          # API key for a machine user specifically created for this task:
-#          # https://github.com/dar-sdk-machine-user
-#          secure: "m0kXSf53vJY95nb7lrM4N4KTiSmNuSoHfS3swxhjuoEdCPuaYHkpkHjPYH6ZNIjBbFEMGw4YENEcUdyzlshPe/WIX5IQ1LjFTZ1U9wP8Iup0VNW9NAHn32Q9oRUFKdD5IeCtjvQwGdVZbAoJM7+IwX19qqhgkPf1VEPPcq3zW+J/aZNg1ayfH+79x60vybapeG7a8QNvxNATrHaO07+xuWIoDaSKZA0ggDn2zxdaDGk/1SJRZsu67YA0DqFAYB8CtspgewJg7MIrLQcHps9yq+vp1sPHiWy9SH87CDyG9+NMXBb2rnvsmRwxXI659wFOQqMWmCgSs/L3IMPBCGziSqgw7MG5hLVpyrmExINuag2yricm0RDPYVxnJKBz3a7J4pl1zudpdfudich8WDinJk7TJHR3tTgIFx1ASmA20RiY22NUvHWpRL88jNJn5LXDyOaT5bT7c6i9VwxpUq234DXLQ9iUMrbs5P576x/Px71dfJ8RLv52D4TmwQYVzgRdFeFI/TOvyvIKA4dYfGylpsueIScZTn5G0p9srzqpRT8gr1sOlIsBHjISppeyEG6C3uTuhaP/zu7o+soQtiMHWm7G2/5BpUBz7JwMODMnK1f4B4stQJYo7Kx+KsGPUrkJVst07klya44EYGS7Ik8Dm6YsNhvc0safYxxNK71cqGY="
-#        file: "system_test_results/traceability.html"
-#        on:
-#          tags: true
-#          condition:  $TRAVIS_TAG =~ ^rel/.*$
+  - stage: system tests
+    os: windows
+    language: shell       # 'language: python' is an error on Travis CI Windows
+    before_install:
+      - choco install python --version 3.8.2
+      - python -m pip install --upgrade pip
+    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    # use install: from global test stage, since system tests are
+    # also handled via tox
+    script:
+      - tox -e system_tests
+    deploy:
+      - provider: releases
+        skip_cleanup: true
+        api_key:
+          # API key for a machine user specifically created for this task:
+          # https://github.com/dar-sdk-machine-user
+          secure: "m0kXSf53vJY95nb7lrM4N4KTiSmNuSoHfS3swxhjuoEdCPuaYHkpkHjPYH6ZNIjBbFEMGw4YENEcUdyzlshPe/WIX5IQ1LjFTZ1U9wP8Iup0VNW9NAHn32Q9oRUFKdD5IeCtjvQwGdVZbAoJM7+IwX19qqhgkPf1VEPPcq3zW+J/aZNg1ayfH+79x60vybapeG7a8QNvxNATrHaO07+xuWIoDaSKZA0ggDn2zxdaDGk/1SJRZsu67YA0DqFAYB8CtspgewJg7MIrLQcHps9yq+vp1sPHiWy9SH87CDyG9+NMXBb2rnvsmRwxXI659wFOQqMWmCgSs/L3IMPBCGziSqgw7MG5hLVpyrmExINuag2yricm0RDPYVxnJKBz3a7J4pl1zudpdfudich8WDinJk7TJHR3tTgIFx1ASmA20RiY22NUvHWpRL88jNJn5LXDyOaT5bT7c6i9VwxpUq234DXLQ9iUMrbs5P576x/Px71dfJ8RLv52D4TmwQYVzgRdFeFI/TOvyvIKA4dYfGylpsueIScZTn5G0p9srzqpRT8gr1sOlIsBHjISppeyEG6C3uTuhaP/zu7o+soQtiMHWm7G2/5BpUBz7JwMODMnK1f4B4stQJYo7Kx+KsGPUrkJVst07klya44EYGS7Ik8Dm6YsNhvc0safYxxNK71cqGY="
+        file: "system_test_results/traceability.html"
+        on:
+          tags: true
+          condition:  $TRAVIS_TAG =~ ^rel/.*$
   - stage: test
     name: "Python: 3.8 on Windows"
     # https://docs.travis-ci.com/user/languages/python/#running-python-tests-on-multiple-operating-systems

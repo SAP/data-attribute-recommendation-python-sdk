@@ -5,7 +5,7 @@ from io import BytesIO
 import pytest
 
 from sap.aibus.dar.client.data_manager_client import DataManagerClient
-from sap.aibus.dar.client.exceptions import DARHTTPException
+from sap.aibus.dar.client.exceptions import DARHTTPException, ModelAlreadyExists
 from sap.aibus.dar.client.inference_client import InferenceClient
 from sap.aibus.dar.client.model_manager_client import ModelManagerClient
 from sap.aibus.dar.client.workflow.model import ModelCreator
@@ -13,7 +13,7 @@ from sap.aibus.dar.client.workflow.model import ModelCreator
 logger = logging.getLogger("test")
 
 
-@pytest.mark.requirements(issues=["42"])
+@pytest.mark.requirements(issues=["42", "60"])
 class TestEndToEnd:
     """
     Tests an end-to-end scenario:
@@ -85,6 +85,17 @@ class TestEndToEnd:
 
         assert resp["name"] == model_name
         assert "validationResult" in resp
+
+        # Now that the model exists, a second, identical call should
+        # raise a ModelAlreadyExists exception.
+
+        with pytest.raises(ModelAlreadyExists):
+            model_creator.create(
+                model_template_id="d7810207-ca31-4d4d-9b5a-841a644fd81f",
+                dataset_schema=new_schema,
+                model_name=model_name,
+                data_stream=data_stream,
+            )
 
         # Check if model is indeed there
         self._assert_model_exists(model_manager_client, model_name)

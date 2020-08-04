@@ -1,7 +1,7 @@
 import datetime
 from unittest.mock import PropertyMock
 
-from sap.aibus.dar.client.exceptions import DARHTTPException
+from sap.aibus.dar.client.exceptions import DARHTTPException, ModelAlreadyExists
 from tests.sap.aibus.dar.client.test_dar_session import create_mock_response
 
 # TODO: test __str__
@@ -153,3 +153,14 @@ class TestDARHTTPExceptionReason:
 
         exception = DARHTTPException.create_from_response(url, mock_response)
         assert exception.response_reason == "ÄÖÜ"
+
+
+class TestModelAlreadyExists:
+    def test_message(self):
+        e = ModelAlreadyExists(model_name="a-name")
+        expected_message = "Model 'a-name' already exists."
+        expected_message += (
+            "To re-use the name, please delete the model"
+            " first or choose a different name."
+        )
+        assert str(e) == expected_message

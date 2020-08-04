@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Documentation: add link to SAP community [#58]
+* `ModelCreator.create` performs an initial check if the model name is already used
+  and raises `ModelAlreadyExists` in this case [#60], [#64]
 
 ### Fixed
 
@@ -21,7 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#46]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/46
 [#58]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/58
 [#59]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/59
+[#60]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/60
 [#63]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/63
+[#64]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/64
 
 ## [0.6.8]
 

@@ -6,6 +6,7 @@ import uuid
 
 from sap.aibus.dar.client.base_client import BaseClient
 from sap.aibus.dar.client.data_manager_client import DataManagerClient
+from sap.aibus.dar.client.exceptions import ModelAlreadyExists, DARHTTPException
 from sap.aibus.dar.client.model_manager_client import ModelManagerClient
 from sap.aibus.dar.client.util.credentials import CredentialsSource
 
@@ -62,8 +63,21 @@ class ModelCreator(BaseClient):
         :raises: DatasetValidationTimeout: if validation takes too long
         :raises: DatasetValidationFailed: if validation does not finish in state
                 *SUCCEEDED*
+        :raises: ModelAlreadyExists: if model already exists at start of process
         :return:
         """
+
+        self.log.info("Checking if model exists")
+        try:
+            self.model_manager_client.read_model_by_name(model_name=model_name)
+        except DARHTTPException as exception:
+            if exception.status_code == 404:
+                pass
+            else:
+                raise
+        else:
+            raise ModelAlreadyExists(model_name)
+
         self.log.info("Creating DatasetSchema.")
         response_dataset_schema = self.data_manager_client.create_dataset_schema(
             dataset_schema
