@@ -45,15 +45,8 @@ stages:
   if: type != pull_request AND tag =~ ^rel/.*$
 
 language: python
-python:
-- '3.5'
-- '3.6'
-- '3.7'
-- '3.8'
-- 'pypy3'
 install:
 - pip3 install -r requirements-test.txt
-- pip3 install tox-travis
 script: tox
 
 env:
@@ -99,6 +92,31 @@ jobs:
           tags: true
           condition:  $TRAVIS_TAG =~ ^rel/.*$
   - stage: test
+    name: "Python: 3.5 on Linux"
+    python: "3.5"
+    env: TOXENV=py35
+  - stage: test
+    name: "Python: 3.6 on Linux"
+    python: "3.6"
+    env: TOXENV=py36
+  - stage: test
+    name: "Python: 3.7 on Linux"
+    python: "3.7"
+    env: TOXENV=py37
+  - stage: test
+    name: "Python: 3.8 on Linux"
+    python: "3.8"
+    env: TOXENV=py38
+  - stage: test
+    name: "Python: pypy3 on Linux"
+    python: "pypy3"
+    env: TOXENV=pypy3
+
+
+
+
+
+  - stage: test
     name: "Python: 3.8 on Windows"
     # https://docs.travis-ci.com/user/languages/python/#running-python-tests-on-multiple-operating-systems
     os: windows
@@ -106,12 +124,15 @@ jobs:
     before_install:
       - choco install python --version 3.8.2
       - python -m pip install --upgrade pip
-    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    env:
+      - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+      - TOXENV=py38
   - stage: test
     name: "Python: 3.7.4 on macOS"
     os: osx
     osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
     language: shell       # 'language: python' is an error on Travis CI macOS
+    env: TOXENV=py37
   - stage: deploy
     python: '3.7' # only run once
     install: skip
