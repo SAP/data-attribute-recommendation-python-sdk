@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Documentation: add link to SAP community [#58]
 * `ModelCreator.create` performs an initial check if the model name is already used
   and raises `ModelAlreadyExists` in this case [#60], [#64]
+* `ModelManager.wait_for_job` now logs with level INFO while polling [#66]
 
 ### Fixed
 
@@ -26,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#60]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/60
 [#63]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/63
 [#64]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/64
+[#66]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/66
 
 ## [0.6.8]
 
