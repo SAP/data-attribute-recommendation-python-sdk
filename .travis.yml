@@ -45,21 +45,14 @@ stages:
   if: type != pull_request AND tag =~ ^rel/.*$
 
 language: python
-python:
-- '3.5'
-- '3.6'
-- '3.7'
-- '3.8'
-- 'pypy3'
 install:
 - pip3 install -r requirements-test.txt
-- pip3 install tox-travis
 script: tox
 
 env:
     global:
       # DAR_CLIENT_ID
-      - secure: "RsV5fBK6NZdhQnxQZ2C7sbxfdi5tApcy1+gHG57xWm+fSjX7POXrX3B9S2u0GspCJaSiF6Dqw2Pvx4qlFVOWTDKg7zd0l6BPO4KUVtFiWekagHww4N1QL23R8ChcRwEDuqRK6p5BuBPWwm8TY4aDC5R7XEAFpozYZeb6vsEVflY34PSsy8U8YYjEpLY0tekqNPDqMs9ThpJcfmeVxr8tGYRzExrcWVelm7UXR0e45f5bx5yxL9uDqjHm9C5t78jQllwyNqL7lgx94F0CKncg9l5ob60VK9BzZsy58ITPgF3QxHN+Qk2EIr/n34X/G7yPqT9TxDWtuNhRNxWwSejuvk0OU0zdBMK5684zS1sA19hrl/Lh+iYtpEpkToZamGnIy4c+s1p3AiEbRjKhi+NQemu/SnJf1o0U6ITfyCoK/xvVjpFL7GU3F+B+4FJTz8IMlImWFY8JsR063N4AwyhugI8LoFjWjhD4k7xjf4pmIxQ6CVHgslOvIXBnB1f6hOGbWMhts1JItNOZMt2/6wVH6sUQajVeDyTgSPRXsrLPJvZ9eZ5gTpqx28yvzXd6XkwKrep/LhFM/+EaqADh//z0x96oO6uSkR+yQXFSVzq3UqRY8XQgQFND0xsgfz6ymv+KWX/Zru0I/b3NUg7+8g+iowQILD/o9v7gVDkvFAWxpmU="
+      - secure: "UQMQmAMas2iqk+QHhY3GDrYvpHYxbSXkz3FeZ3FY91h6zmkL95Q14YoRBanww+THx+BGkNvxRlNV4zq5mpnLaPjDSW9FYbs/crBMlgrzbulzWjIICwLvFHhXdPqSQCmef571t4PHnjtMTAsMDLWz2AtNno2hlkSkzZhlPusGzW2ZVHKoVdsmxAi6sAYMv852/2qPCzmQT5Ub7O7VHqB+CdDckrGjS2h1IF0jXc1KhP8vmmKZLZtoEtYRCsvZ4kKgSr4LT/Rc2j0iWz9rrhWzSrYXzHCndcgtiHIX83tR6o/NkDxBa+ogb5lNQbHxhml8v2Te6VBHOoeLPuwJH17QCezXoJ4mD0vsKVkucC3IyslxXwcPDrULNfxHT/UfgQwowpYnZNaVs/sSvblpkeM5GQKV+/qa+yN97WHY5CjuD07VH3qOxta2MNUsKbsytsOuw4PLMRu9SKw7A8jXXwGrRpBg7XmymVRXDDmgSugKV6iN2i4VFvuBUxp/JFvm4gvJ9QU+plroDI2WL4YvH/NEUovtfNJKExxsNBbbgcFxqKBuHeBfJdB1HrfW/eHnRwdqxcPfjeo9BVFsI+gYmyl2wi9O2v+MNQzw43/P7OnNKVyXeEHRn9i04Ha1G2MuqZl5uQxr+JyQThtaGye4vsMyUJ1bdWJBOgrT15husd7qQek="
       # DAR_CLIENT_SECRET
       - secure: "cvvfl3dzAuHu5xfcdhSpobOZ4sj4ciKUzPdXTGLCk2lvhl4w08iLyl8MEz+gcRhQYfx2GwTY7QrNAKJxFhW170Uoc6PCg6zMdioHJT55mUo81SZ+cJd+pNWB5cbiTctI7cSG3y+jTjp7QpmLRA0GtrG0TMX3fAVAcXF0cR970X68Vrl9bDYe8cZJvYhkWdxfN1M093/FJ9L1wR9817atL2HrWhlCgkxSaFy+6nIF5RfqCqLxTc5BWoHwm5R/rbx3JrCRhAQZxay8nbnEYRXaIM42jYae0YYWYRTnboYGWtcxwwPey4W71sPTpHfvfS7gPG6dzOEg2JpDujRTcKhzKcsRsqFwWUrg0HUsQZOWvovMP/MIZ8uOQoaDoxHaV8HnT+JHdPcE9RetDqps8WODTpDek2gUTYB7gQeFpBCEW0CF59VWHX6nJrVan0iX/5rFUIYzNkBHtV+grlaXavC2jZ4LojUApM1kMg9ciZxgEr85cQ5H8MhfZLv7mS/T3ZsLr703d+0JGTHos5R18IHN0/MhHHYHo8jWZu02hg7RQU/PQ/jsBJCc178pxY9L1I6fp2HLYJyG9G+3vfMC31soeMB/OqC6r+wPXFH/9a36kwKBN13ad/0a6RXHTUmNOnKwpJLiO2aRi+jCKy78otQwbezz6OMpLN4Ft/+QXcElmmY="
       # DAR_AUTH_URL
@@ -99,6 +92,26 @@ jobs:
           tags: true
           condition:  $TRAVIS_TAG =~ ^rel/.*$
   - stage: test
+    name: "Python: 3.5 on Linux"
+    python: "3.5"
+    env: TOXENV=py35-cov
+  - stage: test
+    name: "Python: 3.6 on Linux"
+    python: "3.6"
+    env: TOXENV=py36-cov
+  - stage: test
+    name: "Python: 3.7 on Linux"
+    python: "3.7"
+    env: TOXENV=py37-cov
+  - stage: test
+    name: "Python: 3.8 on Linux"
+    python: "3.8"
+    env: TOXENV=py38-cov
+  - stage: test
+    name: "Python: pypy3 on Linux"
+    python: "pypy3"
+    env: TOXENV=pypy3-cov
+  - stage: test
     name: "Python: 3.8 on Windows"
     # https://docs.travis-ci.com/user/languages/python/#running-python-tests-on-multiple-operating-systems
     os: windows
@@ -106,12 +119,15 @@ jobs:
     before_install:
       - choco install python --version 3.8.2
       - python -m pip install --upgrade pip
-    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    env:
+      - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+      - TOXENV=py38-cov
   - stage: test
     name: "Python: 3.7.4 on macOS"
     os: osx
     osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
     language: shell       # 'language: python' is an error on Travis CI macOS
+    env: TOXENV=py37-cov
   - stage: deploy
     python: '3.7' # only run once
     install: skip
