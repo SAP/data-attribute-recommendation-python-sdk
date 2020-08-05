@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased] - To be 0.7.0
 
 ### Added
 
@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * `ModelCreator.create` performs an initial check if the model name is already used
   and raises `ModelAlreadyExists` in this case [#60], [#64]
 * `ModelManager.wait_for_job` now logs with level INFO while polling [#66]
+* Change default `retry` parameter in `InferenceClient.do_bulk_inference` from
+  `False` to `True`. Please check the updated documentation for implications on
+   charging. [#67], [#62]
 
 ### Fixed
 
@@ -25,9 +28,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#58]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/58
 [#59]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/59
 [#60]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/60
+[#62]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/62
 [#63]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/63
 [#64]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/64
 [#66]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/66
+[#67]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/67
 
 ## [0.6.8]
 
