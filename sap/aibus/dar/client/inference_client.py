@@ -49,7 +49,7 @@ class InferenceClient(BaseClientWithSession):
         :param model_name: name of the model used for inference
         :param objects: Objects to be classified
         :param top_n: How many predictions to return per object
-        :param retry: whether to retry on errors. Default: false
+        :param retry: whether to retry on errors. Default: False
         :return: API response
         """
         self.log.debug(
@@ -72,7 +72,7 @@ class InferenceClient(BaseClientWithSession):
         model_name: str,
         objects: List[dict],
         top_n: int = TOP_N,
-        retry: bool = False,
+        retry: bool = True,
     ) -> List[dict]:
         """
         Performs bulk inference for larger collections.
@@ -83,9 +83,35 @@ class InferenceClient(BaseClientWithSession):
         Returns the aggregated values of the *predictions* of the original API response
         as returned by :meth:`create_inference_request`.
 
+        .. note::
+
+            This method calls the inference endpoint multiple times to process all data.
+            For non-trial service instances, each call will incur a cost.
+
+            If one of the calls fails, this method will raise an Exception and the
+            progress will be lost. In this case, all calls until the Exception happened
+            will be charged.
+
+            To reduce the likelihood of a failed request terminating the bulk inference
+            process, this method will retry failed requests.
+
+            There is a small chance that even retried requests will be charged, e.g.
+            if a problem occurs with the request on the client side outside of the
+            control of the service and after the service has processed the request.
+            To disable `retry` behavior simply pass `retry=False` to the method.
+
+            Typically, the default behavior of `retry=True` is safe and improves
+            reliability of bulk inference greatly.
+
+        .. versionchanged:: 0.7.0
+            The default for the `retry` parameter changed from `retry=False` to
+            `retry=True` for increased reliability in day-to-day operations.
+
+
         :param model_name: name of the model used for inference
         :param objects: Objects to be classified
         :param top_n: How many predictions to return per object
+        :param retry: whether to retry on errors. Default: True
         :return: the aggregated ObjectPrediction dictionaries
         """
         result = []  # type: List[dict]
