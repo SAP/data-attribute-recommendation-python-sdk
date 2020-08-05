@@ -270,8 +270,11 @@ class DataManagerClient(BaseClientWithSession):
             raise new_exception from exception
 
         if self.is_dataset_validation_failed(response):
-            msg = "Validation for Dataset '{}' failed with status: '{}'".format(
-                response["id"], response["status"]
+            msg = (
+                "Validation for Dataset '{}' failed with status '{}' and"
+                " validation message: '{}'".format(
+                    response["id"], response["status"], response["validationMessage"]
+                )
             )
             self.log.error(msg)
             raise DatasetValidationFailed(msg)

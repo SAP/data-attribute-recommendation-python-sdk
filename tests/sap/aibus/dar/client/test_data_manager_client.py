@@ -456,6 +456,9 @@ class TestDataManagerClientDatasetSchema:
 
             dataset_response = self._make_dataset_response(bad_dataset_state)
 
+            if bad_dataset_state == "VALIDATION_FAILED":
+                dataset_response["validationMessage"] = "Detailed Description"
+
             client.session.get_from_endpoint.return_value.json.side_effect = [
                 dataset_response
             ]
@@ -466,8 +469,10 @@ class TestDataManagerClientDatasetSchema:
                 )
             expected_message = (
                 "Validation for Dataset "
-                "'{}' failed with status: '{}'".format(
-                    dataset_response["id"], bad_dataset_state
+                "'{}' failed with status '{}' and validation message: '{}'".format(
+                    dataset_response["id"],
+                    bad_dataset_state,
+                    dataset_response["validationMessage"],
                 )
             )
 
