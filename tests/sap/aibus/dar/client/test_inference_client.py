@@ -183,7 +183,7 @@ class TestInferenceClient:
 
         expected_retry_flag = retry_flag
         if expected_retry_flag == "default":
-            expected_retry_flag = False
+            expected_retry_flag = True
 
         # For 75 objects, we expect two calls.
         expected_calls_to_post = [
