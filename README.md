@@ -24,6 +24,10 @@ Goals of this SDK:
 
 See [CHANGELOG.md].
 
+Note that this project follows [Semantic Versioning](https://semver.org/). Versions
+below `1.0.0` are not guaranteed to have a stable API. For this reason, please
+pay attention to the [CHANGELOG.md].
+
 ## Resources
 
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**

@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - To be 0.7.0
+## [Unreleased]
+
+## [0.7.0]
 
 ### Added
 
@@ -47,7 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#55]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/55
 [#56]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/56
 [#57]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/57
-
 
 ## [0.6.7]
 
@@ -109,7 +110,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.8...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.8...0.7.0
 [0.6.8]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.7...0.6.8
 [0.6.7]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.6...0.6.7
 [0.6.6]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.5...0.6.6

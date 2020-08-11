@@ -11,6 +11,18 @@ Features
 - Fully type annotated for great autocomplete experience
 - Supports Python 3.5 up to 3.8
 
+Release Notes
+-------------
+
+See the `Changelog`_ on GitHub.
+
+Note that this project follows `Semantic Versioning`_. Versions
+below `1.0.0` are not guaranteed to have a stable API. For this reason, please
+pay attention to the `Changelog`_.
+
+.. _Changelog: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
+.. _Semantic Versioning: https://semver.org/
+
 Getting Started
 ---------------
 
