@@ -23,7 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 * Log message missing model deployment ID [#59]
+* Expose a Dataset's `validationMessage` in `DatasetValidationFailed` [#33], [#69]
 
+[#33]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/33
 [#46]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/46
 [#58]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/58
 [#59]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/59
@@ -33,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#64]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/64
 [#66]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/66
 [#67]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/67
+[#69]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/69
 
 ## [0.6.8]
 
