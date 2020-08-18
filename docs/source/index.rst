@@ -26,6 +26,12 @@ pay attention to the `Changelog`_.
 Getting Started
 ---------------
 
+In addition to the guide below, a more comprehensive `tutorial is available
+at developers.sap.com`_.
+
+.. _tutorial is available at developers.sap.com: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
+
+
 Prerequisites
 +++++++++++++
 
