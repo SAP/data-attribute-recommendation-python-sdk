@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+* Added links to new tutorial [#72]
+
+[#72]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/72
+
+
 ## [0.7.0]
 
 ### Added
