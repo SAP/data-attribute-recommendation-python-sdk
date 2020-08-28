@@ -13,6 +13,7 @@ Part of [SAP AI Business Services].
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/data-attribute-recommendation-python-sdk)](https://api.reuse.software/info/github.com/SAP/data-attribute-recommendation-python-sdk)
 
 Goals of this SDK:
 

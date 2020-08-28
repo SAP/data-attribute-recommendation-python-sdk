@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: data-attribute-recommendation-python-sdk
+Upstream-Contact: Michael Haas <michael.haas01@sap.com>
+Source: https://github.com/SAP/data-attribute-recommendation-python-sdk
+
+Files: *
+Copyright: SAP SE or an SAP affiliate company and
+           data-attribute-recommendation-python-sdk contributors
+License: Apache-2.0
+
