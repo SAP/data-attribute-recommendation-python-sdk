@@ -32,6 +32,7 @@ pay attention to the [CHANGELOG.md].
 ## Resources
 
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**
+* [Tutorials on this SDK][SDK tutorials]
 * [Data Attribute Recommendation documentation]
 * [Blog Articles on Data Attribute Recommendation]
 * [Documentation for this SDK][SDK documentation]
@@ -75,7 +76,8 @@ $ source dar-sdk-venv/bin/activate/
 ```
 
 In case you prefer more detailed instructions, please see [step-by-step](#step-by-step)
-instructions below.
+instructions below. A separate, more detailed tutorial
+[is also available at developers.sap.com][SDK Setup Tutorial].
 
 ## Step by Step
 
@@ -154,7 +156,9 @@ This file and all other files in this repository are licensed under the
 Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 
 [Tutorials on Data Attribute Recommendation]: https://developers.sap.com/mission.cp-aibus-data-attribute.html
+[SDK tutorials]: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
 [SAP AI Business Services]: https://help.sap.com/viewer/product/SAP_AI_BUS/SHIP/en-US
+[SDK Setup Tutorial]: https://developers.sap.com/tutorials/cp-aibus-dar-sdk-setup.html
 [Data Attribute Recommendation documentation]: https://help.sap.com/viewer/product/Data_Attribute_Recommendation/SHIP/en-US
 [Blog Articles on Data Attribute Recommendation]: https://blogs.sap.com/tags/73554900100800002858/
 [SAP Store]: https://www.sapstore.com/solutions/43157/Data-Attribute-Recommendation
