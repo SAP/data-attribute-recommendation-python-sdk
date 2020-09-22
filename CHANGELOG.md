@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#72]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/72
 
+### Changed
+
+* Improve logging: quieten OnlineCredentialsSource, make polling explicit [#81]
+
+[#81] : https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/81
 
 ## [0.7.0]
 
