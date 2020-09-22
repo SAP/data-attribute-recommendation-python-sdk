@@ -278,6 +278,9 @@ class DataManagerClient(BaseClientWithSession):
             )
             self.log.error(msg)
             raise DatasetValidationFailed(msg)
+        self.log.info(
+            "Dataset '%s' has status '%s'.", response["id"], response["status"]
+        )
         return response
 
     def upload_data_and_validate(
