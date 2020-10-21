@@ -153,11 +153,11 @@ class OnlineCredentialsSource(CredentialsSource, LoggerMixin):
 
     def _fetch_token_from_auth_server(self) -> dict:
         url = self.url + "/oauth/token?grant_type=client_credentials"
-        self.log.info('Retrieving token from URL: "%s"', url)
+        self.log.debug('Retrieving token from URL: "%s"', url)
         response = self.session.get(url, auth=(self.clientid, self.clientsecret))
         response.raise_for_status()
         payload = response.json()
-        self.log.info(
+        self.log.debug(
             'Got token for clientid "%s" with HTTP status "%s" and scope "%s"',
             self.clientid,
             response.status_code,

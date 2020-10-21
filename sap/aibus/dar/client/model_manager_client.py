@@ -226,10 +226,12 @@ class ModelManagerClient(BaseClientWithSession):
             self.log.exception(timeout_msg)
             raise TrainingJobTimeOut(timeout_msg)
 
+        msg = "Job '{}' has status: '{}'".format(job_id, result["status"])
         if self.is_job_failed(result):
-            fail_msg = "Job '{}' has status: '{}'".format(job_id, result["status"])
-            self.log.error(fail_msg)
-            raise TrainingJobFailed(fail_msg)
+            self.log.error(msg)
+            raise TrainingJobFailed(msg)
+
+        self.log.info(msg)
 
         return result
 
@@ -444,12 +446,12 @@ class ModelManagerClient(BaseClientWithSession):
             self.log.exception(msg)
             raise DeploymentTimeOut(msg) from exc
 
+        msg = "Deployment '{}' has status: {}".format(deployment_id, response["status"])
         if self.is_deployment_failed(response):
-            msg = "Deployment '{}' has status: {}".format(
-                deployment_id, response["status"]
-            )
             self.log.error(msg)
             raise DeploymentFailed(msg)
+
+        self.log.info(msg)
 
         return response
 
