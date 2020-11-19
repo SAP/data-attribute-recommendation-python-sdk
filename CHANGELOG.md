@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#81] : https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/81
 
+* Log job progress in ModelManagerClient.wait_for_job [#87]
+
+[#87] : https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/81
+
 ## [0.7.0]
 
 ### Added
