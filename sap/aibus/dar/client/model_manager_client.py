@@ -211,7 +211,14 @@ class ModelManagerClient(BaseClientWithSession):
 
         def polling_function():
             self.log.info("Polling for status of job '%s'", job_id)
-            return self.read_job_by_id(job_id)
+            job_resource = self.read_job_by_id(job_id)
+            self.log.info(
+                "Job '%s': status '%s', progress: '%s'",
+                job_id,
+                job_resource["status"],
+                job_resource["progress"],
+            )
+            return job_resource
 
         self.log.info("Waiting for job '%s' to finish.", job_id)
 
