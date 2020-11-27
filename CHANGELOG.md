@@ -6,21 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.7.1]
+
 ### Added
 
 * Added links to new tutorial [#72]
+* CI: Enable CodeQL Analysis on Github [#88]
 
 [#72]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/72
+[#88]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/88
 
 ### Changed
 
 * Improve logging: quieten OnlineCredentialsSource, make polling explicit [#81]
 
-[#81] : https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/81
+[#81]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/81
 
 * Log job progress in ModelManagerClient.wait_for_job [#87]
 
-[#87] : https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/87
+[#87]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/87
 
 ## [0.7.0]
 
