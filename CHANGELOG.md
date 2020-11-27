@@ -131,19 +131,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.7.0...HEAD
-[0.7.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.8...0.7.0
-[0.6.8]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.7...0.6.8
-[0.6.7]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.6...0.6.7
-[0.6.6]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.5...0.6.6
-[0.6.5]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.4...0.6.5
-[0.6.4]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.3...0.6.4
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...HEAD
+[0.7.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.0...rel/0.7.1
+[0.7.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.8...rel/0.7.0
+[0.6.8]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.7...rel/0.6.8
+[0.6.7]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.6...rel/0.6.7
+[0.6.6]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.5...rel/0.6.6
+[0.6.5]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.4...rel/0.6.5
+[0.6.4]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.3...rel/0.6.4
 [#40]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/40
 [#39]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/39
 [#37]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/37
 [#35]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/35
 [#27]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/27
-[0.6.3]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/v0.6.2...0.6.3
+[0.6.3]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.2...rel/0.6.3
 [#21]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/21
 [#20]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/20
 [#18]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/18
