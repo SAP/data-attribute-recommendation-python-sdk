@@ -10,9 +10,11 @@ For other concerns, such as questions on the Data Attribute
 Recommendation service, please refer to the
 ["How to obtain support"][support] section in the main README.
 
+If you would like to report a security issue, please see [SECURITY.md].
+
 [issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk
 [support]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/README.md#how-to-obtain-support
-
+[SECURITY.md]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/SECURITY.md
 # How to contribute
 
 This project welcomes outside contributions. For small contributions, such
