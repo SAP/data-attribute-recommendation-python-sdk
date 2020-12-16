@@ -22,6 +22,7 @@ Core Infrastructure Initiative! See [CII badge details].  [#92]
 ### Changed
 
 * Documentation updated to include reference to TechED 2020 workshop [#93]
+* Tests: report branch coverage [#93]
 
 [#93]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/93
 
