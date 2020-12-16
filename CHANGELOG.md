@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Add [CONTRIBUTING.md] and [SECURITY.md] [#92]
 * This project is now following the [Best Practices] set forth by the
-Core Infrastructure Initiative! See [CII badge details].  [#92]
+  Core Infrastructure Initiative! See [CII badge details]. [#92]
 
 [CONTRIBUTING.md]: /CONTRIBUTING.md
 [SECURITY.md]: /SECURITY.md
