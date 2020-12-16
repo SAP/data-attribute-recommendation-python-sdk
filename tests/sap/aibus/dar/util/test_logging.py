@@ -20,7 +20,7 @@ class TestLoggerMixin:
         assert instance.log.name == "tests.sap.aibus.dar.util.test_logging.ExampleClass"
 
     @patch("sap.aibus.dar.client.util.logging.logging", autospec=True)
-    def setup_basic_logging(self, logging_mock):
+    def test_setup_basic_logging(self, logging_mock):
         LoggerMixin.setup_basic_logging()
 
         assert logging_mock.call_args_list == [
@@ -28,7 +28,7 @@ class TestLoggerMixin:
         ]
 
     @patch("sap.aibus.dar.client.util.logging.logging", autospec=True)
-    def setup_basic_logging_debug(self, logging_mock):
+    def test_setup_basic_logging_debug(self, logging_mock):
         LoggerMixin.setup_basic_logging(debug=True)
 
         assert logging_mock.call_args_list == [
