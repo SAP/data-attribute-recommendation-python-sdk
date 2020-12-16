@@ -23,7 +23,7 @@ class TestLoggerMixin:
     def test_setup_basic_logging(self, logging_mock):
         LoggerMixin.setup_basic_logging()
 
-        assert logging_mock.call_args_list == [
+        assert logging_mock.basicConfig.call_args_list == [
             call(level=logging_mock.INFO, stream=sys.stdout)
         ]
 
@@ -31,6 +31,6 @@ class TestLoggerMixin:
     def test_setup_basic_logging_debug(self, logging_mock):
         LoggerMixin.setup_basic_logging(debug=True)
 
-        assert logging_mock.call_args_list == [
+        assert logging_mock.basicConfig.call_args_list == [
             call(level=logging_mock.DEBUG, stream=sys.stdout)
         ]
