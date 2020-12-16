@@ -34,7 +34,6 @@ This is the most comprehensive end-to-end example available so far.
 .. _TechED 2020 workshop: https://github.com/SAP-samples/teched2020-INT260/tree/master/exercises/ex1-DAR
 .. _Jupyter notebook: https://github.com/SAP-samples/teched2020-INT260/blob/master/exercises/ex1-DAR/teched2020-INT260_Data_Attribute_Recommendation.ipynb
 
-
 The sections below in this document will help you get started. In addition to the guide
 below, a more comprehensive `tutorial is available at developers.sap.com`_.
 
