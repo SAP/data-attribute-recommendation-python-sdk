@@ -14,6 +14,7 @@ Part of [SAP AI Business Services].
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/data-attribute-recommendation-python-sdk)](https://api.reuse.software/info/github.com/SAP/data-attribute-recommendation-python-sdk)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4514/badge)](https://bestpractices.coreinfrastructure.org/projects/4514)
 
 Goals of this SDK:
 
