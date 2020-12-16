@@ -142,6 +142,22 @@ class TestOnlineCredentialsSourceTokenRetrieval:
         assert mock_response.raise_for_status.call_count == 1
         assert observed_token == "the-token"
 
+    def test_token_retrieval_raises_if_access_token_is_none(
+        self, online_credentials_source_with_mock_session
+    ):
+        mock_response = online_credentials_source_with_mock_session.session.get()
+        mock_response.json.side_effect = [
+            {
+                "access_token": None,
+                "token_type": "bearer",
+                "expires_in": 43199,
+                "scope": "scope1 scope2 scope3",
+            }
+        ]
+
+        with pytest.raises(ValueError):
+            online_credentials_source_with_mock_session.token()
+
     def test_token_caching(self, online_credentials_source_with_mock_session):
         mock_session = online_credentials_source_with_mock_session.session
 
