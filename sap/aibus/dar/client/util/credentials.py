@@ -148,6 +148,8 @@ class OnlineCredentialsSource(CredentialsSource, LoggerMixin):
             # add a 5m grace period: retrieve token earlier.
             self._token_expires_at = self._token_expires_at - 300
         if self._token is None:
+            # This check mainly exists to signal to the mypy type checker
+            # that the return value cannot be None
             raise ValueError("Token not found in authentication server response!")
         return self._token
 
