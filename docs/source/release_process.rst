@@ -34,10 +34,11 @@ Follow these steps to create a release:
 .. code-block:: shell
 
   $ git pull
-  $ git tag -a rel/x.y.z -m "Tagging release x.y.z"
+  $ VERSION="x.y.z"
+  $ git tag -a rel/$VERSION -m "Tagging release $VERSION"
   $ git push --tags
 
-- A new build for the tag should appear to `Travis`_. Once the *deploy* stage
+- A new build for the tag should appear on `Travis`_. Once the *deploy* stage
   has run successfully, the new version should be available on `pypi.org`_.
 - The documentation on `Read The Docs`_ is automatically updated. A new version
   based on the git tag is also added. Note that the default documentation version
