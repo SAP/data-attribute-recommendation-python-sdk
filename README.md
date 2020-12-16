@@ -32,6 +32,7 @@ pay attention to the [CHANGELOG.md].
 
 ## Resources
 
+* NEW: [TechED 2020 workshop materials], including a Jupyter notebook!
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**
 * [Tutorials on this SDK][SDK tutorials]
 * [Data Attribute Recommendation documentation]
@@ -156,6 +157,7 @@ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
 This file and all other files in this repository are licensed under the
 Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 
+[TechED 2020 workshop materials]: https://github.com/SAP-samples/teched2020-INT260
 [Tutorials on Data Attribute Recommendation]: https://developers.sap.com/mission.cp-aibus-data-attribute.html
 [SDK tutorials]: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
 [SAP AI Business Services]: https://help.sap.com/viewer/product/SAP_AI_BUS/SHIP/en-US
