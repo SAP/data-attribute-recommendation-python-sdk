@@ -1,6 +1,6 @@
 # Data Attribute Recommendation Python SDK
 
-A client SDK for the Data Attribute Recommendation service on SAP Cloud Platform.
+A client SDK for the Data Attribute Recommendation service on SAP Business Technology Platform (SAP BTP).
 Part of [SAP AI Business Services].
 
 # Description
@@ -53,9 +53,9 @@ the [installation instructions][pip and virtual environments].
 
 To use the SDK, you will need to have a service instance of the
 Data Attribute Recommendation service. For existing users of
-the SAP Cloud Platform, please see the [Initial Setup].
+SAP BTP, please see the [Initial Setup].
 
-If you are new to SAP Cloud Platform and Data Attribute Recommendation,
+If you are new to SAP BTP and Data Attribute Recommendation,
 consider one of the following options:
 
 * Free Trial via [Tutorials on Data Attribute Recommendation]
