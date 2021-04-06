@@ -8,18 +8,18 @@ cache:
 # For the conditionals below: the `branch` corresponds to the base branches:
 # for PRs. See https://docs.travis-ci.com/user/conditions-v1 for details.
 
-# Only build on master OR for PRs. Otherwise, we will run the same tests twice: once
+# Only build on main OR for PRs. Otherwise, we will run the same tests twice: once
 # for the PR, once for the branch.
 # If your builds do not start when you expect them to start, go here to understand why:
 # https://travis-ci.com/github/SAP/data-attribute-recommendation-python-sdk/requests
-if: branch = master OR tag =~ ^rel/.*$ OR type != push
+if: branch = main OR tag =~ ^rel/.*$ OR type != push
 
 os: linux
 dist: xenial
 
 notifications:
   email:
-    if: branch = master AND type != pull_request
+    if: branch = main AND type != pull_request
     on_failure: always
     recipients:
       # Michael
@@ -36,7 +36,7 @@ stages:
 - name: linting
 - name: test
 - name: "system tests"
-  if:  type != pull_request AND (branch = master OR tag =~ ^rel/.*$)
+  if:  type != pull_request AND (branch = main OR tag =~ ^rel/.*$)
 # Note that deployment of the traceability report to github happens in the system
 # tests stage above, with an additional condition to only execute on tag =~ ^rel/.*$.
 # For technical reasons, the upload to pypi is a separate stage: the pypi upload does
