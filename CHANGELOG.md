@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add `construct_from_cf_env` method to construct client instances from
   Data Attribute Recommendation service binding on SAP Business Technology
   Platform. [#97]
+* Add support for user-specified Job and Deployment IDs when creating the
+  respective Job and Deployment resources. This change is not yet generally
+  available in the Data Attribute Recommendation service. [#98]
 
 [CONTRIBUTING.md]: /CONTRIBUTING.md
 [SECURITY.md]: /SECURITY.md
@@ -25,6 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#92]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/92
 [#97]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/97
+[#98]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/98
+
 
 ### Changed
 
