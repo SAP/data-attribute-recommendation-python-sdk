@@ -32,7 +32,7 @@ class HTTPSRequired(DARException):
 
     def __init__(self):
         msg = "URL must use https scheme. Unencrypted connections are not supported."
-        super(HTTPSRequired, self).__init__(msg)
+        super().__init__(msg)
 
 
 class DARPollingTimeoutException(DARException):
@@ -129,7 +129,7 @@ class ModelAlreadyExists(DARException):
             "To re-use the name, please delete the model"
             " first or choose a different name."
         )
-        super(ModelAlreadyExists, self).__init__(msg)
+        super().__init__(msg)
 
 
 class DARHTTPException(DARException):
@@ -146,7 +146,7 @@ class DARHTTPException(DARException):
     """
 
     def __init__(self, url: str, response: Response):
-        super(DARHTTPException, self).__init__()
+        super().__init__()
         self.url = url
         self._response = response
         self.exception_timestamp = datetime.datetime.now(tz=datetime.timezone.utc)

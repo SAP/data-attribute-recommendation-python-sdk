@@ -6,6 +6,7 @@ Client API for the Model Manager microservice.
 
 
 import typing
+from uuid import UUID
 
 from sap.aibus.dar.client.base_client import BaseClientWithSession
 from sap.aibus.dar.client.exceptions import (
@@ -131,7 +132,11 @@ class ModelManagerClient(BaseClientWithSession):
         self.session.delete_from_endpoint(endpoint)
 
     def create_job(
-        self, model_name: str, dataset_id: str, model_template_id: str
+        self,
+        model_name: str,
+        dataset_id: str,
+        model_template_id: str,
+        job_id: typing.Union[str, UUID] = None,
     ) -> dict:
         """
         Creates a training Job.
@@ -146,9 +151,17 @@ class ModelManagerClient(BaseClientWithSession):
         A convenience method is available at :meth:`create_job_and_wait` which will
         submit a job and wait for its completion.
 
+        The *job_id* parameter is optional and can be used to specify the ID of the
+        newly created job. It must be a UUID.
+
+        .. note ::
+
+            The functionality to override the Job ID is not generally available.
+
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
+        :param job_id: Optionally provide job UUID
         :return: newly created Job as dict
         """
         self.log.info(
@@ -157,13 +170,17 @@ class ModelManagerClient(BaseClientWithSession):
             dataset_id,
             model_template_id,
         )
+
+        payload = {
+            "modelName": model_name,
+            "datasetId": dataset_id,
+            "modelTemplateId": model_template_id,
+        }
+        if job_id:
+            self.log.info("Job ID override specified: %s", job_id)
+            payload["id"] = str(job_id)
         response = self.session.post_to_endpoint(
-            ModelManagerPaths.ENDPOINT_JOB_COLLECTION,
-            payload={
-                "modelName": model_name,
-                "datasetId": dataset_id,
-                "modelTemplateId": model_template_id,
-            },
+            ModelManagerPaths.ENDPOINT_JOB_COLLECTION, payload=payload
         )
         response_as_json = response.json()
 
@@ -171,7 +188,11 @@ class ModelManagerClient(BaseClientWithSession):
         return response_as_json
 
     def create_job_and_wait(
-        self, model_name: str, dataset_id: str, model_template_id: str
+        self,
+        model_name: str,
+        dataset_id: str,
+        model_template_id: str,
+        job_id: typing.Union[str, UUID] = None,
     ):
         """
         Starts a job and waits for the job to finish.
@@ -179,9 +200,17 @@ class ModelManagerClient(BaseClientWithSession):
         This method is a thin wrapper around :meth:`create_job` and
         :meth:`wait_for_job`.
 
+        The *job_id* parameter is optional and can be used to specify the ID of the
+        newly created job. It must be a UUID.
+
+        .. note ::
+
+            The functionality to override the Job ID is not generally available.
+
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
+        :param job_id: Optionally provide job UUID
         :raises TrainingJobFailed: When training job has status FAILED
         :raises TrainingJobTimeOut: When training job takes too long
         :return: API response as dict
@@ -190,6 +219,7 @@ class ModelManagerClient(BaseClientWithSession):
             model_name=model_name,
             dataset_id=dataset_id,
             model_template_id=model_template_id,
+            job_id=job_id,
         )
         return self.wait_for_job(job_resource["id"])
 
@@ -226,12 +256,12 @@ class ModelManagerClient(BaseClientWithSession):
             result = polling.poll_until_success(
                 polling_function=polling_function, success_function=self.is_job_finished
             )
-        except PollingTimeoutException:
+        except PollingTimeoutException as timeout_exception:
             timeout_msg = "Training job '{}' did not finish within {}s".format(
                 job_id, timeout_seconds
             )
             self.log.exception(timeout_msg)
-            raise TrainingJobTimeOut(timeout_msg)
+            raise TrainingJobTimeOut(timeout_msg) from timeout_exception
 
         msg = "Job '{}' has status: '{}'".format(job_id, result["status"])
         if self.is_job_failed(result):
@@ -338,7 +368,7 @@ class ModelManagerClient(BaseClientWithSession):
         )
         return response.json()
 
-    def create_deployment(self, model_name: str) -> dict:
+    def create_deployment(self, model_name: str, deployment_id: str = None) -> dict:
         """
         Creates a Deployment for the given model_name.
 
@@ -349,11 +379,22 @@ class ModelManagerClient(BaseClientWithSession):
         :meth:`read_deployment_by_id` or the higher-level :meth:`wait_for_deployment`
         to poll for status changes.
 
+        The *deployment_id* parameter is optional and can be used to specify the ID of
+        the newly created Deployment.
+
+        .. note ::
+
+            The functionality to override the Deployment ID is not generally available.
+
         :param model_name: name of the Model to deploy
+        :param deployment_id: Optionally provide deployment identifier
         :return: a single Deployment as dict
         """
         self.log.info("Creating Deployment for model_name '%s'", model_name)
         payload = {"modelName": model_name}
+        if deployment_id:
+            self.log.info("Deployment ID override specified: %s", deployment_id)
+            payload["id"] = deployment_id
         response = self.session.post_to_endpoint(
             ModelManagerPaths.ENDPOINT_DEPLOYMENT_COLLECTION, payload=payload
         )
@@ -462,20 +503,31 @@ class ModelManagerClient(BaseClientWithSession):
 
         return response
 
-    def deploy_and_wait(self, model_name: str) -> dict:
+    def deploy_and_wait(self, model_name: str, deployment_id: str = None) -> dict:
         """
         Deploys a Model and waits for Deployment to succeed.
 
         This method is a thin wrapper around :meth:`create_deployment`
         and :meth:`wait_for_deployment`.
 
+        The *deployment_id* parameter is optional and can be used to specify the ID of
+        the newly created Deployment.
+
+        .. note ::
+
+            The functionality to override the Deployment ID is not generally available.
+
         :param model_name: Name of the Model to deploy
+        :param deployment_id: Optionally provide deployment identifier
         :raises DeploymentTimeOut: If Deployment does not finish within timeout
         :raises DeploymentFailed: If Deployment fails
         :return: Model resource from final API call
         """
-        deployment = self.create_deployment(model_name=model_name)
+        deployment = self.create_deployment(
+            model_name=model_name, deployment_id=deployment_id
+        )
         deployment_id = deployment["id"]
+        assert deployment_id is not None  # for mypy
         self.log.debug(
             "Created deployment '%s' for model '%s'", deployment_id, model_name
         )
