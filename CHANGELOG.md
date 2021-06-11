@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add [CONTRIBUTING.md] and [SECURITY.md] [#92]
 * This project is now following the [Best Practices] set forth by the
   Core Infrastructure Initiative! See [CII badge details]. [#92]
+* Add `construct_from_cf_env` method to construct client instances from
+  Data Attribute Recommendation service binding on SAP Business Technology
+  Platform. [#97]
 
 [CONTRIBUTING.md]: /CONTRIBUTING.md
 [SECURITY.md]: /SECURITY.md
@@ -18,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [CII badge details]: https://bestpractices.coreinfrastructure.org/en/projects/4514
 
 [#92]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/92
+[#97]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/92
 
 ### Changed
 
