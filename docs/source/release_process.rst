@@ -22,10 +22,10 @@ Follow these steps to create a release:
   - *[Unreleased]* becomes an empty section
   - Update the tag used in the URL for *[Unreleased]* to the new version number
     so that *[Unreleased]* points to the changes between the new version
-    and whatever is pushed to master afterwards
+    and whatever is pushed to main afterwards
 
-- Merge the updated `version.txt`_ and `CHANGELOG.md`_ to master
-- Create a tag against the latest master with the desired version number
+- Merge the updated `version.txt`_ and `CHANGELOG.md`_ to main
+- Create a tag against the latest main with the desired version number
   and push the tag. This triggers the build and deploy on Travis.
 
   - No special permissions for pypi.org are required. Travis has access
@@ -42,14 +42,14 @@ Follow these steps to create a release:
   has run successfully, the new version should be available on `pypi.org`_.
 - The documentation on `Read The Docs`_ is automatically updated. A new version
   based on the git tag is also added. Note that the default documentation version
-  displayed to visitors is always *latest* and is built from *master* on any update
-  to the *master* branch.
+  displayed to visitors is always *latest* and is built from *main* on any update
+  to the *main* branch.
 
 
 
 .. _GitHub repository: https://github.com/SAP/data-attribute-recommendation-python-sdk
 .. _pypi.org: https://pypi.org/project/data-attribute-recommendation-sdk/
-.. _version.txt: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/version.txt
-.. _CHANGELOG.md: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
+.. _version.txt: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/version.txt
+.. _CHANGELOG.md: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/CHANGELOG.md
 .. _Travis: https://travis-ci.com/github/SAP/data-attribute-recommendation-python-sdk
 .. _Read The Docs: https://data-attribute-recommendation-python-sdk.readthedocs.io/

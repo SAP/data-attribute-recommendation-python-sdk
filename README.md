@@ -42,7 +42,7 @@ pay attention to the [CHANGELOG.md].
 # Requirements
 
 To use the SDK, you will need a recent version of Python. We actively support
-and test Python ~~3.5~~ 3.6 up to Python 3.8. We aim to support all officially supported
+and test Python ~~3.5~~ 3.6 up to Python 3.9. We aim to support all officially supported
 Python version. This includes any Python version not
 listed as `end-of-life` in the
 [Python Developer's Guide](https://devguide.python.org/#branchstatus). You can check

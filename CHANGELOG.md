@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Documentation updated to include reference to TechED 2020 workshop [#93]
 * Tests: report branch coverage [#93]
+* Tests: run tests with Python 3.9
 
 [#93]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/93
 
