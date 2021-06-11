@@ -175,7 +175,7 @@ class RetrySession(HttpMethodsMixin):  # pylint: disable=too-few-public-methods
         :param status_forcelist: a set of integer HTTP response codes that will lead
             to retry.
         """
-        super(RetrySession, self).__init__()
+        super().__init__()
         session = session or Session()
         retry = Retry(
             total=num_retries,
@@ -252,7 +252,7 @@ class TimeoutSession(HttpMethodsMixin):
         :param connect_timeout: timeout for the connection
         :param read_timeout: maximum time between bytes after connect
         """
-        super(TimeoutSession, self).__init__()
+        super().__init__()
         self.session = session or Session()
 
         self.connect_timeout = connect_timeout
@@ -301,7 +301,7 @@ class TimeoutRetrySession(HttpMethodsMixin):
             connect_timeout: connect timeout
             read_timeout: read timeout
         """
-        super(TimeoutRetrySession, self).__init__()
+        super().__init__()
         retry_session = self._make_retry_session(num_retries)
         timeout_session = TimeoutSession(
             session=retry_session,

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0]
+
+
 ### Added
 
 * Add [CONTRIBUTING.md] and [SECURITY.md] [#92]
@@ -21,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [CII badge details]: https://bestpractices.coreinfrastructure.org/en/projects/4514
 
 [#92]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/92
-[#97]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/92
+[#97]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/97
 
 ### Changed
 
@@ -154,7 +157,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.0...HEAD
+[0.8.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...rel/0.8.0
 [0.7.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.0...rel/0.7.1
 [0.7.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.8...rel/0.7.0
 [0.6.8]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.7...rel/0.6.8
