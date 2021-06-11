@@ -34,7 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Python 3.5 has reached [end-of-life in September 2020](https://www.python.org/downloads/release/python-3510/).
   Support for Python 3.5 will be removed in one of the upcoming releases.
 
-
 ### Changed
 
 * Documentation updated to include reference to TechED 2020 workshop [#93]
