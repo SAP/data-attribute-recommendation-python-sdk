@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0]
 
-
 ### Added
 
 * Add [CONTRIBUTING.md] and [SECURITY.md] [#92]
