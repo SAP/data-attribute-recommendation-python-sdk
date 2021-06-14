@@ -12,7 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Fix specification of dependencies. The SDK package was incorrectly depending
   on an older version of the requests package. If you have installed 0.8.0, it is
-  recommended to update to 0.8.1 and also ensure you have the latest dependencies.
+  recommended to update to 0.8.1 and also ensure you have the latest dependencies. [#102]
+
+[#102]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/102
 
 ## [0.8.0]
 
