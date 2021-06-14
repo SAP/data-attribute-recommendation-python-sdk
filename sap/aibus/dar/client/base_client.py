@@ -3,6 +3,8 @@ Shared infrastructure for microservice clients.
 """
 from typing import TypeVar, Type
 
+from cfenv import AppEnv
+
 from sap.aibus.dar.client.util.credentials import (
     CredentialsSource,
     OnlineCredentialsSource,
@@ -86,6 +88,23 @@ class BaseClient(LoggerMixin):
         """
         source = StaticCredentialsSource(token)
         return cls(dar_url, source)
+
+    @classmethod
+    def construct_from_cf_env(cls: Type[DARClient]) -> DARClient:
+        """
+        Constructs a DARClient from service binding in a CloudFoundry app.
+
+        This is useful when the SDK is used in a CloudFoundry application on the
+        SAP Business Technology Platform where the application is bound to an instance
+        of the Data Attribute Recommendation service.
+
+        This constructor assumes that only one instance of the service is bound
+        to the app.
+        :return: the client instance
+        """
+        env = AppEnv()
+        dar = env.get_service(label="data-attribute-recommendation")
+        return cls.construct_from_service_key(dar.credentials)
 
 
 class BaseClientWithSession(BaseClient):

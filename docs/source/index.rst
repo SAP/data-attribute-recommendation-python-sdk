@@ -9,7 +9,7 @@ Features
 - Easy to use
 - High-level flows on top of the basic Data Attribute Recommendation APIs
 - Fully type annotated for great autocomplete experience
-- Supports Python 3.5 up to 3.8
+- Supports Python 3.6 up to 3.9 (3.5 will be removed in an upcoming release)
 
 Release Notes
 -------------
@@ -26,8 +26,16 @@ pay attention to the `Changelog`_.
 Getting Started
 ---------------
 
-In addition to the guide below, a more comprehensive `tutorial is available
-at developers.sap.com`_.
+
+**News 2020-12:** Materials from the `TechED 2020 workshop`_ are online! We have
+prepared a `Jupyter notebook`_ with a full tutorial and lots of additional information.
+This is the most comprehensive end-to-end example available so far.
+
+.. _TechED 2020 workshop: https://github.com/SAP-samples/teched2020-INT260/tree/master/exercises/ex1-DAR
+.. _Jupyter notebook: https://github.com/SAP-samples/teched2020-INT260/blob/master/exercises/ex1-DAR/teched2020-INT260_Data_Attribute_Recommendation.ipynb
+
+The sections below in this document will help you get started. In addition to the guide
+below, a more comprehensive `tutorial is available at developers.sap.com`_.
 
 .. _tutorial is available at developers.sap.com: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
 

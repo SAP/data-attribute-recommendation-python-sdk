@@ -6,6 +6,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0]
+
+### Added
+
+* Add [CONTRIBUTING.md] and [SECURITY.md] [#92]
+* This project is now following the [Best Practices] set forth by the
+  Core Infrastructure Initiative! See [CII badge details]. [#92]
+* Add `construct_from_cf_env` method to construct client instances from
+  Data Attribute Recommendation service binding on SAP Business Technology
+  Platform. [#97]
+* Add support for user-specified Job and Deployment IDs when creating the
+  respective Job and Deployment resources. This change is not yet generally
+  available in the Data Attribute Recommendation service. [#98]
+
+[CONTRIBUTING.md]: /CONTRIBUTING.md
+[SECURITY.md]: /SECURITY.md
+[Best Practices]: https://www.coreinfrastructure.org/programs/best-practices-program/
+[CII badge details]: https://bestpractices.coreinfrastructure.org/en/projects/4514
+
+[#92]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/92
+[#97]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/97
+[#98]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/98
+
+### Deprecated
+
+* Python 3.5 has reached [end-of-life in September 2020](https://www.python.org/downloads/release/python-3510/).
+  Support for Python 3.5 will be removed in one of the upcoming releases.
+
+### Changed
+
+* Documentation updated to include reference to TechED 2020 workshop [#93]
+* Tests: report branch coverage [#93]
+* Tests: run tests with Python 3.9
+
+[#93]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/93
 
 ## [0.7.1]
 
@@ -131,7 +166,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.0...HEAD
+[0.8.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...rel/0.8.0
 [0.7.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.0...rel/0.7.1
 [0.7.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.8...rel/0.7.0
 [0.6.8]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.6.7...rel/0.6.8
