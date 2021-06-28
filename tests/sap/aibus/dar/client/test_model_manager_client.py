@@ -385,7 +385,8 @@ class TestModelManagerClientModelJob:
             non_failed_job = self._make_job_resource(non_failed_state)
             assert ModelManagerClient.is_job_failed(non_failed_job) is False
 
-    def _make_job_resource(self, state):
+    @staticmethod
+    def _make_job_resource(state):
         job_resource = {
             "datasetId": "873d9d7c-c7d6-49da-9a0c-850692d36df7",
             "endedAt": None,
