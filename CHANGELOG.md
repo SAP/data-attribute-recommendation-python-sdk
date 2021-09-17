@@ -201,6 +201,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#8]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/8
 [#16]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/16
 [0.6.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/tree/rel/0.6.2
-
-
-

@@ -11,7 +11,7 @@ from typing import Callable
 from sap.aibus.dar.client.util.http_transport import (
     HttpMethodsProtocol,
     TimeoutRetrySession,
-    enforce_https,
+    enforce_https_except_localhost,
 )
 from sap.aibus.dar.client.util.logging import LoggerMixin
 
@@ -96,7 +96,7 @@ class OnlineCredentialsSource(CredentialsSource, LoggerMixin):
         """
         # pylint: disable=too-many-arguments
 
-        enforce_https(url)
+        enforce_https_except_localhost(url)
 
         self._token = None
         self._token_expires_at = 0
