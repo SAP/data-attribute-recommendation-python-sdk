@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   methods to remove the optional `job_id` and `deployment_id` arguments. Passing these arguments
   always resulted in an error returned by the Data Attribute Recommendation service. For this
   reason, this change is not a breaking change.
+  This change effectively reverts [#98].
 
 [#107]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/107
 
