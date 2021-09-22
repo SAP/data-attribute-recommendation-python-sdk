@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.2]
+
+### Changed
+
+* Remove passing of external deployment ID and job ID from SDK API. This functionality
+  never materialized in the Data Attribute Recommendation service and is now also removed in
+  the SDK.
+  This is an API change in the SDK because it changes the method signature of some
+  methods to remove the optional `job_id` and `deployment_id` arguments. Passing these arguments
+  always resulted in an error returned by the Data Attribute Recommendation service. For this
+  reason, this change is not a breaking change.
+  This change effectively reverts [#98].
+
+[#107]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/107
+
 ## [0.8.1]
 
 ### Fixed
@@ -176,7 +191,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.1...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.2...HEAD
+[0.8.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.1...rel/0.8.2
 [0.8.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.0...rel/0.8.1
 [0.8.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...rel/0.8.0
 [0.7.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.0...rel/0.7.1
