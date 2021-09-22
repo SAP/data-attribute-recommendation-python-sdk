@@ -148,34 +148,6 @@ class TestModelManagerClientModelJob:
             == response
         )
 
-    def test_create_job_with_external_job_id(self, model_manager_client):
-        model_template_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
-        dataset_id = "a2058037-2ae4-465e-8110-65381d47f3d4"
-        model_name = "my_test_model"
-        job_id = "24b38880-e304-4d0e-87cf-b9feb8b21393"
-
-        model_manager_client.create_job(
-            model_template_id=model_template_id,
-            dataset_id=dataset_id,
-            model_name=model_name,
-            job_id=job_id,
-        )
-
-        expected_url = "/model-manager/api/v3/jobs"
-        expected_payload = {
-            "datasetId": dataset_id,
-            "modelTemplateId": model_template_id,
-            "modelName": model_name,
-            "id": job_id,
-        }
-
-        expected_post_call = [call(expected_url, payload=expected_payload)]
-
-        assert (
-            expected_post_call
-            == model_manager_client.session.post_to_endpoint.call_args_list
-        )
-
     def test_wait_for_job_uses_polling(self, model_manager_client: ModelManagerClient):
         """
         Tests the interaction of the `wait_for_job` method with the Polling class.
@@ -299,57 +271,6 @@ class TestModelManagerClientModelJob:
             model_template_id=model_template_id,
             dataset_id=dataset_id,
             model_name=model_name,
-            job_id=None,
-        )
-
-        assert model_manager_client.create_job.call_args_list == [
-            expected_create_job_call_args
-        ]
-
-        expected_wait_for_job_call_args = call(job_resource["id"])
-
-        assert model_manager_client.wait_for_job.call_args_list == [
-            expected_wait_for_job_call_args
-        ]
-
-    def test_create_job_and_wait_with_external_job_id(
-        self, model_manager_client: ModelManagerClient
-    ):
-        """
-        Tests if start_job_and_wait correctly orchestrates start_job()
-        and wait_for_job() if an external Job ID is used.
-        """
-        model_template_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
-        dataset_id = "a2058037-2ae4-465e-8110-65381d47f3d4"
-        model_name = "my_test_model"
-        job_id = "6f122888-3ab9-4485-9b10-d1b982239ab9"
-
-        job_resource = self._make_job_resource("SUCCEEDED")
-        job_resource["id"] = job_id
-
-        model_manager_client.create_job = create_autospec(
-            model_manager_client.create_job
-        )
-        model_manager_client.create_job.return_value = job_resource
-
-        model_manager_client.wait_for_job = create_autospec(
-            model_manager_client.wait_for_job
-        )
-
-        ret_val = model_manager_client.create_job_and_wait(
-            model_name=model_name,
-            dataset_id=dataset_id,
-            model_template_id=model_template_id,
-            job_id=job_id,
-        )
-
-        assert ret_val == model_manager_client.wait_for_job.return_value
-
-        expected_create_job_call_args = call(
-            model_template_id=model_template_id,
-            dataset_id=dataset_id,
-            model_name=model_name,
-            job_id=job_id,
         )
 
         assert model_manager_client.create_job.call_args_list == [
@@ -546,25 +467,6 @@ class TestModelManagerClientDeployment:
             == response
         )
 
-    def test_create_deployment_with_external_id(
-        self, model_manager_client: ModelManagerClient
-    ):
-        model_name = "my_test_model"
-        deployment_id = "abcd-deployment-id"
-
-        model_manager_client.create_deployment(
-            model_name=model_name, deployment_id=deployment_id
-        )
-
-        expected_url = "/model-manager/api/v3/deployments"
-        expected_payload = {"modelName": model_name, "id": deployment_id}
-        expected_post_call = [call(expected_url, payload=expected_payload)]
-
-        assert (
-            expected_post_call
-            == model_manager_client.session.post_to_endpoint.call_args_list
-        )
-
     def _make_deployment_resource(self, status):
         return make_deployment_resource(status)
 
@@ -720,55 +622,7 @@ class TestModelManagerClientDeployment:
         # assert
         assert return_value == model_manager_client.wait_for_deployment.return_value
 
-        expected_call_to_create_deployment = call(
-            model_name=model_name, deployment_id=None
-        )
-
-        assert model_manager_client.create_deployment.call_args_list == [
-            expected_call_to_create_deployment
-        ]
-
-        expected_call_to_wait_for_deployment = call(
-            deployment_id=deployment_resource["id"]
-        )
-
-        assert model_manager_client.wait_for_deployment.call_args_list == [
-            expected_call_to_wait_for_deployment
-        ]
-
-    def test_deploy_and_wait_with_external_deployment_id(
-        self, model_manager_client: ModelManagerClient
-    ):
-        """
-        Tests if *deploy_and_wait* orchestrates *create_deployment* and
-        *wait_for_deployment* correctly if an external deployment ID is given.
-        """
-
-        deployment_id = "abcd"
-        model_name = "my-test-model"
-
-        # prepare
-        deployment_resource = self._make_deployment_resource("PENDING")
-        deployment_resource["id"] = deployment_id
-        model_manager_client.create_deployment = create_autospec(
-            model_manager_client.create_deployment, return_value=deployment_resource
-        )
-
-        model_manager_client.wait_for_deployment = create_autospec(
-            model_manager_client.wait_for_deployment
-        )
-
-        # act
-        return_value = model_manager_client.deploy_and_wait(
-            model_name=model_name, deployment_id=deployment_id
-        )
-
-        # assert
-        assert return_value == model_manager_client.wait_for_deployment.return_value
-
-        expected_call_to_create_deployment = call(
-            model_name=model_name, deployment_id=deployment_id
-        )
+        expected_call_to_create_deployment = call(model_name=model_name)
 
         assert model_manager_client.create_deployment.call_args_list == [
             expected_call_to_create_deployment
