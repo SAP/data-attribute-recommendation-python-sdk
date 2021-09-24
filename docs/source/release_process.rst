@@ -34,7 +34,7 @@ Follow these steps to create a release:
 .. code-block:: shell
 
   $ git pull
-  $ VERSION="x.y.z"
+  $ VERSION=$(cat version.txt)
   $ git tag -a rel/$VERSION -m "Tagging release $VERSION"
   $ git push --tags
 
