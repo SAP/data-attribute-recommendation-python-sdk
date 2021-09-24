@@ -25,7 +25,7 @@ class TestDataManagerClient:
         )
         new_id = create_response["id"]
         read_response = data_manager_client.read_dataset_schema_by_id(new_id)
-        assert create_response == read_response
+        assert new_id == read_response["id"]
 
         all_dataset_schemas = data_manager_client.read_dataset_schema_collection()
         count_before_deletion = all_dataset_schemas["count"]
