@@ -224,3 +224,13 @@ class TestHTTPSEnforced:
 
         with pytest.raises(HTTPSRequired):
             OnlineCredentialsSource.construct_from_service_key(service_key)
+
+    def test_constructor_allows_http_for_localhost(self):
+        try:
+            OnlineCredentialsSource(
+                url="http://localhost",
+                clientid="a-client-id",
+                clientsecret="a-client-secret",
+            )
+        except HTTPSRequired:
+            assert False, "Plain-text connection to localhost should be allowed."

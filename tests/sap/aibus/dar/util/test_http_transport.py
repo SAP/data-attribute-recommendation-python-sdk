@@ -21,7 +21,7 @@ class _BaseHTTPSEnforcedTest:
         Non-HTTPS URLs are rejected
         :return:
         """
-        url = "http://localhost/"
+        url = "http://aiservices-dar.cfapps.xxx.hana.ondemand.com/"
         session = self.create_test_object()
         verbs = ["get", "put", "delete", "post", "patch", "request"]
         for verb in verbs:

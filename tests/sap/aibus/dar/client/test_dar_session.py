@@ -254,6 +254,15 @@ class TestHTTPSEnforced:
         )
         assert str(context.value) == expected_message
 
+    def test_localhost_is_allowed(self):
+        dar_url = "http://localhost/"
+        credentials_source = StaticCredentialsSource("12345")
+
+        try:
+            DARSession(dar_url, credentials_source)
+        except HTTPSRequired:
+            assert False, "Plain HTTP connections to localhost should be allowed."
+
 
 @pytest.fixture
 def dar_url():

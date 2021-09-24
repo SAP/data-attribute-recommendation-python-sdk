@@ -69,7 +69,7 @@ class HttpMethodsMixin(HttpMethodsProtocol):
         return {}
 
     def __handle(self, verb, url, *args, **kwargs):
-        enforce_https(url)
+        enforce_https_except_localhost(url)
         kwargs.update(self.default_kwargs())
         return getattr(self.session, verb)(url, *args, **kwargs)
 
@@ -332,7 +332,7 @@ class TimeoutPostRetrySession(TimeoutRetrySession):
         return PostRetrySession(num_retries)
 
 
-def enforce_https(url: str):
+def enforce_https_except_localhost(url: str):
     """
     Raises HTTPSRequired exception if required.
 
@@ -340,5 +340,5 @@ def enforce_https(url: str):
     :return: None
     :raises HTTPSRequired: if given url does not start with https
     """
-    if not url.startswith("https"):
+    if not url.startswith("https") and not url.startswith("http://localhost"):
         raise HTTPSRequired
