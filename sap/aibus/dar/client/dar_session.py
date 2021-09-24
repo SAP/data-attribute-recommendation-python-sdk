@@ -12,7 +12,7 @@ from sap.aibus.dar.client.util.credentials import CredentialsSource
 from sap.aibus.dar.client.util.http_transport import (
     TimeoutRetrySession,
     TimeoutPostRetrySession,
-    enforce_https,
+    enforce_https_except_localhost,
 )
 
 
@@ -56,7 +56,7 @@ class DARSession:
         if base_url[-1] == "/":
             # Normalize base url.
             base_url = base_url[:-1]
-        enforce_https(base_url)
+        enforce_https_except_localhost(base_url)
         self.base_url = base_url
         self.credentials_source = credentials_source
         self.http = TimeoutRetrySession()

@@ -251,3 +251,12 @@ class TestHTTPSEnforced:
             "URL must use https scheme. Unencrypted connections" " are not supported."
         )
         assert str(context.value) == expected_message
+
+    def test_localhost_is_allowed(self):
+        dar_url = "http://localhost/"
+        credentials_source = StaticCredentialsSource("12345")
+
+        try:
+            DARSession(dar_url, credentials_source)
+        except HTTPSRequired:
+            assert False, "Plain HTTP connections to localhost should be allowed."

@@ -41,6 +41,14 @@ class AbstractDARClientConstruction:
         with pytest.raises(HTTPSRequired):
             self.clazz(dar_url, source)
 
+    def test_constructor_allows_http_localhost(self):
+        dar_url = "http://localhost:5001/"
+        source = StaticCredentialsSource("1234")
+        try:
+            self.clazz(dar_url, source)
+        except HTTPSRequired:
+            assert False, "Plain-text connection to localhost should be allowed."
+
     def test_create_from_credentials_positional_args(self):
         client = self.clazz.construct_from_credentials(
             self.dar_url, self.clientid, self.clientsecret, self.uaa_url
