@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.2]
 
+### Fixed
+
+* HTTP errors sent by the Data Attribute Recommendation service are now reported correctly
+  as a `DARHTTPException` (including debug information) even when the request was retried. [#109]
+  Fixes [#104]
+
+[#109]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/109
+[#104]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/104
+
 ### Changed
 
 * Remove passing of external deployment ID and job ID from SDK API. This functionality
