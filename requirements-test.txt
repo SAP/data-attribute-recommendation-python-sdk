@@ -4,3 +4,6 @@
 # These dependencies are never shipped, but only used locally
 # on a developer's workstation or on Jenkins for development.
 tox==3.23.1
+# httpretty is also referenced in tox, but listed here to make it easier to run tests
+# standalone from the shell or IDE.
+httpretty==1.1.4

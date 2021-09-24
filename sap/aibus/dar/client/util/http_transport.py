@@ -185,6 +185,7 @@ class RetrySession(HttpMethodsMixin):  # pylint: disable=too-few-public-methods
             backoff_factor=backoff_factor,
             method_whitelist=self._get_method_whitelist(),
             status_forcelist=status_forcelist,
+            raise_on_status=False,
         )
         adapter = HTTPAdapter(max_retries=retry)
         session.mount("http://", adapter)
