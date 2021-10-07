@@ -27,8 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   always resulted in an error returned by the Data Attribute Recommendation service. For this
   reason, this change is not a breaking change.
   This change effectively reverts [#98].
+* Plain-text `http://` URLs are now allowed for `localhost`. This is useful for local
+  development. [#108]
 
 [#107]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/107
+[#108]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/108
 
 ## [0.8.1]
 
