@@ -13,6 +13,7 @@ from sap.aibus.dar.client.exceptions import (
     TrainingJobTimeOut,
     DeploymentTimeOut,
     DeploymentFailed,
+    CreateTrainingJobFailed,
 )
 from sap.aibus.dar.client.model_manager_constants import (
     JobStatus,
@@ -134,7 +135,7 @@ class ModelManagerClient(BaseClientWithSession):
         self,
         model_name: str,
         dataset_id: str,
-        model_template_id: str,
+        model_template_id: str = None,
         business_blueprint_id: str = None,
     ) -> dict:
         """
@@ -154,6 +155,8 @@ class ModelManagerClient(BaseClientWithSession):
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
         :param business_blueprint_id: Business Blueprint template ID for training
+        :raises CreateTrainingJobFailed: When business_blueprint_id
+        and model_template_id are provided or when both are not provided
         :return: newly created Job as dict
         """
         self.log.info(
@@ -162,13 +165,23 @@ class ModelManagerClient(BaseClientWithSession):
             dataset_id,
             model_template_id,
         )
+        if business_blueprint_id and model_template_id:
+            raise CreateTrainingJobFailed(
+                "Either model_template_id or business_blueprint_id"
+                " have to be specified, not both."
+            )
+        if not business_blueprint_id and not model_template_id:
+            raise CreateTrainingJobFailed(
+                "Either model_template_id or business_blueprint_id"
+                " have to be specified."
+            )
         if business_blueprint_id:
             payload = {
                 "modelName": model_name,
                 "datasetId": dataset_id,
                 "businessBlueprintId": business_blueprint_id,
             }
-        else:
+        elif model_template_id:
             payload = {
                 "modelName": model_name,
                 "datasetId": dataset_id,
@@ -186,7 +199,7 @@ class ModelManagerClient(BaseClientWithSession):
         self,
         model_name: str,
         dataset_id: str,
-        model_template_id: str,
+        model_template_id: str = None,
         business_blueprint_id: str = None,
     ):
         """

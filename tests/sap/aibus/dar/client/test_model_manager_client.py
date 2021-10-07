@@ -12,6 +12,7 @@ from sap.aibus.dar.client.exceptions import (
     TrainingJobTimeOut,
     DeploymentTimeOut,
     DeploymentFailed,
+    CreateTrainingJobFailed,
 )
 from sap.aibus.dar.client.model_manager_client import ModelManagerClient
 from sap.aibus.dar.client.util.polling import Polling, PollingTimeoutException
@@ -185,6 +186,75 @@ class TestModelManagerClientModelJob:
             model_manager_client.session.post_to_endpoint.return_value.json.return_value
             == response
         )
+
+    def test_create_job_with_business_blueprint_id_and_model_template_id(
+        self, model_manager_client
+    ):
+        """
+        Tests it throws the exception if both model_template_id
+        and model_template_id is provided
+        """
+        business_blueprint_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
+        model_template_id = "d7810207-ca31-4d4d-9b5a-841a644fd81f"
+        dataset_id = "a2058037-2ae4-465e-8110-65381d47f3d4"
+        model_name = "my_test_model"
+
+        with pytest.raises(CreateTrainingJobFailed) as exception:
+            model_manager_client.create_job(
+                model_template_id=model_template_id,
+                business_blueprint_id=business_blueprint_id,
+                dataset_id=dataset_id,
+                model_name=model_name,
+            )
+        expected_message = (
+            "Either model_template_id or business_blueprint_id"
+            " have to be specified, not both."
+        )
+        assert str(exception.value) == expected_message
+
+    def test_create_job_without_business_blueprint_id_and_model_template_id(
+        self, model_manager_client
+    ):
+        """
+        Tests it throws the exception if both model_template_id and
+        model_template_id is provided
+        """
+        dataset_id = "a2058037-2ae4-465e-8110-65381d47f3d4"
+        model_name = "my_test_model"
+
+        with pytest.raises(CreateTrainingJobFailed) as exception:
+            model_manager_client.create_job(
+                model_template_id=None,
+                business_blueprint_id=None,
+                dataset_id=dataset_id,
+                model_name=model_name,
+            )
+        expected_message = (
+            "Either model_template_id or business_blueprint_id have to be specified."
+        )
+        assert str(exception.value) == expected_message
+
+    def test_create_job_with_empty_business_blueprint_id_and_model_template_id(
+        self, model_manager_client
+    ):
+        """
+        Tests it throws the exception if both model_template_id and
+        model_template_id is provided
+        """
+        dataset_id = "a2058037-2ae4-465e-8110-65381d47f3d4"
+        model_name = "my_test_model"
+
+        with pytest.raises(CreateTrainingJobFailed) as exception:
+            model_manager_client.create_job(
+                model_template_id="",
+                business_blueprint_id="",
+                dataset_id=dataset_id,
+                model_name=model_name,
+            )
+        expected_message = (
+            "Either model_template_id or business_blueprint_id have to be specified."
+        )
+        assert str(exception.value) == expected_message
 
     def test_wait_for_job_uses_polling(self, model_manager_client: ModelManagerClient):
         """
