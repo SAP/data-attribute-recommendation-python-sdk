@@ -211,7 +211,7 @@ class ModelManagerClient(BaseClientWithSession):
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
-        :param business_blueprint_id: Business Blueprint template ID for training
+        :param business_blueprint_id: Business Blueprint ID for training
         :raises TrainingJobFailed: When training job has status FAILED
         :raises TrainingJobTimeOut: When training job takes too long
         :return: API response as dict
