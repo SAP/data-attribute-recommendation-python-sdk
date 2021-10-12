@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.9.0]
+
+### Added
+
+* Support for Business blueprint id in `create_job` and `create_job_and_wait` methods. [#114]
+  * This feature is **not supported** in DAR service yet, it is added for internal testing purposes.
+  * Either model_template_id or business_blueprint_id has to be specified in `create_job` method.
+  * Both model_template_id and business_blueprint_id are not allowed.
+
+[#114]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/114
+
 ## [0.8.2]
 
 ### Fixed
@@ -203,7 +215,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.2...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.0...HEAD
+[0.9.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.2...rel/0.9.0
 [0.8.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.1...rel/0.8.2
 [0.8.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.0...rel/0.8.1
 [0.8.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.7.1...rel/0.8.0

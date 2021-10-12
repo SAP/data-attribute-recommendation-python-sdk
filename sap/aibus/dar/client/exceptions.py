@@ -107,6 +107,14 @@ class DeploymentFailed(DARException):
     pass
 
 
+class CreateTrainingJobFailed(DARException):
+    """
+    Create training job failed.
+    """
+
+    pass
+
+
 class ModelAlreadyExists(DARException):
     """
     Model already exists and must be deleted first.

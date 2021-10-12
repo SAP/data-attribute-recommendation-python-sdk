@@ -13,6 +13,7 @@ from sap.aibus.dar.client.exceptions import (
     TrainingJobTimeOut,
     DeploymentTimeOut,
     DeploymentFailed,
+    CreateTrainingJobFailed,
 )
 from sap.aibus.dar.client.model_manager_constants import (
     JobStatus,
@@ -134,7 +135,8 @@ class ModelManagerClient(BaseClientWithSession):
         self,
         model_name: str,
         dataset_id: str,
-        model_template_id: str,
+        model_template_id: str = None,
+        business_blueprint_id: str = None,
     ) -> dict:
         """
         Creates a training Job.
@@ -152,6 +154,9 @@ class ModelManagerClient(BaseClientWithSession):
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
+        :param business_blueprint_id: Business Blueprint template ID for training
+        :raises CreateTrainingJobFailed: When business_blueprint_id
+        and model_template_id are provided or when both are not provided
         :return: newly created Job as dict
         """
         self.log.info(
@@ -160,12 +165,28 @@ class ModelManagerClient(BaseClientWithSession):
             dataset_id,
             model_template_id,
         )
-
-        payload = {
-            "modelName": model_name,
-            "datasetId": dataset_id,
-            "modelTemplateId": model_template_id,
-        }
+        if business_blueprint_id and model_template_id:
+            raise CreateTrainingJobFailed(
+                "Either model_template_id or business_blueprint_id"
+                " have to be specified, not both."
+            )
+        if not business_blueprint_id and not model_template_id:
+            raise CreateTrainingJobFailed(
+                "Either model_template_id or business_blueprint_id"
+                " have to be specified."
+            )
+        if business_blueprint_id:
+            payload = {
+                "modelName": model_name,
+                "datasetId": dataset_id,
+                "businessBlueprintId": business_blueprint_id,
+            }
+        elif model_template_id:
+            payload = {
+                "modelName": model_name,
+                "datasetId": dataset_id,
+                "modelTemplateId": model_template_id,
+            }
         response = self.session.post_to_endpoint(
             ModelManagerPaths.ENDPOINT_JOB_COLLECTION, payload=payload
         )
@@ -178,7 +199,8 @@ class ModelManagerClient(BaseClientWithSession):
         self,
         model_name: str,
         dataset_id: str,
-        model_template_id: str,
+        model_template_id: str = None,
+        business_blueprint_id: str = None,
     ):
         """
         Starts a job and waits for the job to finish.
@@ -189,6 +211,7 @@ class ModelManagerClient(BaseClientWithSession):
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
+        :param business_blueprint_id: Business Blueprint ID for training
         :raises TrainingJobFailed: When training job has status FAILED
         :raises TrainingJobTimeOut: When training job takes too long
         :return: API response as dict
@@ -197,6 +220,7 @@ class ModelManagerClient(BaseClientWithSession):
             model_name=model_name,
             dataset_id=dataset_id,
             model_template_id=model_template_id,
+            business_blueprint_id=business_blueprint_id,
         )
         return self.wait_for_job(job_resource["id"])
 
