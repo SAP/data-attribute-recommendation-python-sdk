@@ -11,7 +11,7 @@ from typing import Callable
 from sap.aibus.dar.client.util.http_transport import (
     HttpMethodsProtocol,
     TimeoutRetrySession,
-    enforce_https,
+    enforce_https_except_localhost,
 )
 from sap.aibus.dar.client.util.logging import LoggerMixin
 
@@ -96,7 +96,7 @@ class OnlineCredentialsSource(CredentialsSource, LoggerMixin):
         """
         # pylint: disable=too-many-arguments
 
-        enforce_https(url)
+        enforce_https_except_localhost(url)
 
         self._token = None
         self._token_expires_at = 0
@@ -148,16 +148,18 @@ class OnlineCredentialsSource(CredentialsSource, LoggerMixin):
             # add a 5m grace period: retrieve token earlier.
             self._token_expires_at = self._token_expires_at - 300
         if self._token is None:
+            # This check mainly exists to signal to the mypy type checker
+            # that the return value cannot be None
             raise ValueError("Token not found in authentication server response!")
         return self._token
 
     def _fetch_token_from_auth_server(self) -> dict:
         url = self.url + "/oauth/token?grant_type=client_credentials"
-        self.log.info('Retrieving token from URL: "%s"', url)
+        self.log.debug('Retrieving token from URL: "%s"', url)
         response = self.session.get(url, auth=(self.clientid, self.clientsecret))
         response.raise_for_status()
         payload = response.json()
-        self.log.info(
+        self.log.debug(
             'Got token for clientid "%s" with HTTP status "%s" and scope "%s"',
             self.clientid,
             response.status_code,

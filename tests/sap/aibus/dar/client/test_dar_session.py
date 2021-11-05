@@ -1,6 +1,8 @@
 from io import BytesIO
+import re
 from unittest.mock import create_autospec, Mock, call
 
+import httpretty
 import pytest
 import requests
 from requests.structures import CaseInsensitiveDict
@@ -251,3 +253,97 @@ class TestHTTPSEnforced:
             "URL must use https scheme. Unencrypted connections" " are not supported."
         )
         assert str(context.value) == expected_message
+
+    def test_localhost_is_allowed(self):
+        dar_url = "http://localhost/"
+        credentials_source = StaticCredentialsSource("12345")
+
+        try:
+            DARSession(dar_url, credentials_source)
+        except HTTPSRequired:
+            assert False, "Plain HTTP connections to localhost should be allowed."
+
+
+@pytest.fixture
+def dar_url():
+    return "https://localhost/"
+
+
+@pytest.fixture
+def credentials_source():
+    return StaticCredentialsSource("12345")
+
+
+@pytest.fixture
+def dar_session_500_error(dar_url, credentials_source):
+    # This fixture does NOT use unittest.mock to provide a 500
+    # error response by patching the RetrySession used internally
+    # in the DARSession. Injecting the response at this level will
+    # bypass the Retry code in requests/urllib3, which is what was causing
+    # issue #104:
+    # https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/104
+    # Instead, the test uses httpretty to inject the HTTP 500 response at the socket
+    # level, which will let the test exercise the interaction with the requests
+    # library as well.
+    httpretty.enable()
+    for http_method in [
+        httpretty.GET,
+        httpretty.DELETE,
+        httpretty.POST,
+        httpretty.PUT,
+        httpretty.PATCH,
+    ]:
+        httpretty.register_uri(
+            http_method,
+            re.compile(".*"),
+            status=500,
+            adding_headers={"X-Correlation-ID": "TEST"},
+        )
+
+    sess = DARSession(base_url=dar_url, credentials_source=credentials_source)
+
+    yield sess
+    httpretty.disable()
+
+
+class TestRetryErrorRaisesDARHTTPException:
+    """
+    This test checks that even retryable errors will raise a DARHTTPException with
+    detailed debugging information instead of a plain RetryError.
+
+    https://github.com/SAP/data-attribute-recommendation-python-sdk/issues/104
+    """
+
+    def test_get_error_handling(self, dar_session_500_error):
+        with pytest.raises(DARHTTPException) as exc_info:
+            dar_session_500_error.get_from_endpoint("/")
+
+        exc = exc_info.value
+        assert exc.status_code == 500
+        assert exc.correlation_id == "TEST"
+
+    def test_delete_from_endpoint_error_handling(self, dar_session_500_error):
+        with pytest.raises(DARHTTPException) as exc_info:
+            dar_session_500_error.delete_from_endpoint("/")
+
+        exc = exc_info.value
+        assert exc.status_code == 500
+        assert exc.correlation_id == "TEST"
+
+    def test_post_to_endpoint_error_handling(self, dar_session_500_error):
+        with pytest.raises(DARHTTPException) as exc_info:
+            dar_session_500_error.post_to_endpoint("/", payload={})
+
+        exc = exc_info.value
+        assert exc.status_code == 500
+        assert exc.correlation_id == "TEST"
+
+    def test_post_data_to_endpoint_error_handling(self, dar_session_500_error):
+        with pytest.raises(DARHTTPException) as exc_info:
+            dar_session_500_error.post_data_to_endpoint(
+                "/", data_stream=BytesIO(b"test")
+            )
+
+        exc = exc_info.value
+        assert exc.status_code == 500
+        assert exc.correlation_id == "TEST"

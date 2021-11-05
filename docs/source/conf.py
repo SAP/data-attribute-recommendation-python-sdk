@@ -1,3 +1,5 @@
+import sphinx_rtd_theme  # noqa
+
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -17,12 +19,15 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 
-project = "DAR Client"
-copyright = "2020, DAR Team"
-author = "DAR Team"
+project = "Data Attribute Recommendation Python SDK"
+copyright = "2020 SAP SE or an SAP affiliate company."
+author = "Data Attribute Recommendation team"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+# We cannot update this automatically here; but
+# readthedocs.io will maintain the versions based on
+# the git hook
+# release = "0.0.1"
 
 # -- General configuration ---------------------------------------------------
 
@@ -34,6 +39,7 @@ extensions = [
     "sphinx.ext.doctest",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
+    "sphinx_rtd_theme",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -49,12 +55,12 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "classic"
+html_theme = "sphinx_rtd_theme"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# html_static_path = ["_static"]
 
 autodoc_default_options = {
     "members": True,

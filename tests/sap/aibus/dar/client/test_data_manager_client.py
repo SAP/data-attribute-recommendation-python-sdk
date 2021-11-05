@@ -1,4 +1,5 @@
 from io import BytesIO, StringIO
+import json
 from typing import Any
 from unittest.mock import create_autospec, call, Mock, MagicMock
 
@@ -39,6 +40,14 @@ class AbstractDARClientConstruction:
         source = StaticCredentialsSource("1234")
         with pytest.raises(HTTPSRequired):
             self.clazz(dar_url, source)
+
+    def test_constructor_allows_http_localhost(self):
+        dar_url = "http://localhost:5001/"
+        source = StaticCredentialsSource("1234")
+        try:
+            self.clazz(dar_url, source)
+        except HTTPSRequired:
+            assert False, "Plain-text connection to localhost should be allowed."
 
     def test_create_from_credentials_positional_args(self):
         client = self.clazz.construct_from_credentials(
@@ -121,6 +130,51 @@ class AbstractDARClientConstruction:
         with pytest.raises(HTTPSRequired):
             # RFC 4266 URLs should also be rejected
             self.clazz.construct_from_jwt("gopher://host:70/1", jwt)
+
+    def test_create_from_cf_env(self, monkeypatch):
+        vcap_services = {
+            "data-attribute-recommendation-staging": [
+                {
+                    "binding_guid": "XXXX",
+                    "binding_name": None,
+                    "credentials": {
+                        "swagger": {
+                            "dm": self.dar_url + "data-manager/doc/ui",
+                            "inference": self.dar_url + "inference/doc/ui",
+                            "mm": self.dar_url + "model-manager/doc/ui",
+                        },
+                        "uaa": {
+                            "clientid": self.clientid,
+                            "clientsecret": self.clientsecret,
+                            "identityzone": "dar-saas-test-app",
+                            "identityzoneid": "XXX",
+                            "subaccountid": "XXX",
+                            "tenantid": "XXX",
+                            "tenantmode": "dedicated",
+                            "uaadomain": "authentication.sap.hana.ondemand.com",
+                            "url": self.uaa_url,
+                            "verificationkey": "XXX",
+                            "xsappname": "XXX",
+                            "zoneid": "XXXX",
+                        },
+                        "url": self.dar_url,
+                    },
+                    "instance_guid": "XXX",
+                    "instance_name": "dar-instance-3",
+                    "label": "data-attribute-recommendation",
+                    "name": "dar-instance-3",
+                    "plan": "standard",
+                    "provider": None,
+                    "syslog_drain_url": None,
+                    "tags": [],
+                    "volume_mounts": [],
+                }
+            ]
+        }
+
+        monkeypatch.setenv("VCAP_SERVICES", json.dumps(vcap_services))
+        client = self.clazz.construct_from_cf_env()
+        self._assert_fields_initialized(client)
 
     def _assert_fields_initialized(self, client):
         assert isinstance(client.credentials_source, OnlineCredentialsSource)
@@ -456,6 +510,9 @@ class TestDataManagerClientDatasetSchema:
 
             dataset_response = self._make_dataset_response(bad_dataset_state)
 
+            if bad_dataset_state == "VALIDATION_FAILED":
+                dataset_response["validationMessage"] = "Detailed Description"
+
             client.session.get_from_endpoint.return_value.json.side_effect = [
                 dataset_response
             ]
@@ -466,8 +523,10 @@ class TestDataManagerClientDatasetSchema:
                 )
             expected_message = (
                 "Validation for Dataset "
-                "'{}' failed with status: '{}'".format(
-                    dataset_response["id"], bad_dataset_state
+                "'{}' failed with status '{}' and validation message: '{}'".format(
+                    dataset_response["id"],
+                    bad_dataset_state,
+                    dataset_response["validationMessage"],
                 )
             )
 

@@ -1,6 +1,6 @@
-# data-attribute-recommendation-python-sdk
+# Data Attribute Recommendation Python SDK
 
-A client SDK for the Data Attribute Recommendation service on SAP Cloud Platform.
+A client SDK for the Data Attribute Recommendation service on SAP Business Technology Platform (SAP BTP).
 Part of [SAP AI Business Services].
 
 # Description
@@ -13,6 +13,8 @@ Part of [SAP AI Business Services].
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/data-attribute-recommendation-python-sdk)](https://api.reuse.software/info/github.com/SAP/data-attribute-recommendation-python-sdk)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4514/badge)](https://bestpractices.coreinfrastructure.org/projects/4514)
 
 Goals of this SDK:
 
@@ -24,9 +26,15 @@ Goals of this SDK:
 
 See [CHANGELOG.md].
 
+Note that this project follows [Semantic Versioning](https://semver.org/). Versions
+below `1.0.0` are not guaranteed to have a stable API. For this reason, please
+pay attention to the [CHANGELOG.md].
+
 ## Resources
 
+* NEW: [TechED 2020 workshop materials], including a Jupyter notebook!
 * [Tutorials on Data Attribute Recommendation] - **Free Trial Available**
+* [Tutorials on this SDK][SDK tutorials]
 * [Data Attribute Recommendation documentation]
 * [Blog Articles on Data Attribute Recommendation]
 * [Documentation for this SDK][SDK documentation]
@@ -34,20 +42,23 @@ See [CHANGELOG.md].
 # Requirements
 
 To use the SDK, you will need a recent version of Python. We actively support
-and test Python 3.5 up to Python 3.8. We aim to support all officially supported
+and test Python ~~3.5~~ 3.6 up to Python 3.9. We aim to support all officially supported
 Python version. This includes any Python version not
 listed as `end-of-life` in the
 [Python Developer's Guide](https://devguide.python.org/#branchstatus). You can check
 the [Travis builds] to see which environments are actively tested.
+
+**NOTE:** Python 3.5 is [end-of-life since September 2021](https://www.python.org/downloads/release/python-3510/).
+The SDK will **remove support** for Python 3.5 at some point after the 0.8.0 release.
 
 Additionally, the `pip` and `virtualenv` tools should be installed. See
 the [installation instructions][pip and virtual environments].
 
 To use the SDK, you will need to have a service instance of the
 Data Attribute Recommendation service. For existing users of
-the SAP Cloud Platform, please see the [Inital Setup].
+SAP BTP, please see the [Initial Setup].
 
-If you are new to SAP Cloud Platform and Data Attribute Recommendation,
+If you are new to SAP BTP and Data Attribute Recommendation,
 consider one of the following options:
 
 * Free Trial via [Tutorials on Data Attribute Recommendation]
@@ -70,7 +81,8 @@ $ source dar-sdk-venv/bin/activate/
 ```
 
 In case you prefer more detailed instructions, please see [step-by-step](#step-by-step)
-instructions below.
+instructions below. A separate, more detailed tutorial
+[is also available at developers.sap.com][SDK Setup Tutorial].
 
 ## Step by Step
 
@@ -120,7 +132,6 @@ If you receive an error message `command not found: pip`, then refer to
 Congratulations! You have sucessfully installed the SDK. You may now import the
 SDK package as a first test:
 
-<!-- TODO: after refactoring, adapt the packages here -->
 ```
 (dar-sdk-venv) $ python3
 >>> from sap.aibus.dar.client.data_manager_constants import DataManagerPaths
@@ -128,7 +139,6 @@ SDK package as a first test:
 '/data-manager/api/v3/datasets'
 ```
 
-<!-- TODO: add links to SDK documentation -->
 To use the SDK, please refer to the [SDK documentation]. In particular, consider 
 the [SDK security guide].
 
@@ -137,6 +147,10 @@ the [SDK security guide].
 For issues with the SDK itself, such as installation problems, please file
 an [issue in Github][github issues].
 
+For questions on how to best use the SDK, consider asking a question in the
+SAP Community at **answers.sap.com** with the [`Data Attribute Recommendation` tag].
+When creating your question, add `Data Attribute Recommendation` as a primary tag.
+
 For issues experienced using the service, please refer to [Getting Support] in
 the main documentation on the SAP Help Portal.
 
@@ -144,15 +158,18 @@ the main documentation on the SAP Help Portal.
 
 Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
 This file and all other files in this repository are licensed under the
-Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file.
+Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 
+[TechED 2020 workshop materials]: https://github.com/SAP-samples/teched2020-INT260
 [Tutorials on Data Attribute Recommendation]: https://developers.sap.com/mission.cp-aibus-data-attribute.html
+[SDK tutorials]: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
 [SAP AI Business Services]: https://help.sap.com/viewer/product/SAP_AI_BUS/SHIP/en-US
+[SDK Setup Tutorial]: https://developers.sap.com/tutorials/cp-aibus-dar-sdk-setup.html
 [Data Attribute Recommendation documentation]: https://help.sap.com/viewer/product/Data_Attribute_Recommendation/SHIP/en-US
 [Blog Articles on Data Attribute Recommendation]: https://blogs.sap.com/tags/73554900100800002858/
 [SAP Store]: https://www.sapstore.com/solutions/43157/Data-Attribute-Recommendation
 [Initial Setup]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/e8d18fbd1c0445e4a39dd1b66d942962.html
-[PyPI]: https://pypi.org/
+[PyPI]: https://pypi.org/project/data-attribute-recommendation-sdk/
 [pip and virtual environments]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 [python.org downloads]: https://www.python.org/downloads/
 [installing virtualenv]: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-virtualenv
@@ -162,4 +179,6 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE](./LICENSE) file
 [github issues]: https://github.com/SAP/data-attribute-recommendation-python-sdk/issues
 [Getting Support]: https://help.sap.com/viewer/105bcfd88921418e8c29b24a7a402ec3/SHIP/en-US/08625005de8049c180a108765f63fcdb.html
 [Travis builds]: https://travis-ci.com/SAP/data-attribute-recommendation-python-sdk
-[CHANGELOG.md]: ./CHANGELOG.md
+[CHANGELOG.md]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/CHANGELOG.md
+[LICENSE]: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/master/LICENSE
+[`Data Attribute Recommendation` tag]: https://answers.sap.com/tags/73554900100800002858

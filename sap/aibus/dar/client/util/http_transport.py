@@ -69,7 +69,7 @@ class HttpMethodsMixin(HttpMethodsProtocol):
         return {}
 
     def __handle(self, verb, url, *args, **kwargs):
-        enforce_https(url)
+        enforce_https_except_localhost(url)
         kwargs.update(self.default_kwargs())
         return getattr(self.session, verb)(url, *args, **kwargs)
 
@@ -175,7 +175,7 @@ class RetrySession(HttpMethodsMixin):  # pylint: disable=too-few-public-methods
         :param status_forcelist: a set of integer HTTP response codes that will lead
             to retry.
         """
-        super(RetrySession, self).__init__()
+        super().__init__()
         session = session or Session()
         retry = Retry(
             total=num_retries,
@@ -185,6 +185,7 @@ class RetrySession(HttpMethodsMixin):  # pylint: disable=too-few-public-methods
             backoff_factor=backoff_factor,
             method_whitelist=self._get_method_whitelist(),
             status_forcelist=status_forcelist,
+            raise_on_status=False,
         )
         adapter = HTTPAdapter(max_retries=retry)
         session.mount("http://", adapter)
@@ -252,7 +253,7 @@ class TimeoutSession(HttpMethodsMixin):
         :param connect_timeout: timeout for the connection
         :param read_timeout: maximum time between bytes after connect
         """
-        super(TimeoutSession, self).__init__()
+        super().__init__()
         self.session = session or Session()
 
         self.connect_timeout = connect_timeout
@@ -301,7 +302,7 @@ class TimeoutRetrySession(HttpMethodsMixin):
             connect_timeout: connect timeout
             read_timeout: read timeout
         """
-        super(TimeoutRetrySession, self).__init__()
+        super().__init__()
         retry_session = self._make_retry_session(num_retries)
         timeout_session = TimeoutSession(
             session=retry_session,
@@ -331,7 +332,7 @@ class TimeoutPostRetrySession(TimeoutRetrySession):
         return PostRetrySession(num_retries)
 
 
-def enforce_https(url: str):
+def enforce_https_except_localhost(url: str):
     """
     Raises HTTPSRequired exception if required.
 
@@ -339,5 +340,5 @@ def enforce_https(url: str):
     :return: None
     :raises HTTPSRequired: if given url does not start with https
     """
-    if not url.startswith("https"):
+    if not url.startswith("https") and not url.startswith("http://localhost"):
         raise HTTPSRequired

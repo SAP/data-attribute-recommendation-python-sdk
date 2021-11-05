@@ -27,7 +27,7 @@ setup(
     author="Michael Haas",
     author_email="michael.haas01@sap.com",
     url="https://github.com/sap/data-attribute-recommendation-python-sdk",
-    install_requires=["requests>=2.20.0", "typing-extensions>=3.7.4.1"],
+    install_requires=["requests~=2.20", "typing-extensions~=3.7", "cfenv~=0.5"],
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
     python_requires="~=3.5",
@@ -41,6 +41,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Environment :: Console",
@@ -49,7 +50,15 @@ setup(
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Typing :: Typed",
+        "License :: OSI Approved :: Apache Software License",
     ],
+    project_urls={
+        "Documentation": "https://data-attribute-recommendation-python-sdk."
+        + "readthedocs.io/en/latest/",
+        "Source": "https://github.com/SAP/data-attribute-recommendation-python-sdk",
+        "Issue Tracker": "https://github.com/SAP/"
+        + "data-attribute-recommendation-python-sdk/issues",
+    },
 )
 
 # List of classifiers:

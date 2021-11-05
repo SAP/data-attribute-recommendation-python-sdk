@@ -1,5 +1,6 @@
 include README.md
 include LICENSE.txt
 include version.txt
+include sap/aibus/dar/client/py.typed
 prune tests*
 prune postgres_tests*

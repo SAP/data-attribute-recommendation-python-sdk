@@ -13,6 +13,7 @@ from sap.aibus.dar.client.exceptions import (
     TrainingJobTimeOut,
     DeploymentTimeOut,
     DeploymentFailed,
+    CreateTrainingJobFailed,
 )
 from sap.aibus.dar.client.model_manager_constants import (
     JobStatus,
@@ -131,7 +132,11 @@ class ModelManagerClient(BaseClientWithSession):
         self.session.delete_from_endpoint(endpoint)
 
     def create_job(
-        self, model_name: str, dataset_id: str, model_template_id: str
+        self,
+        model_name: str,
+        dataset_id: str,
+        model_template_id: str = None,
+        business_blueprint_id: str = None,
     ) -> dict:
         """
         Creates a training Job.
@@ -149,6 +154,9 @@ class ModelManagerClient(BaseClientWithSession):
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
+        :param business_blueprint_id: Business Blueprint template ID for training
+        :raises CreateTrainingJobFailed: When business_blueprint_id
+        and model_template_id are provided or when both are not provided
         :return: newly created Job as dict
         """
         self.log.info(
@@ -157,13 +165,30 @@ class ModelManagerClient(BaseClientWithSession):
             dataset_id,
             model_template_id,
         )
-        response = self.session.post_to_endpoint(
-            ModelManagerPaths.ENDPOINT_JOB_COLLECTION,
-            payload={
+        if business_blueprint_id and model_template_id:
+            raise CreateTrainingJobFailed(
+                "Either model_template_id or business_blueprint_id"
+                " have to be specified, not both."
+            )
+        if not business_blueprint_id and not model_template_id:
+            raise CreateTrainingJobFailed(
+                "Either model_template_id or business_blueprint_id"
+                " have to be specified."
+            )
+        if business_blueprint_id:
+            payload = {
+                "modelName": model_name,
+                "datasetId": dataset_id,
+                "businessBlueprintId": business_blueprint_id,
+            }
+        elif model_template_id:
+            payload = {
                 "modelName": model_name,
                 "datasetId": dataset_id,
                 "modelTemplateId": model_template_id,
-            },
+            }
+        response = self.session.post_to_endpoint(
+            ModelManagerPaths.ENDPOINT_JOB_COLLECTION, payload=payload
         )
         response_as_json = response.json()
 
@@ -171,7 +196,11 @@ class ModelManagerClient(BaseClientWithSession):
         return response_as_json
 
     def create_job_and_wait(
-        self, model_name: str, dataset_id: str, model_template_id: str
+        self,
+        model_name: str,
+        dataset_id: str,
+        model_template_id: str = None,
+        business_blueprint_id: str = None,
     ):
         """
         Starts a job and waits for the job to finish.
@@ -182,6 +211,7 @@ class ModelManagerClient(BaseClientWithSession):
         :param model_name: Name of the model to train
         :param dataset_id: Id of previously uploaded, valid dataset
         :param model_template_id: Model template ID for training
+        :param business_blueprint_id: Business Blueprint ID for training
         :raises TrainingJobFailed: When training job has status FAILED
         :raises TrainingJobTimeOut: When training job takes too long
         :return: API response as dict
@@ -190,6 +220,7 @@ class ModelManagerClient(BaseClientWithSession):
             model_name=model_name,
             dataset_id=dataset_id,
             model_template_id=model_template_id,
+            business_blueprint_id=business_blueprint_id,
         )
         return self.wait_for_job(job_resource["id"])
 
@@ -210,8 +241,15 @@ class ModelManagerClient(BaseClientWithSession):
         )
 
         def polling_function():
-            self.log.debug("Polling for status of job '%s'", job_id)
-            return self.read_job_by_id(job_id)
+            self.log.info("Polling for status of job '%s'", job_id)
+            job_resource = self.read_job_by_id(job_id)
+            self.log.info(
+                "Job '%s': status '%s', progress: '%s'",
+                job_id,
+                job_resource["status"],
+                job_resource["progress"],
+            )
+            return job_resource
 
         self.log.info("Waiting for job '%s' to finish.", job_id)
 
@@ -219,17 +257,19 @@ class ModelManagerClient(BaseClientWithSession):
             result = polling.poll_until_success(
                 polling_function=polling_function, success_function=self.is_job_finished
             )
-        except PollingTimeoutException:
+        except PollingTimeoutException as timeout_exception:
             timeout_msg = "Training job '{}' did not finish within {}s".format(
                 job_id, timeout_seconds
             )
             self.log.exception(timeout_msg)
-            raise TrainingJobTimeOut(timeout_msg)
+            raise TrainingJobTimeOut(timeout_msg) from timeout_exception
 
+        msg = "Job '{}' has status: '{}'".format(job_id, result["status"])
         if self.is_job_failed(result):
-            fail_msg = "Job '{}' has status: '{}'".format(job_id, result["status"])
-            self.log.error(fail_msg)
-            raise TrainingJobFailed(fail_msg)
+            self.log.error(msg)
+            raise TrainingJobFailed(msg)
+
+        self.log.info(msg)
 
         return result
 
@@ -360,6 +400,8 @@ class ModelManagerClient(BaseClientWithSession):
         """
         Deletes a Deployment by ID.
 
+        To delete a Deployment by Model name, see :meth:`ensure_model_is_undeployed`.
+
         :param deployment_id: ID of the Deployment to be deleted
         :return: None
         """
@@ -387,11 +429,17 @@ class ModelManagerClient(BaseClientWithSession):
         """
         deployment_id = self.lookup_deployment_id_by_model_name(model_name)
         if deployment_id is not None:
-            self.log.info("Deployment '%s' found for model_name '%s'. Undeploying!")
+            self.log.info(
+                "Deployment '%s' found for model_name '%s'. Undeploying!",
+                deployment_id,
+                model_name,
+            )
             self.delete_deployment_by_id(deployment_id)
             return deployment_id
 
-        self.log.info("No deployment found for model_name '%s'. Not undeploying.")
+        self.log.info(
+            "No deployment found for model_name '%s'. Not undeploying.", deployment_id
+        )
         return None
 
     def wait_for_deployment(self, deployment_id: str) -> dict:
@@ -436,12 +484,12 @@ class ModelManagerClient(BaseClientWithSession):
             self.log.exception(msg)
             raise DeploymentTimeOut(msg) from exc
 
+        msg = "Deployment '{}' has status: {}".format(deployment_id, response["status"])
         if self.is_deployment_failed(response):
-            msg = "Deployment '{}' has status: {}".format(
-                deployment_id, response["status"]
-            )
             self.log.error(msg)
             raise DeploymentFailed(msg)
+
+        self.log.info(msg)
 
         return response
 
@@ -457,8 +505,11 @@ class ModelManagerClient(BaseClientWithSession):
         :raises DeploymentFailed: If Deployment fails
         :return: Model resource from final API call
         """
-        deployment = self.create_deployment(model_name=model_name)
+        deployment = self.create_deployment(
+            model_name=model_name,
+        )
         deployment_id = deployment["id"]
+        assert deployment_id is not None  # for mypy
         self.log.debug(
             "Created deployment '%s' for model '%s'", deployment_id, model_name
         )

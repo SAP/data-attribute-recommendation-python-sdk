@@ -3,4 +3,5 @@
 max-line-length = 88
 # E203 clashes with black, see https://github.com/PyCQA/pycodestyle/pull/914
 # W503 is already deprecated: https://www.flake8rules.com/rules/W503.html
-ignore = E203, W503
+# B011: pytest uses assert, so we should allow that
+ignore = E203, W503, B011

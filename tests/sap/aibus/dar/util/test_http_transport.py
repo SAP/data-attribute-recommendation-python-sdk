@@ -21,7 +21,7 @@ class _BaseHTTPSEnforcedTest:
         Non-HTTPS URLs are rejected
         :return:
         """
-        url = "http://localhost/"
+        url = "http://aiservices-dar.cfapps.xxx.hana.ondemand.com/"
         session = self.create_test_object()
         verbs = ["get", "put", "delete", "post", "patch", "request"]
         for verb in verbs:
@@ -45,7 +45,7 @@ class _BaseRetrySessionTest(_BaseHTTPSEnforcedTest):
             expected_schemes.remove(scheme)
 
             self._assert_retry_set_up_correctly(adapter)
-        len(expected_schemes) == 0
+        assert len(expected_schemes) == 0
 
     def test_can_override_session(self):
         mock_session = create_autospec(Session, instance=True)
@@ -54,7 +54,7 @@ class _BaseRetrySessionTest(_BaseHTTPSEnforcedTest):
 
         assert mock_session.mount.call_count == 2
 
-        session.session == mock_session
+        assert session.session == mock_session
 
         for cal in mock_session.mount.call_args_list:
             adapter = cal[0][1]

@@ -32,7 +32,7 @@ class HTTPSRequired(DARException):
 
     def __init__(self):
         msg = "URL must use https scheme. Unencrypted connections are not supported."
-        super(HTTPSRequired, self).__init__(msg)
+        super().__init__(msg)
 
 
 class DARPollingTimeoutException(DARException):
@@ -107,6 +107,39 @@ class DeploymentFailed(DARException):
     pass
 
 
+class CreateTrainingJobFailed(DARException):
+    """
+    Create training job failed.
+    """
+
+    pass
+
+
+class ModelAlreadyExists(DARException):
+    """
+    Model already exists and must be deleted first.
+
+    Note that this is not really used by the :class:`ModelManagerClient`, but
+    rather by higher-level methods in :class:`ModelCreator` and similar.
+
+    For methods interacting directly with the API, a request which will
+    conflict will instead raise a :class:`DARHTTPException` with an appropriate code.
+    """
+
+    def __init__(self, model_name: str):
+        """
+        Constructor.
+
+        :param: model_name: Name of the model which alreadx exists
+        """
+        msg = "Model '%s' already exists." % model_name
+        msg += (
+            "To re-use the name, please delete the model"
+            " first or choose a different name."
+        )
+        super().__init__(msg)
+
+
 class DARHTTPException(DARException):
     """
     Error occured when talking to the DAR service over HTTP.
@@ -121,7 +154,7 @@ class DARHTTPException(DARException):
     """
 
     def __init__(self, url: str, response: Response):
-        super(DARHTTPException, self).__init__()
+        super().__init__()
         self.url = url
         self._response = response
         self.exception_timestamp = datetime.datetime.now(tz=datetime.timezone.utc)

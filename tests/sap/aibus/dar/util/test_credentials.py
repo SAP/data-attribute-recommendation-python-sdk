@@ -142,6 +142,22 @@ class TestOnlineCredentialsSourceTokenRetrieval:
         assert mock_response.raise_for_status.call_count == 1
         assert observed_token == "the-token"
 
+    def test_token_retrieval_raises_if_access_token_is_none(
+        self, online_credentials_source_with_mock_session
+    ):
+        mock_response = online_credentials_source_with_mock_session.session.get()
+        mock_response.json.side_effect = [
+            {
+                "access_token": None,
+                "token_type": "bearer",
+                "expires_in": 43199,
+                "scope": "scope1 scope2 scope3",
+            }
+        ]
+
+        with pytest.raises(ValueError):
+            online_credentials_source_with_mock_session.token()
+
     def test_token_caching(self, online_credentials_source_with_mock_session):
         mock_session = online_credentials_source_with_mock_session.session
 
@@ -208,3 +224,13 @@ class TestHTTPSEnforced:
 
         with pytest.raises(HTTPSRequired):
             OnlineCredentialsSource.construct_from_service_key(service_key)
+
+    def test_constructor_allows_http_for_localhost(self):
+        try:
+            OnlineCredentialsSource(
+                url="http://localhost",
+                clientid="a-client-id",
+                clientsecret="a-client-secret",
+            )
+        except HTTPSRequired:
+            assert False, "Plain-text connection to localhost should be allowed."
