@@ -64,6 +64,11 @@ class ModelManagerPaths:
     #: Path for the Deployment collection
     ENDPOINT_DEPLOYMENT_COLLECTION = "/model-manager/api/v3/deployments"
 
+    #: Path for the BusinessBlueprint collection
+    ENDPOINT_BUSINESS_BLUEPRINT_TEMPLATE_COLLECTION = (
+        "/model-manager/api/v3/businessBlueprints"
+    )
+
     @classmethod
     def format_model_templates_endpoint_by_id(cls, model_template_id: str) -> str:
         # How can I fix the formatting of the doctest below without introducing a lot
@@ -128,3 +133,25 @@ class ModelManagerPaths:
         :return: endpoint, to be used as URL component
         """
         return cls.ENDPOINT_DEPLOYMENT_COLLECTION + "/" + deployment_id
+
+    @classmethod
+    def format_business_blueprint_endpoint_by_id(
+        cls, business_blueprint_id: str
+    ) -> str:
+        """
+        Returns the path of a BusinessBlueprintTemplate with given identifier.
+
+        .. doctest::
+
+            >>> ModelManagerPaths.format_business_blueprint_endpoint_by_id(\
+'4788254b-0bad-4757-a67f-92d5b55f322d')
+            '/model-manager/api/v3/businessBlueprints/4788254b-0bad-4757-a67f-92d5b55f322d'
+
+        :param business_blueprint_id: identifier of BusinessBlueprintTemplate
+        :return: endpoint, to be used as URL component
+        """
+        return (
+            cls.ENDPOINT_BUSINESS_BLUEPRINT_TEMPLATE_COLLECTION
+            + "/"
+            + business_blueprint_id
+        )

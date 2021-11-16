@@ -617,3 +617,27 @@ class ModelManagerClient(BaseClientWithSession):
             DeploymentStatus.STOPPED.value,
             DeploymentStatus.FAILED.value,
         ]
+
+    def read_business_blueprint_template_collection(self) -> dict:
+        """
+        Reads the collection of BusinessBlueprint Template.
+        :return: BusinessBlueprint collection as dict
+        """
+        response = self.session.get_from_endpoint(
+            ModelManagerPaths.ENDPOINT_BUSINESS_BLUEPRINT_TEMPLATE_COLLECTION
+        )
+        return response.json()
+
+    def read_business_blueprint_template_by_id(
+        self, business_blueprint_id: str
+    ) -> dict:
+        """
+        Reads the BusinessBlueprintTemplate with the given *business_blueprint_id*.
+        :param business_blueprint_id: ID of the BusinessBlueprint to be retrieved
+        :return: a single BusinessBlueprintTemplate as dict
+        """
+        endpoint = ModelManagerPaths.format_business_blueprint_endpoint_by_id(
+            business_blueprint_id
+        )
+        response = self.session.get_from_endpoint(endpoint)
+        return response.json()

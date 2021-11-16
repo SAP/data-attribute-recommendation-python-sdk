@@ -954,3 +954,27 @@ class TestCreateDeploymentGracefully:
                 assert mock_create.call_args_list == [call(model_name)]
 
                 assert response == mock_create.return_value
+
+
+class TestModelManagerClientBusinessBlueprintTemplate:
+    def test_read_model_template_collection(self, model_manager_client):
+        response = model_manager_client.read_business_blueprint_template_collection()
+        assert_get_response_is_json(model_manager_client, response)
+        expected_endpoint = "/model-manager/api/v3/businessBlueprints"
+        assert_get_from_endpoint_called_with_endpoint(
+            model_manager_client, expected_endpoint
+        )
+
+    def test_read_model_template_by_id(self, model_manager_client):
+        business_blueprint_id = "4788254b-0bad-4757-a67f-92d5b55f322d"
+
+        response = model_manager_client.read_business_blueprint_template_by_id(
+            "4788254b-0bad-4757-a67f-92d5b55f322d"
+        )
+        assert_get_response_is_json(model_manager_client, response)
+        expected_endpoint = "/model-manager/api/v3/businessBlueprints/{}".format(
+            business_blueprint_id
+        )
+        assert_get_from_endpoint_called_with_endpoint(
+            model_manager_client, expected_endpoint
+        )
