@@ -21,6 +21,7 @@ Goals of this SDK:
 * Enable easy consumption of the Data Attribute Recommendation service
 * Provide convenient higher-level abstraction on top of the service APIs
 * Serve as reference implementation for other programming languages
+* Provide sample notebooks for reference usage of various templates provided by DAR
 
 ## Release Notes
 
@@ -160,6 +161,7 @@ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
 This file and all other files in this repository are licensed under the
 Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 
+[TechED 2021 workshop materials]: https://github.com/SAP-samples/teched2021-INT360
 [TechED 2020 workshop materials]: https://github.com/SAP-samples/teched2020-INT260
 [Tutorials on Data Attribute Recommendation]: https://developers.sap.com/mission.cp-aibus-data-attribute.html
 [SDK tutorials]: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
