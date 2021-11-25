@@ -203,3 +203,27 @@ class TestInferenceClient:
             inference_client.session.post_to_endpoint.call_args_list
             == expected_calls_to_post
         )
+
+    def test_create_inference_with_url_works(self):
+        """
+        Checks inference call.
+        """
+        url = f"{DAR_URL}inference/api/v3/models/my-model/versions/1"
+        response = inference_client.create_inference_request_with_url(
+            url, objects=self.objects
+        )
+
+        expected_call = call(
+            url,
+            payload={"topN": 1, "objects": self.objects},
+            retry=False,
+        )
+
+        assert inference_client.session.post_to_endpoint.call_args_list == [
+            expected_call
+        ]
+
+        assert (
+                inference_client.session.post_to_endpoint.return_value.json.return_value
+                == response
+        )

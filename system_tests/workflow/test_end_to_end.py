@@ -1,9 +1,11 @@
 import logging
 import uuid
 from io import BytesIO
+import os
 
 import pytest
 
+from sap.aibus.dar.client.inference_constants import InferencePaths
 from sap.aibus.dar.client.data_manager_client import DataManagerClient
 from sap.aibus.dar.client.exceptions import DARHTTPException, ModelAlreadyExists
 from sap.aibus.dar.client.inference_client import InferenceClient
@@ -256,6 +258,18 @@ class TestEndToEnd:
             model_name=model_name, objects=big_to_be_classified
         )
         assert len(response) == 123
+
+        url = os.environ["DAR_URL"]
+        if url[-1] == '/':
+            url = url[:-1]
+        url = url + InferencePaths.format_inference_endpoint_by_name(model_name)
+        response = inference_client.create_inference_request_with_url(
+            url=url, objects=to_be_classified
+        )
+        logger.info("Inference with URL done. API response: %s", response)
+        print(response)
+        # One object has been classified
+        assert len(response["predictions"]) == 1
 
     def _assert_deployment_exists(self, deployment_id, model_manager_client):
         # Look at individual resource

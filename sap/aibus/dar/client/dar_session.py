@@ -158,6 +158,17 @@ class DARSession:
         self._check_status_code(response, url)
         return response
 
+    def post_to_url(self, url: str, payload: dict, retry: bool = False) -> Response:
+        """
+        Performs **POST** request against fully-qualified URL
+        """
+        connection = self.http
+        if retry:
+            connection = self.http_post_retry
+        response = connection.post(url, headers=self._get_headers(), json=payload)
+        self._check_status_code(response, url)
+        return response
+
 
 def _get_requests_version():
     requests_version = None
