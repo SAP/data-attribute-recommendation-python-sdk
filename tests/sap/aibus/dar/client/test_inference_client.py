@@ -204,7 +204,7 @@ class TestInferenceClient:
             == expected_calls_to_post
         )
 
-    def test_create_inference_with_url_works(self):
+    def test_create_inference_with_url_works(self, inference_client: InferenceClient):
         """
         Checks inference call.
         """
