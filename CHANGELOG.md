@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.1]
+
+### Added
+
+* Support for Business Blueprint API. [#118]
+  * This feature is **not supported** in DAR service yet, it is added for internal testing purposes.
+  * `read_business_blueprint_template_collection` method to list business blueprint templates collection.
+  * `read_business_blueprint_template_by_id` method to fetch information of a specific business blueprint template for the given business_blueprint_id
+
+[#118]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/118
 
 ## [0.9.0]
 
@@ -215,7 +225,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.0...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.1...HEAD
+[0.9.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.0...rel/0.9.1
 [0.9.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.2...rel/0.9.0
 [0.8.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.1...rel/0.8.2
 [0.8.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.0...rel/0.8.1
