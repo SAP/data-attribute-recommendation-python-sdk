@@ -208,7 +208,7 @@ class TestInferenceClient:
         """
         Checks inference call.
         """
-        url = f"{DAR_URL}inference/api/v3/models/my-model/versions/1"
+        url = DAR_URL + "inference/api/v3/models/my-model/versions/1"
         response = inference_client.create_inference_request_with_url(
             url, objects=self.objects
         )
