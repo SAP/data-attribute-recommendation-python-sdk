@@ -130,7 +130,9 @@ class InferenceClient(BaseClientWithSession):
         retry: bool = False,
     ) -> dict:
         """
-        Performs inference for the given *objects* with fully-qualified URL.
+        Performs inference for the given *objects* against fully-qualified URL.
+        A complete inference URL can be the passed to the method inference, instead
+        of constructing URL from using base url and model name
 
         :param url: fully-qualified inference URL
         :param objects: Objects to be classified

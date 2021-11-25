@@ -161,6 +161,9 @@ class DARSession:
     def post_to_url(self, url: str, payload: dict, retry: bool = False) -> Response:
         """
         Performs **POST** request against fully-qualified URL
+        :param url: a fully-qualified inference URL
+        :param payload: request body
+        :param retry: enables retrying a failed request
         """
         connection = self.http
         if retry:
