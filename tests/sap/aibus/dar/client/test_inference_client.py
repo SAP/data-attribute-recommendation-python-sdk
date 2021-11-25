@@ -219,11 +219,9 @@ class TestInferenceClient:
             retry=False,
         )
 
-        assert inference_client.session.post_to_endpoint.call_args_list == [
-            expected_call
-        ]
+        assert inference_client.session.post_to_url.call_args_list == [expected_call]
 
         assert (
-            inference_client.session.post_to_endpoint.return_value.json.return_value
+            inference_client.session.post_to_url.return_value.json.return_value
             == response
         )
