@@ -143,7 +143,7 @@ class InferenceClient(BaseClientWithSession):
             " objects and top_n '%s' to url %s",
             len(objects),
             top_n,
-            url
+            url,
         )
         response = self.session.post_to_url(
             url, payload={"topN": top_n, "objects": objects}, retry=retry

@@ -260,7 +260,7 @@ class TestEndToEnd:
         assert len(response) == 123
 
         url = os.environ["DAR_URL"]
-        if url[-1] == '/':
+        if url[-1] == "/":
             url = url[:-1]
         url = url + InferencePaths.format_inference_endpoint_by_name(model_name)
         response = inference_client.create_inference_request_with_url(

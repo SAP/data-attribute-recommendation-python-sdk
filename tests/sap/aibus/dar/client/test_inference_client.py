@@ -224,6 +224,6 @@ class TestInferenceClient:
         ]
 
         assert (
-                inference_client.session.post_to_endpoint.return_value.json.return_value
-                == response
+            inference_client.session.post_to_endpoint.return_value.json.return_value
+            == response
         )
