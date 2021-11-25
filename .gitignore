@@ -131,4 +131,4 @@ system_test_results/
 env.yml
 
 # Keys
-notebooks/key.json
+notebooks/default_key.json
