@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.2]
+
+### Added
+
+* Notebooks for showcasing model template usage. [#116]
+  * Notebook for showcasing generic model template.
+  * Notebook for showcasing hierarchical model template.
+  * Notebook for showcasing regression model template.
+
+[#116]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/116
+
+
 ## [0.9.1]
 
 ### Added
