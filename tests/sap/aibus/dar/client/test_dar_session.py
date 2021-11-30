@@ -217,6 +217,45 @@ class TestDARSession:
         assert exc.url == self.dar_url[:-1] + endpoint
         assert exc.response == sess.http.post()
 
+    def test_post_to_url(self):
+        for allowed_status_code in range(200, 300):
+            sess = self._prepare()
+            sess.http.post.return_value.status_code = allowed_status_code
+
+            url = self.dar_url[:-1] + "/data-manager/api/v3/datasetSchemas/"
+
+            payload = {"a": 1, "b": "ok!"}
+
+            response = sess.post_to_url(url=url, payload=payload)
+
+            expected_http_call = call(
+                url,
+                headers=self.expected_headers,
+                json=payload,
+            )
+            assert getattr(sess.http, "post").call_args_list == [expected_http_call]
+            assert response == sess.http.post.return_value
+
+    def test_post_to_url_with_retry(self):
+        for allowed_status_code in range(200, 300):
+            sess = self._prepare()
+            sess.http_post_retry.post.return_value.status_code = allowed_status_code
+
+            url = self.dar_url[:-1] + "/data-manager/api/v3/datasetSchemas/"
+
+            payload = {"a": 1, "b": "ok!"}
+
+            response = sess.post_to_url(url=url, payload=payload, retry=True)
+            expected_http_call = call(
+                url,
+                headers=self.expected_headers,
+                json=payload,
+            )
+            assert getattr(sess.http_post_retry, "post").call_args_list == [
+                expected_http_call
+            ]
+            assert response == sess.http_post_retry.post.return_value
+
     def _assert(self, sess, method, endpoint):
         # Validate test-internal assumption
         assert self.dar_url[-1] == "/"

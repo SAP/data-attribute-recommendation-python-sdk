@@ -121,3 +121,35 @@ class InferenceClient(BaseClientWithSession):
             )
             result.extend(response["predictions"])
         return result
+
+    def create_inference_request_with_url(
+        self,
+        url: str,
+        objects: List[dict],
+        top_n: int = TOP_N,
+        retry: bool = False,
+    ) -> dict:
+        """
+        Performs inference for the given *objects* against fully-qualified URL.
+        A complete inference URL can be the passed to the method inference, instead
+        of constructing URL from using base url and model name
+
+        :param url: fully-qualified inference URL
+        :param objects: Objects to be classified
+        :param top_n: How many predictions to return per object
+        :param retry: whether to retry on errors. Default: False
+        :return: API response
+        """
+        self.log.debug(
+            "Submitting Inference request with '%s'"
+            " objects and top_n '%s' to url %s",
+            len(objects),
+            top_n,
+            url,
+        )
+        response = self.session.post_to_url(
+            url, payload={"topN": top_n, "objects": objects}, retry=retry
+        )
+        as_json = response.json()
+        self.log.debug("Inference response ID: %s", as_json["id"])
+        return as_json

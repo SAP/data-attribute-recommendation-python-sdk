@@ -679,7 +679,7 @@ def prepare_client(dar_url: str, clazz):
     mock_session = create_autospec(DARSession, instance=True)
     mock_session.get_from_endpoint.return_value = mock_response
     mock_session.post_to_endpoint.return_value = mock_response
-
+    mock_session.post_to_url.return_value = mock_response
     client = clazz.construct_from_jwt(dar_url, "abcd")
     client.session = mock_session
     return client
