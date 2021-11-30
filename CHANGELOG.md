@@ -14,6 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#122]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/122
 
+## [0.9.2]
+
+### Added
+
+* Notebooks for showcasing model template usage. [#116]
+  * Notebook for showcasing generic model template.
+  * Notebook for showcasing hierarchical model template.
+  * Notebook for showcasing regression model template.
+
+[#116]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/116
+
 ## [0.9.1]
 
 ### Added
@@ -234,7 +245,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * First public release
 
 [Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.10.0...HEAD
-[0.9.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.1...rel/0.10.0
+[0.10.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.2...rel/0.10.0
+[0.9.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.1...rel/0.9.2
 [0.9.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.0...rel/0.9.1
 [0.9.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.2...rel/0.9.0
 [0.8.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.1...rel/0.8.2
