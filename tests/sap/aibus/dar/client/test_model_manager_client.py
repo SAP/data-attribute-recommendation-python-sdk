@@ -475,7 +475,7 @@ class TestModelManagerClientModelJob:
         )
         response = model_manager_client.read_job_by_model_name("my-model-1")
         assert response["modelName"] == "my-model-1"
-        model_manager_client.read_job_collection.assert_called_once()
+        assert model_manager_client.read_job_collection.call_count == 1
 
     def test_read_job_by_model_name_job_not_found(
         self, model_manager_client: ModelManagerClient
@@ -492,7 +492,7 @@ class TestModelManagerClientModelJob:
             model_manager_client.read_job_by_model_name("my-model-3")
         expected_message = "Job with model name 'my-model-3' could not be found"
         assert str(exc.value) == expected_message
-        model_manager_client.read_job_collection.assert_called_once()
+        assert model_manager_client.read_job_collection.call_count == 1
 
     @staticmethod
     def _make_job_resource(state):
