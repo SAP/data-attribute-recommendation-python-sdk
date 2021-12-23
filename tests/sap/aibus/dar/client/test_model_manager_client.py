@@ -464,9 +464,9 @@ class TestModelManagerClientModelJob:
             non_failed_job = self._make_job_resource(non_failed_state)
             assert ModelManagerClient.is_job_failed(non_failed_job) is False
 
-    def test_read_job_by_model_name(self):
-        job1 = self._make_job_resource()
-        job2 = self._make_job_resource()
+    def test_read_job_by_model_name(self, model_manager_client: ModelManagerClient):
+        job1 = self._make_job_resource("SUCCEEDED")
+        job2 = self._make_job_resource("SUCCEEDED")
         job2["modelName"] = "my-model-2"
         job_collection_response = {"count": 2, "jobs": [job1, job2]}
         model_manager_client.read_job_collection = create_autospec(
@@ -477,7 +477,9 @@ class TestModelManagerClientModelJob:
         assert response["modelName"] == "my-model-1"
         model_manager_client.read_job_collection.assert_called_once()
 
-    def test_read_job_by_model_name_job_not_found(self):
+    def test_read_job_by_model_name_job_not_found(
+        self, model_manager_client: ModelManagerClient
+    ):
         job1 = self._make_job_resource("SUCCEEDED")
         job2 = self._make_job_resource("SUCCEEDED")
         job2["modelName"] = "my-model-2"
