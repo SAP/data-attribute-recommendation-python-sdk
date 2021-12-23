@@ -132,7 +132,9 @@ class ModelManagerClient(BaseClientWithSession):
             if job["modelName"] == model_name:
                 return job
         else:  # pylint: disable=useless-else-on-loop
-            raise JobNotFound(f"Job with model name '{model_name}' could not be found")
+            raise JobNotFound(
+                "Job with model name '{}' could not be found".format(model_name)
+            )
 
     def delete_job_by_id(self, job_id: str) -> None:
         """
