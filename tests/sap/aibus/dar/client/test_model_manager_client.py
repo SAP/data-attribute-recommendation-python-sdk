@@ -478,8 +478,8 @@ class TestModelManagerClientModelJob:
         model_manager_client.read_job_collection.assert_called_once()
 
     def test_read_job_by_model_name_job_not_found(self):
-        job1 = self._make_job_resource()
-        job2 = self._make_job_resource()
+        job1 = self._make_job_resource("SUCCEEDED")
+        job2 = self._make_job_resource("SUCCEEDED")
         job2["modelName"] = "my-model-2"
         job_collection_response = {"count": 2, "jobs": [job1, job2]}
         model_manager_client.read_job_collection = create_autospec(
