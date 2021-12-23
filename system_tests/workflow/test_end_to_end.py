@@ -154,6 +154,8 @@ class TestEndToEnd:
         self._assert_job_exists(model_manager_client, job_id)
         # Get dataset ID used in this job
         job_resource = model_manager_client.read_job_by_id(job_id)
+        job_by_name = model_manager_client.read_job_by_model_name(model_name)
+        assert job_by_name is not None
         dataset_id = job_resource["datasetId"]
         # Clean up job
         model_manager_client.delete_job_by_id(job_id)

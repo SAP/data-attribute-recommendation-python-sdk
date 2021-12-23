@@ -13,6 +13,7 @@ from sap.aibus.dar.client.exceptions import (
     DeploymentTimeOut,
     DeploymentFailed,
     CreateTrainingJobFailed,
+    JobNotFound,
 )
 from sap.aibus.dar.client.model_manager_client import ModelManagerClient
 from sap.aibus.dar.client.util.polling import Polling, PollingTimeoutException
@@ -462,6 +463,34 @@ class TestModelManagerClientModelJob:
         for non_failed_state in non_failed_states:
             non_failed_job = self._make_job_resource(non_failed_state)
             assert ModelManagerClient.is_job_failed(non_failed_job) is False
+
+    def test_read_job_by_model_name(self):
+        job1 = self._make_job_resource()
+        job2 = self._make_job_resource()
+        job2["modelName"] = "my-model-2"
+        job_collection_response = {"count": 2, "jobs": [job1, job2]}
+        model_manager_client.read_job_collection = create_autospec(
+            model_manager_client.read_job_collection,
+            return_value=job_collection_response,
+        )
+        response = model_manager_client.read_job_by_model_name("my-model-1")
+        assert response["modelName"] == "my-model-1"
+        model_manager_client.read_job_collection.assert_called_once()
+
+    def test_read_job_by_model_name_job_not_found(self):
+        job1 = self._make_job_resource()
+        job2 = self._make_job_resource()
+        job2["modelName"] = "my-model-2"
+        job_collection_response = {"count": 2, "jobs": [job1, job2]}
+        model_manager_client.read_job_collection = create_autospec(
+            model_manager_client.read_job_collection,
+            return_value=job_collection_response,
+        )
+        with pytest.raises(JobNotFound) as exc:
+            model_manager_client.read_job_by_model_name("my-model-3")
+        expected_message = "Job with model name 'my-model-3' could not be found"
+        assert str(exc.value) == expected_message
+        model_manager_client.read_job_collection.assert_called_once()
 
     @staticmethod
     def _make_job_resource(state):

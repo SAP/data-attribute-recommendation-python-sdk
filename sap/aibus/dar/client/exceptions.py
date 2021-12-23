@@ -115,6 +115,14 @@ class CreateTrainingJobFailed(DARException):
     pass
 
 
+class JobNotFound(DARException):
+    """
+    Training job not found
+    """
+
+    pass
+
+
 class ModelAlreadyExists(DARException):
     """
     Model already exists and must be deleted first.
