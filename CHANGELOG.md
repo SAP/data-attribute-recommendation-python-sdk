@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Support for reading training jobs using model name in `read_job_by_model_name`
 
-[#123]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/123
+[#124]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/124
 
 ## [0.10.0]
 
