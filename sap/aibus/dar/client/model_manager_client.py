@@ -14,6 +14,7 @@ from sap.aibus.dar.client.exceptions import (
     DeploymentTimeOut,
     DeploymentFailed,
     CreateTrainingJobFailed,
+    JobNotFound,
 )
 from sap.aibus.dar.client.model_manager_constants import (
     JobStatus,
@@ -112,10 +113,27 @@ class ModelManagerClient(BaseClientWithSession):
 
         :param job_id: ID of the Job to be retrieved.
         :return: a single Job as dict
+        :raises JobNotFound: when no Job with given model name is found
         """
         endpoint = ModelManagerPaths.format_job_endpoint_by_id(job_id)
         response = self.session.get_from_endpoint(endpoint)
         return response.json()
+
+    def read_job_by_model_name(self, model_name: str) -> dict:
+        """
+        Reads Job with the given *model_name*
+        :param model_name: name of model
+        :return: a single Job as dict
+        :raises
+        """
+        jobs_response = self.read_job_collection()
+        jobs = jobs_response["jobs"]
+        for job in jobs:
+            if job["modelName"] == model_name:
+                return job
+        raise JobNotFound(
+            "Job with model name '{}' could not be found".format(model_name)
+        )
 
     def delete_job_by_id(self, job_id: str) -> None:
         """
