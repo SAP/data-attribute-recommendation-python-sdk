@@ -7,12 +7,15 @@
 from unittest.mock import call
 
 import pytest
+from requests import RequestException, Timeout
 
+from sap.aibus.dar.client.exceptions import DARHTTPException
 from sap.aibus.dar.client.inference_client import InferenceClient
 from tests.sap.aibus.dar.client.test_data_manager_client import (
     AbstractDARClientConstruction,
     prepare_client,
 )
+from tests.sap.aibus.dar.client.test_exceptions import create_mock_response_404
 
 
 class TestInferenceClientConstruction(AbstractDARClientConstruction):
@@ -203,3 +206,38 @@ class TestInferenceClient:
             inference_client.session.post_to_endpoint.call_args_list
             == expected_calls_to_post
         )
+
+    def test_bulk_inference_error(self, inference_client: InferenceClient):
+        """
+        Tests if do_bulk_inference method will recover from errors.
+        """
+
+        response_404 = create_mock_response_404()
+        url = "http://localhost:4321/test/"
+
+        exception_404 = DARHTTPException.create_from_response(url, response_404)
+
+        exceptions = [exception_404, RequestException, Timeout]
+        # Try different exceptions
+        for exc in exceptions:
+            inference_client.session.post_to_endpoint.return_value.json.side_effect = [
+                self.inference_response(50),
+                exc,
+                self.inference_response(40),
+            ]
+
+            many_objects = [self.objects[0] for _ in range(50 + 50 + 40)]
+            assert len(many_objects) == 50 + 50 + 40
+
+            response = inference_client.do_bulk_inference(
+                model_name="test-model",
+                objects=many_objects,
+                top_n=4,
+            )
+
+            expected_response = []
+            expected_response.extend(self.inference_response(50)["predictions"])
+            expected_response.extend(None for _ in range(50))
+            expected_response.extend(self.inference_response(40)["predictions"])
+
+            assert response == expected_response

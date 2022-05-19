@@ -8,22 +8,28 @@ from tests.sap.aibus.dar.client.test_dar_session import create_mock_response
 
 url = "http://localhost:4321/test/"
 
+correlation_id = "412d84ae-0eb5-4421-863d-956570c2da54"
+vcap_request_id = "d9cd7dec-4d74-4a7a-a953-4ca583c8d912"
+
+
+def create_mock_response_404():
+    mock_response = create_mock_response()
+
+    mock_response.headers["X-Correlation-ID"] = correlation_id
+    mock_response.headers["X-Vcap-Request-Id"] = vcap_request_id
+    mock_response.headers["Server"] = "Gunicorn"
+    mock_response.headers["X-Cf-Routererror"] = "unknown_route"
+    mock_response.status_code = 404
+    mock_response.request.method = "GET"
+    mock_response.reason = b"\xc4\xd6\xdc Not Found"
+    return mock_response
+
 
 class TestDARHTTPException:
     url = "http://localhost:4321/test/"
 
     def test_basic(self):
-        mock_response = create_mock_response()
-
-        correlation_id = "412d84ae-0eb5-4421-863d-956570c2da54"
-        mock_response.headers["X-Correlation-ID"] = correlation_id
-        vcap_request_id = "d9cd7dec-4d74-4a7a-a953-4ca583c8d912"
-        mock_response.headers["X-Vcap-Request-Id"] = vcap_request_id
-        mock_response.headers["Server"] = "Gunicorn"
-        mock_response.headers["X-Cf-Routererror"] = "unknown_route"
-        mock_response.status_code = 404
-        mock_response.request.method = "GET"
-        mock_response.reason = b"\xc4\xd6\xdc Not Found"
+        mock_response = create_mock_response_404()
 
         exception = DARHTTPException.create_from_response(url, mock_response)
 
@@ -130,7 +136,6 @@ class TestDARHTTPExceptionReason:
     # status line: https://tools.ietf.org/html/rfc7230#section-3.1.2
 
     def test_reason_works_iso8859_1(self):
-
         mock_response = create_mock_response()
         # ÄÖÜ encoded as ISO-8859-1
         mock_response.reason = b"\xc4\xd6\xdc"
