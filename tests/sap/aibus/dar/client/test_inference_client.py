@@ -207,6 +207,53 @@ class TestInferenceClient:
             == expected_calls_to_post
         )
 
+    def test_create_inference_with_url_works(self, inference_client: InferenceClient):
+        """
+        Checks inference call.
+        """
+        url = DAR_URL + "inference/api/v3/models/my-model/versions/1"
+        response = inference_client.create_inference_request_with_url(
+            url, objects=self.objects
+        )
+
+        expected_call = call(
+            url,
+            payload={"topN": 1, "objects": self.objects},
+            retry=False,
+        )
+
+        assert inference_client.session.post_to_url.call_args_list == [expected_call]
+
+        assert (
+            inference_client.session.post_to_url.return_value.json.return_value
+            == response
+        )
+
+    def test_create_inference_request_with_url_retry_enabled(
+        self, inference_client: InferenceClient
+    ):
+        """
+        Checks if retry parameter is passed correctly.
+        """
+        url = DAR_URL + "inference/api/v3/models/my-model/versions/1"
+
+        response = inference_client.create_inference_request_with_url(
+            url=url, objects=self.objects, retry=True
+        )
+
+        expected_call = call(
+            url,
+            payload={"topN": 1, "objects": self.objects},
+            retry=True,
+        )
+
+        assert inference_client.session.post_to_url.call_args_list == [expected_call]
+
+        assert (
+            inference_client.session.post_to_url.return_value.json.return_value
+            == response
+        )
+
     def test_bulk_inference_error(self, inference_client: InferenceClient):
         """
         Tests if do_bulk_inference method will recover from errors.

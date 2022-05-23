@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0]
+
+* Support for reading training jobs using model name in `read_job_by_model_name`
+
+[#124]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/124
+
+## [0.10.0]
+
+### Added
+
+* Support for inference using external URL in `create_inference_request_with_url`
+
+[#122]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/122
+
 ## [0.9.2]
 
 ### Added
@@ -16,7 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   * Notebook for showcasing regression model template.
 
 [#116]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/116
-
 
 ## [0.9.1]
 
@@ -237,7 +250,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.1...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.10.0...HEAD
+[0.11.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.10.0...rel/0.11.0
+[0.10.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.2...rel/0.10.0
+[0.9.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.1...rel/0.9.2
 [0.9.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.0...rel/0.9.1
 [0.9.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.2...rel/0.9.0
 [0.8.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.8.1...rel/0.8.2

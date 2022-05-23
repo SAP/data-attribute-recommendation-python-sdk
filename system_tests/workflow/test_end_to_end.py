@@ -1,9 +1,11 @@
 import logging
 import uuid
 from io import BytesIO
+import os
 
 import pytest
 
+from sap.aibus.dar.client.inference_constants import InferencePaths
 from sap.aibus.dar.client.data_manager_client import DataManagerClient
 from sap.aibus.dar.client.exceptions import DARHTTPException, ModelAlreadyExists
 from sap.aibus.dar.client.inference_client import InferenceClient
@@ -141,13 +143,9 @@ class TestEndToEnd:
         # Job
         # The Model resource does not have a jobId property, so we
         # have to look up the job ID via the job collection
-        job_collection = model_manager_client.read_job_collection()
-        job_id = None
-        for job in job_collection["jobs"]:
-            if job["modelName"] == model_name:
-                job_id = job["id"]
-                break
-        assert job_id is not None
+        job = model_manager_client.read_job_by_model_name(model_name)
+        assert job["id"] is not None
+        job_id = job["id"]
 
         self._assert_job_exists(model_manager_client, job_id)
         # Get dataset ID used in this job
@@ -256,6 +254,18 @@ class TestEndToEnd:
             model_name=model_name, objects=big_to_be_classified
         )
         assert len(response) == 123
+
+        url = os.environ["DAR_URL"]
+        if url[-1] == "/":
+            url = url[:-1]
+        url = url + InferencePaths.format_inference_endpoint_by_name(model_name)
+        response = inference_client.create_inference_request_with_url(
+            url=url, objects=to_be_classified
+        )
+        logger.info("Inference with URL done. API response: %s", response)
+        print(response)
+        # One object has been classified
+        assert len(response["predictions"]) == 1
 
     def _assert_deployment_exists(self, deployment_id, model_manager_client):
         # Look at individual resource
