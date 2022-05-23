@@ -294,7 +294,7 @@ class TestInferenceClient:
                 "labels": None,
                 # If this test fails, I found it can make pytest/PyCharm hang because it
                 # takes too much time in difflib.
-                "_sdk_error": f"{exc.__class__.__name__}: {exc}",
+                "_sdk_error": "{}: {}".format(exc.__class__.__name__, str(exc)),
             }
 
             expected_response = []
@@ -332,7 +332,9 @@ class TestInferenceClient:
             "labels": None,
             # If this test fails, I found it can make pytest/PyCharm hang because it
             # takes too much time in difflib.
-            "_sdk_error": f"{exception_404.__class__.__name__}: {exception_404}",
+            "_sdk_error": "{}: {}".format(
+                exception_404.__class__.__name__, str(exception_404)
+            ),
         }
         expected_response = []
         expected_response.extend(

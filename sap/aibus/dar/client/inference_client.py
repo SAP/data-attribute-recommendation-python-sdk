@@ -172,7 +172,7 @@ class InferenceClient(BaseClientWithSession):
                     {
                         "objectId": inference_object.get("objectId", None),
                         "labels": None,
-                        "_sdk_error": f"{exc.__class__.__name__}: {exc}",
+                        "_sdk_error": "{}: {}".format(exc.__class__.__name__, str(exc)),
                     }
                     for inference_object in work_package
                 ]
