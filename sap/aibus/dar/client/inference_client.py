@@ -84,16 +84,42 @@ class InferenceClient(BaseClientWithSession):
         For *objects* collections larger than *LIMIT_OBJECTS_PER_CALL*, splits
         the data into several smaller Inference requests.
 
+        Requests are executed in parallel.
+
         Returns the aggregated values of the *predictions* of the original API response
-        as returned by :meth:`create_inference_request`.
+        as returned by :meth:`create_inference_request`. If one of the inference
+        requests to the service fails, an artificial prediction object is inserted with
+        the `labels` key set to `None` for each of the objects in the failing request.
+
+        Example of a prediction object which indicates an error:
+
+        .. code-block:: python
+
+            {
+                'objectId': 'b5cbcb34-7ab9-4da5-b7ec-654c90757eb9',
+                'labels': None,
+                '_sdk_error': 'RequestException: Request Error'
+            }
+
+        In case the `objects` passed to this method do not contain the `objectId` field,
+        the value is set to `None` in the error prediction object:
+
+        .. code-block:: python
+
+            {
+                'objectId': None,
+                'labels': None,
+                '_sdk_error': 'RequestException: Request Error'
+            }
+
 
         .. note::
 
             This method calls the inference endpoint multiple times to process all data.
             For non-trial service instances, each call will incur a cost.
 
-            To reduce the likelihood of a failed request terminating the bulk inference
-            process, this method will retry failed requests.
+            To reduce the impact of a failed request, this method will retry failed
+            requests.
 
             There is a small chance that even retried requests will be charged, e.g.
             if a problem occurs with the request on the client side outside the
@@ -106,6 +132,19 @@ class InferenceClient(BaseClientWithSession):
         .. versionchanged:: 0.7.0
             The default for the `retry` parameter changed from `retry=False` to
             `retry=True` for increased reliability in day-to-day operations.
+
+        .. versionchanged:: 0.12.0
+           Requests are now executed in parallel with up to four threads.
+
+           Errors are now handled in this method instead of raising an exception and
+           discarding inference results from previous requests. For objects where the
+           inference request did not succeed, a replacement `dict` object is placed in
+           the returned `list`.
+           This `dict` follows the format of the `ObjectPrediction` object sent by the
+           service. To indicate that this is a client-side generated placeholder, the
+           `labels` key for all ObjectPrediction dicts of the failed inference request
+           has value `None`.
+           A `_sdk_error` key is added with the Exception details.
 
 
         :param model_name: name of the model used for inference
@@ -128,7 +167,16 @@ class InferenceClient(BaseClientWithSession):
                     exc,
                     exc_info=True,
                 )
-                return [None for _ in range(len(work_package))]
+
+                prediction_error = [
+                    {
+                        "objectId": inference_object.get("objectId", None),
+                        "labels": None,
+                        "_sdk_error": f"{exc.__class__.__name__}: {exc}",
+                    }
+                    for inference_object in work_package
+                ]
+                return prediction_error
 
         results = []
 
