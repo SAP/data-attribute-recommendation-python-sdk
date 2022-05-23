@@ -6,7 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.0]
+
+### Changed
+
+* `InferenceClient.do_bulk_inference` is now faster due to processing requests in parallel [#128]
+* `InferenceClient.do_bulk_inference` is more resilient and handles errors internally. Instead of
+   raising an Exception if the inference request to the service fails, the `do_bulk_inference` method
+   will place a special error response object in the returned list. This can be considered a breaking API change,
+   because the special error response object will have a value of `None` for the `labels` key.
+   As this project is still versioned below 1.0.0, the breaking API change does not warrant a major version update.
+   See [#128] for details.
+
+[#128]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/128
+
 ## [0.11.0]
+
+### Added
 
 * Support for reading training jobs using model name in `read_job_by_model_name`
 
