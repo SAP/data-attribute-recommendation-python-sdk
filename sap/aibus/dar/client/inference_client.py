@@ -7,7 +7,7 @@ from typing import List, Union
 from requests import RequestException
 
 from sap.aibus.dar.client.base_client import BaseClientWithSession
-from sap.aibus.dar.client.exceptions import DARHTTPException
+from sap.aibus.dar.client.exceptions import DARHTTPException, InvalidWorkerCount
 from sap.aibus.dar.client.inference_constants import InferencePaths
 from sap.aibus.dar.client.util.lists import split_list
 
@@ -16,6 +16,8 @@ LIMIT_OBJECTS_PER_CALL = 50
 
 #: How many labels to predict for a single object by default
 TOP_N = 1
+
+# pylint: disable=too-many-arguments
 
 
 class InferenceClient(BaseClientWithSession):
@@ -77,6 +79,7 @@ class InferenceClient(BaseClientWithSession):
         objects: List[dict],
         top_n: int = TOP_N,
         retry: bool = True,
+        worker_count: int = 4,
     ) -> List[Union[dict, None]]:
         """
         Performs bulk inference for larger collections.
@@ -146,13 +149,31 @@ class InferenceClient(BaseClientWithSession):
            has value `None`.
            A `_sdk_error` key is added with the Exception details.
 
+        .. versionadded:: 0.12.0
+           The `worker_count` parameter allows to fine-tune the number of concurrent
+           request threads. Set `worker_count` to `1` to disable concurrent execution of
+           requests.
+
 
         :param model_name: name of the model used for inference
         :param objects: Objects to be classified
         :param top_n: How many predictions to return per object
         :param retry: whether to retry on errors. Default: True
+        :param worker_count: maximum number of concurrent requests
+        :raises: InvalidWorkerCount if worker_count param is incorrect
         :return: the aggregated ObjectPrediction dictionaries
         """
+
+        if worker_count is None:
+            raise InvalidWorkerCount("worker_count cannot be None!")
+
+        if worker_count > 4:
+            msg = "worker_count too high: %s. Up to 4 allowed." % worker_count
+            raise InvalidWorkerCount(msg)
+
+        if worker_count <= 0:
+            msg = "worker_count must be greater than 0!"
+            raise InvalidWorkerCount(msg)
 
         def predict_call(work_package):
             try:
@@ -180,7 +201,7 @@ class InferenceClient(BaseClientWithSession):
 
         results = []
 
-        with ThreadPoolExecutor(max_workers=4) as pool:
+        with ThreadPoolExecutor(max_workers=worker_count) as pool:
             results_iterator = pool.map(
                 predict_call, split_list(objects, LIMIT_OBJECTS_PER_CALL)
             )

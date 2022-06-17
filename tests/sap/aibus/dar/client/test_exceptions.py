@@ -1,7 +1,10 @@
 import datetime
 from unittest.mock import PropertyMock
 
-from sap.aibus.dar.client.exceptions import DARHTTPException, ModelAlreadyExists
+from sap.aibus.dar.client.exceptions import (
+    DARHTTPException,
+    ModelAlreadyExists,
+)
 from tests.sap.aibus.dar.client.test_dar_session import create_mock_response
 
 # TODO: test __str__
