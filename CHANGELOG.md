@@ -17,8 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
    because the special error response object will have a value of `None` for the `labels` key.
    As this project is still versioned below 1.0.0, the breaking API change does not warrant a major version update.
    See [#128] for details.
+* Improve reliability by tweaking retry configuration [#129]
 
 [#128]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/128
+[#129]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/129
 
 ## [0.11.0]
 
@@ -266,7 +268,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.10.0...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.12.0...HEAD
+[0.11.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.11.0...rel/0.12.0
 [0.11.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.10.0...rel/0.11.0
 [0.10.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.2...rel/0.10.0
 [0.9.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.9.1...rel/0.9.2
