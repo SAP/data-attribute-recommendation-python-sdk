@@ -123,6 +123,14 @@ class JobNotFound(DARException):
     pass
 
 
+class InvalidWorkerCount(DARException):
+    """
+    Invalid worker_count parameter is specified.
+
+    .. versionadded:: 0.12.0
+    """
+
+
 class ModelAlreadyExists(DARException):
     """
     Model already exists and must be deleted first.

@@ -3,12 +3,12 @@
 # mypy cannot deal with some of the monkey-patching we do below.
 # https://github.com/python/mypy/issues/2427
 from typing import Optional
-from unittest.mock import call
+from unittest.mock import call, Mock
 
 import pytest
 from requests import RequestException, Timeout
 
-from sap.aibus.dar.client.exceptions import DARHTTPException
+from sap.aibus.dar.client.exceptions import DARHTTPException, InvalidWorkerCount
 from sap.aibus.dar.client.inference_client import InferenceClient
 from tests.sap.aibus.dar.client.test_data_manager_client import (
     AbstractDARClientConstruction,
@@ -180,7 +180,11 @@ class TestInferenceClient:
             retry_kwarg["retry"] = retry_flag
 
         response = inference_client.do_bulk_inference(
-            model_name="test-model", objects=many_objects, top_n=4, **retry_kwarg
+            model_name="test-model",
+            objects=many_objects,
+            top_n=4,
+            worker_count=1,  # Disable concurrency to make tests deterministic.
+            **retry_kwarg,
         )
 
         # The return value is the concatenation of all 'predictions' of the individual
@@ -267,20 +271,41 @@ class TestInferenceClient:
 
         exception_404 = DARHTTPException.create_from_response(url, response_404)
 
+        # The old trick to return different values in a Mock based on the call order
+        # does not work here because the code is concurrent. Instead, we use a different
+        # objectId for those objects where we want the request to fail
+        def make_mock_post(exc):
+            def post_to_endpoint(*args, **kwargs):
+                payload = kwargs.pop("payload")
+                object_id = payload["objects"][0]["objectId"]
+                if object_id == "expected-to-fail":
+                    raise exc
+                elif object_id == "b5cbcb34-7ab9-4da5-b7ec-654c90757eb9":
+                    response = Mock()
+                    response.json.return_value = self.inference_response(
+                        len(payload["objects"])
+                    )
+                    return response
+                else:
+                    raise ValueError("objectId '%s' not handled in test." % object_id)
+
+            return post_to_endpoint
+
+        # Try different exceptions
         exceptions = [
             exception_404,
             RequestException("Request Error"),
             Timeout("Timeout"),
         ]
-        # Try different exceptions
         for exc in exceptions:
-            inference_client.session.post_to_endpoint.return_value.json.side_effect = [
-                self.inference_response(50),
-                exc,
-                self.inference_response(40),
-            ]
+            inference_client.session.post_to_endpoint.side_effect = make_mock_post(exc)
 
-            many_objects = [self.objects()[0] for _ in range(50 + 50 + 40)]
+            many_objects = []
+            many_objects.extend([self.objects()[0] for _ in range(50)])
+            many_objects.extend(
+                [self.objects(object_id="expected-to-fail")[0] for _ in range(50)]
+            )
+            many_objects.extend([self.objects()[0] for _ in range(40)])
             assert len(many_objects) == 50 + 50 + 40
 
             response = inference_client.do_bulk_inference(
@@ -290,7 +315,7 @@ class TestInferenceClient:
             )
 
             expected_error_response = {
-                "objectId": "b5cbcb34-7ab9-4da5-b7ec-654c90757eb9",
+                "objectId": "expected-to-fail",
                 "labels": None,
                 # If this test fails, I found it can make pytest/PyCharm hang because it
                 # takes too much time in difflib.
@@ -302,6 +327,7 @@ class TestInferenceClient:
             expected_response.extend(expected_error_response for _ in range(50))
             expected_response.extend(self.inference_response(40)["predictions"])
 
+            assert len(response) == len(expected_response)
             assert response == expected_response
 
     def test_bulk_inference_error_no_object_ids(
@@ -326,6 +352,7 @@ class TestInferenceClient:
             model_name="test-model",
             objects=inference_objects,
             top_n=4,
+            worker_count=1,  # disable concurrency to make tests deterministic
         )
         expected_error_response = {
             "objectId": None,
@@ -346,3 +373,33 @@ class TestInferenceClient:
         )
 
         assert response == expected_response
+
+    def test_worker_count_validation(self, inference_client: InferenceClient):
+
+        many_objects = [self.objects()[0] for _ in range(75)]
+
+        with pytest.raises(InvalidWorkerCount) as context:
+            inference_client.do_bulk_inference(
+                model_name="test-model", objects=many_objects, worker_count=5
+            )
+        assert "worker_count too high: 5. Up to 4 allowed." in str(context.value)
+
+        with pytest.raises(InvalidWorkerCount) as context:
+            inference_client.do_bulk_inference(
+                model_name="test-model", objects=many_objects, worker_count=0
+            )
+        assert "worker_count must be greater than 0" in str(context.value)
+
+        with pytest.raises(InvalidWorkerCount) as context:
+            inference_client.do_bulk_inference(
+                model_name="test-model", objects=many_objects, worker_count=-1
+            )
+        assert "worker_count must be greater than 0" in str(context.value)
+
+        with pytest.raises(InvalidWorkerCount) as context:
+            inference_client.do_bulk_inference(
+                model_name="test-model",
+                objects=many_objects,
+                worker_count=None,
+            )
+            assert "worker_count cannot be None" in str(context.value)

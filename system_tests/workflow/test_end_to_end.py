@@ -249,9 +249,16 @@ class TestEndToEnd:
         # One object has been classified
         assert len(response["predictions"]) == 1
 
+        # do_bulk_inference with concurrency
         big_to_be_classified = [to_be_classified[0] for _ in range(123)]
         response = inference_client.do_bulk_inference(
             model_name=model_name, objects=big_to_be_classified
+        )
+        assert len(response) == 123
+
+        # do_bulk_inference without concurrency
+        response = inference_client.do_bulk_inference(
+            model_name=model_name, objects=big_to_be_classified, worker_count=1
         )
         assert len(response) == 123
 
