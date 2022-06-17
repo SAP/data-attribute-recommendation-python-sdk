@@ -283,7 +283,7 @@ class TestInferenceClient:
                     )
                     return response
                 else:
-                    raise ValueError(f"objectId '{object_id}' not handled in test.")
+                    raise ValueError("objectId '%s' not handled in test." % object_id)
 
             return post_to_endpoint
 
