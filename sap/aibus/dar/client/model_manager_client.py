@@ -174,7 +174,7 @@ class ModelManagerClient(BaseClientWithSession):
         :param model_template_id: Model template ID for training
         :param business_blueprint_id: Business Blueprint template ID for training
         :raises CreateTrainingJobFailed: When business_blueprint_id
-        and model_template_id are provided or when both are not provided
+            and model_template_id are provided or when both are not provided
         :return: newly created Job as dict
         """
         self.log.info(
