@@ -19,7 +19,7 @@ READ_TIMEOUT = 240
 
 CONNECT_TIMEOUT = 240
 
-NUM_REQUEST_RETRIES = 5  # total number of request retries
+NUM_REQUEST_RETRIES = 7  # total number of request retries
 
 
 class HttpMethodsProtocol(Protocol):
@@ -162,7 +162,7 @@ class RetrySession(HttpMethodsMixin):  # pylint: disable=too-few-public-methods
         self,
         num_retries: int,
         session: Session = None,
-        backoff_factor: float = 0.03,
+        backoff_factor: float = 0.05,
         status_forcelist: Tuple = (413, 429, 500, 502, 503, 504),
     ):
         """
