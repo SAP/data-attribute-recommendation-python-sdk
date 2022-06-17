@@ -43,6 +43,8 @@ stages:
 
 language: python
 install:
+  # Fix build on 3.7: https://github.com/pypa/setuptools/issues/3293
+- pip3 install setuptools==60.9.0
 - pip3 install -r requirements-test.txt
 script: tox
 
