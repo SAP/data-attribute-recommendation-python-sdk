@@ -76,7 +76,7 @@ class TestInferenceClient:
         expected_call = call(
             "/inference/api/v3/models/my-model/versions/1",
             payload={"topN": 1, "objects": self.objects()},
-            retry=False,
+            retry=True,
         )
 
         assert inference_client.session.post_to_endpoint.call_args_list == [
@@ -226,7 +226,7 @@ class TestInferenceClient:
         expected_call = call(
             url,
             payload={"topN": 1, "objects": self.objects()},
-            retry=False,
+            retry=True,
         )
 
         assert inference_client.session.post_to_url.call_args_list == [expected_call]

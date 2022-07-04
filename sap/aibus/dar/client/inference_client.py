@@ -35,7 +35,7 @@ class InferenceClient(BaseClientWithSession):
         model_name: str,
         objects: List[dict],
         top_n: int = TOP_N,
-        retry: bool = False,
+        retry: bool = True,
     ) -> dict:
         """
         Performs inference for the given *objects* with *model_name*.
@@ -52,10 +52,14 @@ class InferenceClient(BaseClientWithSession):
             on the number of *objects*. See :meth:`do_bulk_inference` to circumvent
             this limit.
 
+        .. versionchanged:: 0.13.0
+           The *retry* parameter now defaults to true. This increases reliability of the
+           call. See corresponding note on :meth:`do_bulk_inference`.
+
         :param model_name: name of the model used for inference
         :param objects: Objects to be classified
         :param top_n: How many predictions to return per object
-        :param retry: whether to retry on errors. Default: False
+        :param retry: whether to retry on errors. Default: True
         :return: API response
         """
         self.log.debug(
@@ -139,7 +143,7 @@ class InferenceClient(BaseClientWithSession):
         .. versionchanged:: 0.12.0
            Requests are now executed in parallel with up to four threads.
 
-           Errors are now handled in this method instead of raising an exception and
+           Errors are now handl ed in this method instead of raising an exception and
            discarding inference results from previous requests. For objects where the
            inference request did not succeed, a replacement `dict` object is placed in
            the returned `list`.
@@ -216,17 +220,21 @@ class InferenceClient(BaseClientWithSession):
         url: str,
         objects: List[dict],
         top_n: int = TOP_N,
-        retry: bool = False,
+        retry: bool = True,
     ) -> dict:
         """
         Performs inference for the given *objects* against fully-qualified URL.
         A complete inference URL can be the passed to the method inference, instead
         of constructing URL from using base url and model name
 
+        .. versionchanged:: 0.13.0
+           The *retry* parameter now defaults to true. This increases reliability of the
+           call. See corresponding note on :meth:`do_bulk_inference`.
+
         :param url: fully-qualified inference URL
         :param objects: Objects to be classified
         :param top_n: How many predictions to return per object
-        :param retry: whether to retry on errors. Default: False
+        :param retry: whether to retry on errors. Default: True
         :return: API response
         """
         self.log.debug(
