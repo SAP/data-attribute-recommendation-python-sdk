@@ -143,7 +143,7 @@ class InferenceClient(BaseClientWithSession):
         .. versionchanged:: 0.12.0
            Requests are now executed in parallel with up to four threads.
 
-           Errors are now handl ed in this method instead of raising an exception and
+           Errors are now handled in this method instead of raising an exception and
            discarding inference results from previous requests. For objects where the
            inference request did not succeed, a replacement `dict` object is placed in
            the returned `list`.
