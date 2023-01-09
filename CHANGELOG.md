@@ -6,11 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.13.1]
+
+### Changed
+
+* Updated `typing-extension` to version `4.0.0` [#131]
+
+[#131]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/131
+
 ## [0.13.0]
 
 ## Changed
 
-* `InferenceClient.create_inference_request*` methods now default to `retry=True`. [130]
+* `InferenceClient.create_inference_request*` methods now default to `retry=True`. [#130]
+
+[#130]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/130
 
 ## [0.12.0]
 
@@ -274,7 +284,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.0...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.1...HEAD
+[0.13.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.0...rel/0.13.1
 [0.13.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.12.0...rel/0.13.0
 [0.12.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.11.0...rel/0.12.0
 [0.11.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.10.0...rel/0.11.0
