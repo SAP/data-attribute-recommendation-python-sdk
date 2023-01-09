@@ -10,9 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Fix `typing-extension` in `setup.py` [#132]
+* Fix `typing-extension` in `setup.py` [#133]
 
-[#131]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/132
+[#133]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/133
 
 ## [0.13.1]
 
