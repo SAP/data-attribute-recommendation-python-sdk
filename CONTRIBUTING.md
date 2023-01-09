@@ -135,7 +135,7 @@ To run the unit tests, simply call `tox`:
 $ tox
 ```
 
-By default, `tox` will run tests against Python 3.5, 3.6, 3.7 and 3.8.
+By default, `tox` will run tests against Python 3.6, 3.7, 3.8, and 3.9
 If you do not have all of these versions installed, you can select only
 those versions that you have installed:
 

@@ -95,10 +95,6 @@ jobs:
           tags: true
           condition:  $TRAVIS_TAG =~ ^rel/.*$
   - stage: test
-    name: "Python: 3.5 on Linux"
-    python: "3.5"
-    env: TOXENV=py35-cov
-  - stage: test
     name: "Python: 3.6 on Linux"
     python: "3.6"
     env: TOXENV=py36-cov
