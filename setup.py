@@ -28,7 +28,10 @@ setup(
     author_email="michael.haas01@sap.com",
     url="https://github.com/sap/data-attribute-recommendation-python-sdk",
     install_requires=[
-        "requests~=2.20", "typing-extensions~=4.0; python_version < '3.6'", "typing-extensions~=4.0", "cfenv~=0.5"
+        "requests~=2.20",
+        "typing-extensions~=3.7; python_version < '3.6'",
+        "typing-extensions~=4.0",
+        "cfenv~=0.5",
     ],
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
