@@ -29,7 +29,7 @@ setup(
     url="https://github.com/sap/data-attribute-recommendation-python-sdk",
     install_requires=[
         "requests~=2.20",
-        "typing-extensions~=3.7 : python_version < '3.6'",
+        "typing-extensions~=3.7;python_version<'3.6'",
         "typing-extensions~=4.0",
         "cfenv~=0.5",
     ],
