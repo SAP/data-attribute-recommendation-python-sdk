@@ -9,7 +9,7 @@ Features
 - Easy to use
 - High-level flows on top of the basic Data Attribute Recommendation APIs
 - Fully type annotated for great autocomplete experience
-- Supports Python 3.6 up to 3.9 (3.5 support removed in version 0.14.0)
+- Supports Python 3.6 up to 3.9 (3.5 support removed in version `0.14.0`)
 
 Release Notes
 -------------
