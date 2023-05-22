@@ -43,7 +43,7 @@ pay attention to the [CHANGELOG.md].
 # Requirements
 
 To use the SDK, you will need a recent version of Python. We actively support
-and test Python ~~3.5~~ 3.6 up to Python 3.9. We aim to support all officially supported
+and test Python ~~3.5~~ ~~3.6~~ 3.8,  3.9, 3.10 and 3.11. We aim to support all officially supported
 Python version. This includes any Python version not
 listed as `end-of-life` in the
 [Python Developer's Guide](https://devguide.python.org/#branchstatus). You can check
@@ -51,6 +51,8 @@ the [Travis builds] to see which environments are actively tested.
 
 **NOTE:** Python 3.5 is [end-of-life since September 2021](https://www.python.org/downloads/release/python-3510/).
 The SDK will **remove support** for Python 3.5 at some point after the 0.8.0 release.
+* **Python 3.5 support dropped in version `0.14.0`**
+* **Python 3.6 and 3.7 dropped in version `0.14.1`**
 
 Additionally, the `pip` and `virtualenv` tools should be installed. See
 the [installation instructions][pip and virtual environments].

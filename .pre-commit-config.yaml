@@ -1,11 +1,11 @@
 default_language_version:
-    python: python3.11
+    python: python3.8
 repos:
 -   repo: https://github.com/ambv/black
     rev: 23.3.0
     hooks:
     - id: black
-      language_version: python3.11
+      language_version: python3.8
       args: ['--target-version', 'py38']
 -   repo: https://github.com/pycqa/flake8
     rev: 3.9.2
@@ -32,8 +32,8 @@ repos:
       exclude: docs/
       additional_dependencies:
         - "types-requests~=0.1.9" # type stubs for requests. mypy 0.900 no longer ships these.
--   repo: https://github.com/pre-commit/mirrors-pylint
-    rev: 'v2.7.4'
+-   repo: https://github.com/pylint-dev/pylint
+    rev: 'v2.17.4'
     hooks:
     -   id: pylint
         args: [
