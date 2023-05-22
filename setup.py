@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 
 
 def get_version():
-    with open("version.txt") as ver_file:
+    with open("version.txt", encoding="utf-8") as ver_file:
         version_str = ver_file.readline().rstrip()
     return version_str
 
@@ -31,20 +31,21 @@ setup(
         "requests~=2.20",
         "typing-extensions~=4.0",
         "cfenv~=0.5",
+        "urllib3~-1.25",
     ],
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
-    python_requires="~=3.6",
+    python_requires="~=3.8",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Environment :: Console",

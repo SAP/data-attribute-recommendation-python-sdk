@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.1]
+
+### Changed
+
+* Pins `urllib3` to prevent `request` from breaking [#134]
+
+### Added
+* Support for Python 3.10 and 3.11
+
+### Deprecated
+
+* Drops support for Python 3.6 and 3.7
+
+[#134]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/134
+
 ## [0.14.0]
 
 ### Changed
@@ -296,7 +311,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.14.0...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.14.1...HEAD
+[0.14.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.14.0...rel/0.14.1
 [0.14.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.1...rel/0.14.0
 [0.13.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.0...rel/0.13.1
 [0.13.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.12.0...rel/0.13.0
