@@ -15,7 +15,7 @@ cache:
 if: branch = main OR tag =~ ^rel/.*$ OR type != push
 
 os: linux
-dist: xenial
+dist: jammy
 
 notifications:
   email:
