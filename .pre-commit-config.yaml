@@ -1,12 +1,12 @@
 default_language_version:
-    python: python3.11
+    python: python3.10
 repos:
 -   repo: https://github.com/ambv/black
     rev: 22.3.0
     hooks:
     - id: black
-      language_version: python3.11
-      args: ['--target-version', 'py311']
+      language_version: python3.10
+      args: ['--target-version', 'py310']
 -   repo: https://github.com/pycqa/flake8
     rev: 3.9.2
     hooks:

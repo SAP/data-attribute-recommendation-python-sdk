@@ -66,11 +66,11 @@ env:
 jobs:
   include:
   - stage: linting
-    python: '3.11' # only run once.
+    python: '3.10' # only run once.
     install:
     - pip install -r requirements-dev.txt
     script:
-    - pyenv global 3.11.5
+    - pyenv global 3.10.14
     - pre-commit run --all-files
   - stage: system tests
     os: windows
@@ -106,10 +106,6 @@ jobs:
     name: "Python: 3.10 on Linux"
     python: "3.10"
     env: TOXENV=py310-cov
-  - stage: test
-    name: "Python: 3.11 on Linux"
-    python: "3.11"
-    env: TOXENV=py311-cov
   - stage: test
     name: "Python: pypy3 on Linux"
     python: "pypy3"
