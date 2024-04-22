@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.1]
+
+### Changed
+
+* Replace `method_whitelist` with `allowed_methods` [#136]
+
+[#136]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/136
+
 ## [0.14.0]
 
 ### Changed

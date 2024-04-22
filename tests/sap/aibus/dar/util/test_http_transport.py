@@ -35,7 +35,7 @@ class _BaseHTTPSEnforcedTest:
 class _BaseRetrySessionTest(_BaseHTTPSEnforcedTest):
     num_retries = 3
     class_under_test = None  # type: Any
-    expected_method_whitelist = set()  # type: Set[str]
+    expected_allowed_methods = set()  # type: Set[str]
 
     def test_default_session(self):
         session = self.class_under_test(self.num_retries, session=None)
@@ -65,7 +65,7 @@ class _BaseRetrySessionTest(_BaseHTTPSEnforcedTest):
         assert retry.total == self.num_retries
         assert retry.read == self.num_retries
         assert retry.connect == self.num_retries
-        assert retry.method_whitelist == self.expected_method_whitelist
+        assert retry.allowed_methods == self.expected_allowed_methods
 
     def create_test_object(self):
         return self.class_under_test(self.num_retries, session=None)
@@ -73,12 +73,12 @@ class _BaseRetrySessionTest(_BaseHTTPSEnforcedTest):
 
 class TestRetrySession(_BaseRetrySessionTest):
     class_under_test = RetrySession
-    expected_method_whitelist = set({"GET", "PUT", "DELETE"})
+    expected_allowed_methods = set({"GET", "PUT", "DELETE"})
 
 
 class TestPostRetrySession(_BaseRetrySessionTest):
     class_under_test = PostRetrySession
-    expected_method_whitelist = set({"GET", "PUT", "DELETE", "POST"})
+    expected_allowed_methods = set({"GET", "PUT", "DELETE", "POST"})
 
 
 class TestTimeoutSession(_BaseHTTPSEnforcedTest):
