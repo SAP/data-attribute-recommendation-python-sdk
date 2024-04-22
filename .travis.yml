@@ -111,6 +111,14 @@ jobs:
     python: "3.9"
     env: TOXENV=py39-cov
   - stage: test
+    name: "Python: 3.10 on Linux"
+    python: "3.10"
+    env: TOXENV=py311-cov
+  - stage: test
+    name: "Python: 3.11 on Linux"
+    python: "3.11"
+    env: TOXENV=py310-cov
+  - stage: test
     name: "Python: pypy3 on Linux"
     python: "pypy3"
     env: TOXENV=pypy3-cov
