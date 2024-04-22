@@ -10,13 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Replace `method_whitelist` with `allowed_methods` [#136]
+* Replace `method_whitelist` with `allowed_methods` [#137]
 
 ### Deprecated
 
 * Drops support for Python 3.6 and 3.7
 
-[#136]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/136
+[#137]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/137
 
 ## [0.14.0]
 
