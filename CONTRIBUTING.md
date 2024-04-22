@@ -135,12 +135,12 @@ To run the unit tests, simply call `tox`:
 $ tox
 ```
 
-By default, `tox` will run tests against Python 3.8, 3.9, 3.10, and 3.11.
+By default, `tox` will run tests against Python 3.8, 3.9, and 3.10.
 If you do not have all of these versions installed, you can select only
 those versions that you have installed:
 
 ```shell script
-$ tox -e py36,py37
+$ tox -e py38,py39,py310
 ```
 
 The unit tests live in the [tests/] directory.
