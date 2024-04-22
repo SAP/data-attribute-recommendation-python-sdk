@@ -70,7 +70,7 @@ jobs:
     install:
     - pip install -r requirements-dev.txt
     script:
-    - pyenv global 3.10.13
+    - pyenv global 3.10.5
     - pre-commit run --all-files
   - stage: system tests
     os: windows
