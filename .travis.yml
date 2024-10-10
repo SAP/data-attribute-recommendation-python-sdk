@@ -70,13 +70,13 @@ jobs:
     install:
     - pip install -r requirements-dev.txt
     script:
-    - pyenv global 3.10.5
+    - pyenv global 3.10.14
     - pre-commit run --all-files
   - stage: system tests
     os: windows
     language: shell       # 'language: python' is an error on Travis CI Windows
     before_install:
-      - choco install python --version 3.8.2
+      - choco install python --version 3.10.14
       - python -m pip install --upgrade pip
     env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
     # use install: from global test stage, since system tests are
