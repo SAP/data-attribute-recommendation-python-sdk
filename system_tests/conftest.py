@@ -91,7 +91,7 @@ def pytest_runtest_setup(item: Item):
         if requirement_marker and "issues" in requirement_marker.kwargs:
             collected_issue_ids.extend(requirement_marker.kwargs.get("issues", []))
     # Only keep unique IDs and sort them
-    item.issue_ids = sorted(set(collected_issue_ids))
+    item.issue_ids = sorted(set(collected_issue_ids))  # type:ignore
 
 
 @pytest.hookimpl(hookwrapper=True)
@@ -101,7 +101,7 @@ def pytest_runtest_makereport(item: Item, call):
     report = outcome.get_result()
 
     if hasattr(item, "issue_ids"):
-        report.issue_ids = item.issue_ids
+        report.issue_ids = item.issue_ids  # type:ignore
 
 
 def pytest_html_results_table_header(cells):
