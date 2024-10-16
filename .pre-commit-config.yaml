@@ -26,7 +26,7 @@ repos:
         - '-s'
         - 'B101' # allow use of assert
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v1.11.2'
+    rev: 'v0.902'
     hooks:
     - id: mypy
       exclude: docs/
