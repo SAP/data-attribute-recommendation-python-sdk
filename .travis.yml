@@ -76,7 +76,7 @@ jobs:
     os: windows
     language: shell       # 'language: python' is an error on Travis CI Windows
     before_install:
-      - choco install python --version 3.10.14
+      - choco install python --version 3.10.8
       - python -m pip install --upgrade pip
     env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
     # use install: from global test stage, since system tests are
@@ -116,7 +116,7 @@ jobs:
     os: windows
     language: shell       # 'language: python' is an error on Travis CI Windows
     before_install:
-      - choco install python --version 3.8.2
+      - choco install python --version 3.10.8
       - python -m pip install --upgrade pip
     env:
       - PATH=/c/Python38:/c/Python38/Scripts:$PATH
@@ -124,7 +124,7 @@ jobs:
   - stage: test
     name: "Python: 3.7.4 on macOS"
     os: osx
-    osx_image: xcode11.4.1  # Python 3.7.4 running on macOS 10.14.4
+    osx_image: xcode11.4.1  # Python 3.7.4 running on macOS 10.15.4
     language: shell       # 'language: python' is an error on Travis CI macOS
     env: TOXENV=py37-cov
   - stage: deploy
