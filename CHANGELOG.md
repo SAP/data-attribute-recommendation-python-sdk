@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Minor ci pipeline updates [#139]
 * Replace `method_whitelist` with `allowed_methods` [#137]
 
 ### Deprecated
@@ -309,7 +310,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * First public release
 
 [Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.0...HEAD
-[0.15.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.1...rel/0.15.0
+[0.15.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.14.0...rel/0.15.0
 [0.14.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.1...rel/0.14.0
 [0.13.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.0...rel/0.13.1
 [0.13.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.12.0...rel/0.13.0
