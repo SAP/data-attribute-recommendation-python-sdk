@@ -84,7 +84,7 @@ jobs:
     script:
       - tox -e system_tests
     deploy:
-      - before_install:
+      - before_install:   #To install ruby version= 3.1 to match dpl 2.0.5.1
           rvm install 3.1
           rvm use 3.1 --default
       - provider: releases
