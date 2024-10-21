@@ -84,6 +84,9 @@ jobs:
     script:
       - tox -e system_tests
     deploy:
+      - before_install:
+          rvm install 3.1
+          rvm use 3.1 --default
       - provider: releases
         skip_cleanup: true
         api_key:
