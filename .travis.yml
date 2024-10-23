@@ -43,10 +43,6 @@ stages:
 
 language: python
 
-before_deploy:   #To install ruby version= 3.1 to match dpl 2.0.5.1
-- rvm install 3.1
-- rvm use 3.1 --default
-
 install:
   # Fix build on 3.7: https://github.com/pypa/setuptools/issues/3293
 - pip3 install 'setuptools==60.9.0;python_version=="3.7"'
@@ -83,6 +79,7 @@ jobs:
     before_install:
       - choco install python --version 3.10.8
       - python -m pip install --upgrade pip
+      - choco install ruby --version 3.1   #to install ruby version >= 3.1 to match dpl latest version
     env: PATH=/c/Python310:/c/Python310/Scripts:$PATH
     # use install: from global test stage, since system tests are
     # also handled via tox
