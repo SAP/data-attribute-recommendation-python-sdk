@@ -79,7 +79,6 @@ jobs:
     before_install:
       - choco install python --version 3.10.8
       - python -m pip install --upgrade pip
-      - choco install ruby --version 3.1   #to install ruby version >= 3.1 to match dpl latest version
     env: PATH=/c/Python310:/c/Python310/Scripts:$PATH
     # use install: from global test stage, since system tests are
     # also handled via tox
@@ -87,6 +86,8 @@ jobs:
       - tox -e system_tests
     deploy:
       - provider: releases
+        edge:
+          branch: v1.10.16
         skip_cleanup: true
         api_key:
           # API key for a machine user specifically created for this task:
