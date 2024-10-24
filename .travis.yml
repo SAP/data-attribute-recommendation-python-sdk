@@ -45,7 +45,7 @@ language: python
 
 install:
   # Fix build on 3.7: https://github.com/pypa/setuptools/issues/3293
-- pip3 install 'setuptools==60.9.0;python_version=="3.7"'
+- pip3 install 'setuptools==60.9.0;python_version=="3.8"'
 - pip3 install -r requirements-test.txt
 script: tox
 
@@ -131,7 +131,7 @@ jobs:
     language: shell       # 'language: python' is an error on Travis CI macOS
     env: TOXENV=py37-cov
   - stage: deploy
-    python: '3.7' # only run once
+    python: '3.8' # only run once
     install: skip
     script: skip
     deploy:
