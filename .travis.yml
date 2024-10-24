@@ -92,7 +92,7 @@ jobs:
         api_key:
           # API key for a machine user specifically created for this task:
           # https://github.com/dar-sdk-machine-user
-          secure: "JOBlT/0scz9u4p7VJoPVQho8Bg648lGZpLPCfA//BicBJwAI2NAJYHJ03NkDEFcb+NuVKbPAFaCDLPGHCzX/2aSW+RIyBDNZxQAg3UIosCQRiI8ZPSEYfcU8Q+f8pEY1SSoJ/lu0Y2/6xTmJvip7cuGH135e1K5ft2FhuZqjxWawLyiPeh/mie2uPvRBt9vi7Pt9kdZOaoCv+KjKEwWvC4GIFVu/pqovzZJhbH/98WWKlPsIqGkttPzs81pjlMg0whWcXptZHe+lud9Hqikd5edipdtTG4pIfebYis73ftPJ2MKt8ecXnPy9gdbrW0a/fmIdvhIKLYB0B/tQSAW9RJnhQ7ugCpHzcCW5XwVLPl2eZ6KkW+LLbZaUAsiK//EnJOZeWJgElIbARGpSBM1lU4GvvM5I4Vr3JuIHOVw0y1Cuedey/zTQeuIKKhTJLuT0ToErOjC6rsQlNPqpD4v6XTCO7RwEBEwPuz+P04SNjNVjWhgM4mjojQ28wlkp1QQC9F8m1K9wwOAsNM19Yj3ACDCLt2DGIU0+HZeNrxC0GeqFikmLYkG17zsSLl3N+XfViEWc+E14RUTIcg40LIQZowxG9BMnYL96do1v6S1fIB4eJdYxFFl0s7ToSG+2fH7wmZYiyxWaE9TJ0E2MucBg9gxxrY56DIX7De7LczP5g5Q="
+          secure: "I/fHgeLilPbQPkYmCiIpWyVabw0/Zl2AJBx0h1UW7DgRQJidaxpt8uGpvEZjrv983OMLEXfP512VkW2/Zb0BTYurPnmXQAH8GuZMe+Ui9j399EK6vYW+4Sz61H/4Rp8gX+4ZqLVxpvAEaIl+31/dhbvWiWR9anqt2czfeGp4sO/6vIVmiUxt+aP8VQD88YOeKfg/TXTOBujO7vzl6ddj9tf7pyMCaSR2Mk91h/4l0tztr//zLcdV14xQW+Lcl2Y3VNGMfSznUvEdexyTmSuN7qGSW9sSY6rjMWon/74m4Z+6/Nsr/8sPKLCHX+/RAX3vQxq3Srmbi50P6VWld4rVGe8FUfruViEe+TBMtlqltfqosMYHu+2oNYeb03sYtYyDl2etxOOkl92P9703gcO3jVbSzt/ckuJbTRuk6RYQBn83/QBW9rpEKLpOY88+ZPoVIN3CT64cNsP9FQRBN2aUzGiWdLaU9KNdaaeufZYZVZRoiBZBquHGxp5yizd0Sotsdds1Wcco2quOU4ekAVKdyC0I7q8B79fGckGWJxROviXmROg6X8oL+9Lq/r87UP6eiLKb3bljiymJUENd3yHjNGcUrMIZMKAPyaRPXsHcloRGEGwbPJn+UMyrxmmEt+CR8QAvA/zjIMyftGa2wlA1wV6VSSyb0u0+hTdXYo1yD4I="
         file: "system_test_results/traceability.html"
         on:
           tags: true
