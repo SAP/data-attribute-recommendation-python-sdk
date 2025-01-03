@@ -231,3 +231,6 @@ Due to legal reasons, contributors will be asked to accept a DCO before they sub
 the first pull request to this projects, this happens in an automated fashion during
 the submission process. SAP uses
 [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+
+## Guideline for AI-generated code contributions to SAP Open Source Software Projects
+Please refer to https://github.com/SAP/.github/blob/main/CONTRIBUTING_USING_GENAI.md.
