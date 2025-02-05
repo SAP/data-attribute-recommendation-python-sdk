@@ -1,6 +1,7 @@
 """Base client for DAR AI API."""
 
 from typing import Callable
+from typing import Optional
 
 from ai_api_client_sdk.ai_api_v2_client import AIAPIV2Client
 from sap.aibus.dar.client.aiapi.dar_ai_api_file_upload_client import (
@@ -15,14 +16,14 @@ class DARAIAPIClient(AIAPIV2Client):
     def __init__(
         self,
         base_url: str,
-        auth_url: str | None = None,
-        client_id: str | None = None,
-        client_secret: str | None = None,
-        cert_str: str | None = None,
-        key_str: str | None = None,
-        cert_file_path: str | None = None,
-        key_file_path: str | None = None,
-        token_creator: Callable[[], str] = None,
+        auth_url: Optional[str] = None,
+        client_id: Optional[str] = None,
+        client_secret: Optional[str] = None,
+        cert_str: Optional[str] = None,
+        key_str: Optional[str] = None,
+        cert_file_path: Optional[str] = None,
+        key_file_path: Optional[str] = None,
+        token_creator: Optional[Callable[[], str]] = None,
     ):
         """
         Initialize the DARAIAPIClient.
