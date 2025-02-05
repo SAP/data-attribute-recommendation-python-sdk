@@ -2,4 +2,6 @@ cfenv==0.5.3
 requests==2.25.1
 typing-extensions==4.0.0
 ai-api-client-sdk==2.4.0
+#Pinning aenum as for versions >3.1.12 'NoneType' attribute doesn't exist for Pypy3.
+#Issue :https://github.com/ethanfurman/aenum/issues/32.
 aenum==3.1.12
