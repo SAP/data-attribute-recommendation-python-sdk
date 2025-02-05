@@ -31,6 +31,7 @@ setup(
         "requests~=2.20",
         "typing-extensions~=4.0",
         "cfenv~=0.5",
+        "ai-api-client-sdk==2.4.0",
     ],
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
