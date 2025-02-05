@@ -1,4 +1,4 @@
 cfenv==0.5.3
 requests==2.25.1
 typing-extensions==4.0.0
-ai-api-client-sdk==2.4.0
+ai-api-client-sdk==2.4.1
