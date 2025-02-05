@@ -1,0 +1,31 @@
+{
+    "features": [
+        {
+            "label": "title",
+            "type": "TEXT"
+        }
+    ],
+    "labels": [
+        {
+            "label": "label1",
+            "type": "CATEGORY"
+        },
+        {
+            "label": "label2",
+            "type": "CATEGORY"
+        },
+        {
+            "label": "label3",
+            "type": "CATEGORY"
+        },
+        {
+            "label": "label4",
+            "type": "CATEGORY"
+        },
+        {
+            "label": "label5",
+            "type": "CATEGORY"
+        }
+    ],
+    "name": "arxiv-multilabel-prediction"
+}
