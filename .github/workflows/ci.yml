@@ -73,7 +73,7 @@ jobs:
           body: "Tagging release ${{ github.ref }}"
           # API key for a machine user specifically created for this task:
           # https://github.com/dar-sdk-machine-user
-          token: ${{ secrets.API_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: system_test_results/traceability.html
 
   tests:
@@ -113,7 +113,7 @@ jobs:
       - name: Run tests with tox
         run: tox -e ${{ matrix.toxenv }}
         env:
-          API_KEY: ${{ secrets.API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     name: Deploy to PyPI
