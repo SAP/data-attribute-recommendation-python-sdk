@@ -73,7 +73,7 @@ jobs:
           body: "Tagging release ${{ github.ref }}"
           # API key for a machine user specifically created for this task:
           # https://github.com/dar-sdk-machine-user
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.API_KEY }}
           files: system_test_results/traceability.html
 
   tests:
