@@ -57,6 +57,7 @@ jobs:
         run: |
           pip install -r requirements-test.txt
           pip install tox
+          pip install --upgrade coverage pytest pytest-cov
 
       - name: Run system tests with tox
         run: tox -e system_tests
