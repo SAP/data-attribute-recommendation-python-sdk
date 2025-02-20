@@ -336,3 +336,24 @@ class TestDARAIAPIFileUploadClient:
             "possible-solution-here."
         )
         mock_send.assert_called_once_with("GET", url)
+
+    @patch("requests.Session.send")
+    def test_send_get_request_success(self, mock_send):
+        """Test _send method with a successful GET request."""
+
+        client = DARAIAPIFileUploadClient(
+            base_url=self.base_url, get_token=self.get_mock_token
+        )
+        mock_response = MagicMock(spec=Response)
+        mock_response.status_code = 200
+        mock_response.text = "Success"
+        mock_response.json.return_value = {"message": "Success"}
+        mock_send.return_value = mock_response
+
+        url = self.base_url + "/files/local-dev/arxiv.csv.gz"
+        response = client._send("GET", url)
+
+        assert response.status_code == 200
+        assert response.json() == {"message": "Success"}
+
+        mock_send.assert_called_once()
