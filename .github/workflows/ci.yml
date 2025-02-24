@@ -19,13 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cache pre-commit
-        uses: actions/cache@v4
-        with:
-          path: ${{ runner.home }}/.cache/pre-commit
-          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-          restore-keys: ${{ runner.os }}-pre-commit-
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -54,10 +47,7 @@ jobs:
           python-version: '3.10.8'
 
       - name: Install test dependencies
-        run: |
-          pip install -r requirements-test.txt
-          pip install tox
-          pip install --upgrade coverage pytest pytest-cov
+        run: pip install -r requirements-test.txt
 
       - name: Run system tests with tox
         run: tox -e system_tests
@@ -72,9 +62,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           body: "Tagging release ${{ github.ref }}"
-          # API key for a machine user specifically created for this task:
-          # https://github.com/dar-sdk-machine-user
-          token: ${{ secrets.API_KEY }}
           files: system_test_results/traceability.html
 
   tests:
@@ -108,9 +95,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install test dependencies
-        run: |
-          pip install -r requirements-test.txt
-          pip install tox
+        run: pip install -r requirements-test.txt
+
       - name: Run tests with tox
         run: tox -e ${{ matrix.toxenv }}
         env:
@@ -134,7 +120,7 @@ jobs:
           python-version: '3.10'
 
       - name: Build distributions
-        run: python -m build --sdist --wheel
+        run: pipx run build --sdist --wheel
 
       - name: Deploy release to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1 # Uses OIDC/Workload identities and doesn't require a token
