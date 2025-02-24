@@ -7,4 +7,3 @@ tox==3.25.1
 # httpretty is also referenced in tox, but listed here to make it easier to run tests
 # standalone from the shell or IDE.
 httpretty==1.1.4
-pytest-cov==
