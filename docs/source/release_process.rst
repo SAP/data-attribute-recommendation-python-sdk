@@ -38,8 +38,9 @@ Follow these steps to create a release:
   $ git tag -a rel/$VERSION -m "Tagging release $VERSION"
   $ git push --tags
 
-- A new build for the tag should appear on `GitHub Actions`_. Once the *deploy* stage
-  has run successfully, the new version should be available on `pypi.org`_.
+- A new run of the CI workflow for the tag should appear on `GitHub Actions`_. Once the
+  *deploy* stage has run successfully, the new version should be available
+  on `pypi.org`_.
 - The documentation on `Read The Docs`_ is automatically updated. A new version
   based on the git tag is also added. Note that the default documentation version
   displayed to visitors is always *latest* and is built from *main* on any update
