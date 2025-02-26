@@ -26,10 +26,10 @@ Follow these steps to create a release:
 
 - Merge the updated `version.txt`_ and `CHANGELOG.md`_ to main
 - Create a tag against the latest main with the desired version number
-  and push the tag. This triggers the build and deploy on Travis.
+  and push the tag. This triggers the GitHub Actions workflow for build and deploy.
 
-  - No special permissions for pypi.org are required. Travis has access
-    to a token which grants permission to publish to `pypi.org`.
+  - After GitHub Actions is added as a trusted publisher in PyPI, short lived API tokens
+    will be generated that automate the release process and publish to `pypi.org`.
 
 .. code-block:: shell
 
@@ -38,7 +38,7 @@ Follow these steps to create a release:
   $ git tag -a rel/$VERSION -m "Tagging release $VERSION"
   $ git push --tags
 
-- A new build for the tag should appear on `Travis`_. Once the *deploy* stage
+- A new build for the tag should appear on `GitHub Actions`_. Once the *deploy* stage
   has run successfully, the new version should be available on `pypi.org`_.
 - The documentation on `Read The Docs`_ is automatically updated. A new version
   based on the git tag is also added. Note that the default documentation version
@@ -51,5 +51,5 @@ Follow these steps to create a release:
 .. _pypi.org: https://pypi.org/project/data-attribute-recommendation-sdk/
 .. _version.txt: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/version.txt
 .. _CHANGELOG.md: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/CHANGELOG.md
-.. _Travis: https://travis-ci.com/github/SAP/data-attribute-recommendation-python-sdk
+.. _GitHub Actions: https://github.com/SAP/data-attribute-recommendation-python-sdk/actions
 .. _Read The Docs: https://data-attribute-recommendation-python-sdk.readthedocs.io/

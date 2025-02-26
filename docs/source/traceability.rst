@@ -106,7 +106,7 @@ Issues       Tests
 
 The test evaluation report is only generated when using pytest's html output. This
 requires the ``pytest-html`` plugin and use the ``--html`` option when calling pytest.
-On Travis, this is handled via `tox`_.
+On GitHub Actions, this is handled via `tox`_.
 
 .. _tox: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/tox.ini
 
