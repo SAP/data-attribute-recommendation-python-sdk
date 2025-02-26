@@ -16,15 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed 
 
-* Documentation updated to include DAR AI API Clients [#157]
-* Updated CONTRIBUTING.md to include a note on building documentation using Sphinx [#157]
 * Migrated from Travis CI to GitHub Actions [#154]
+* Updated CONTRIBUTING.md to include a note on building documentation using Sphinx [#157]
+* Documentation updated to reflect addition of DAR AI API Clients and the migration from Travis CI to GitHub Actions [#157],[#160]
 
 [#151]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/151
 [#154]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/154
 [#156]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/156
 [#157]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/157
 [#158]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/158
+[#160]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/160
 
 ## [0.15.0]
 
