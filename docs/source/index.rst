@@ -25,20 +25,31 @@ pay attention to the `Changelog`_.
 
 Getting Started
 ---------------
+We recommend consuming the service via **AI** API as it offers batch inference,
+transfer learning, feature contribution scores, multilabel regression model template,
+and other advanced functionalities that will not be covered through the
+older **Native** API.
 
+AI API
+******
+We have prepared a `Data Attribute Recommendation AI API`_  jupyter notebook with an
+end-to-end example to showcase how to consume the service through **AI** API .
 
-**News 2020-12:** Materials from the `TechED 2020 workshop`_ are online! We have
-prepared a `Jupyter notebook`_ with a full tutorial and lots of additional information.
-This is the most comprehensive end-to-end example available so far.
+.. _Data Attribute Recommendation AI API: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/notebooks/Data_Attribute_Recommendation_AI_API.ipynb
 
-.. _TechED 2020 workshop: https://github.com/SAP-samples/teched2020-INT260/tree/master/exercises/ex1-DAR
-.. _Jupyter notebook: https://github.com/SAP-samples/teched2020-INT260/blob/master/exercises/ex1-DAR/teched2020-INT260_Data_Attribute_Recommendation.ipynb
-
-The sections below in this document will help you get started. In addition to the guide
-below, a more comprehensive `tutorial is available at developers.sap.com`_.
+NATIVE API
+**********
+The sections below in this document will showcase how to consume the service
+through **Native** API. In addition to the guide below, a more comprehensive
+`tutorial is available at developers.sap.com`_.
 
 .. _tutorial is available at developers.sap.com: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
 
+.. note::
+
+    The following section guides you on consuming the Data Attribute Recommendation service
+    via **Native** API. However, we recommend consuming the service via the **AI** API which offers
+    more functionality.
 
 Prerequisites
 +++++++++++++
