@@ -17,12 +17,12 @@ Hence, a test evaluation report traces requirements to tests to test execution a
 is thus also called a **Traceability Report**.
 
 The reports are generated during ::`release_process<release builds>`
-on Travis. Once all tests have passed successfully, the report is published
-as an artifact on the `Github release page`_ for the corresponding version
-of the SDK.
+on GitHub Actions workflow. Once all tests have passed successfully, the report
+is published as an artifact on the `Github release page`_ for the corresponding
+version of the SDK.
 
-If the build on Travis is not successful, no artifact is uploaded to Pypi and also
-no test evaluation report is uploaded.
+If the jobs on GitHub Actions workflow is not successful, no artifact is
+uploaded to Pypi and also no test evaluation report is uploaded.
 
 .. _Github release page: https://github.com/SAP/data-attribute-recommendation-python-sdk/releases
 
@@ -106,7 +106,7 @@ Issues       Tests
 
 The test evaluation report is only generated when using pytest's html output. This
 requires the ``pytest-html`` plugin and use the ``--html`` option when calling pytest.
-On Travis, this is handled via `tox`_.
+On GitHub Actions, this is handled via `tox`_.
 
 .. _tox: https://github.com/SAP/data-attribute-recommendation-python-sdk/blob/main/tox.ini
 
