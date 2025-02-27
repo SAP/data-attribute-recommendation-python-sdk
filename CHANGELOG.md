@@ -6,6 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.1]
+
+### Added
+
+* DAR AI API Clients to DAR service 
+  *  DAR AI API Client classes and corresponding tests  [#151],[#156] 
+  *  Notebook for showcasing usage of DAR service via AI API [#158]
+
+### Changed 
+
+* Migrated from Travis CI to GitHub Actions [#154]
+* Updated CONTRIBUTING.md to include a note on building documentation using Sphinx [#157]
+* Documentation updated to reflect addition of DAR AI API Clients and the migration from Travis CI to GitHub Actions [#157],[#160]
+
+[#151]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/151
+[#154]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/154
+[#156]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/156
+[#157]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/157
+[#158]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/158
+[#160]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/160
+
 ## [0.15.0]
 
 ### Changed
@@ -309,7 +330,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.0...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.1...HEAD
+[0.15.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.0...rel/0.15.1
 [0.15.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.14.0...rel/0.15.0
 [0.14.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.1...rel/0.14.0
 [0.13.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.0...rel/0.13.1
