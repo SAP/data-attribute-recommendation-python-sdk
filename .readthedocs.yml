@@ -2,7 +2,7 @@
 version: 2
 
 python:
-  version: 3.7
+  version: 3.10
   # Install both sphinx AND the package itself; the package
   # is required to install package dependencies. The autodoc package
   # will import the code, which fails if the dependencies are not installed.
