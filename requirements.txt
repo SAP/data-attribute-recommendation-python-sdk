@@ -1,5 +1,5 @@
 cfenv==0.5.3
-requests==2.25.1
+requests==2.32.2
 typing-extensions==4.0.0
 ai-api-client-sdk==2.4.0
 # Pinning aenum to <=3.1.12 because versions >3.1.12 omit the 'NoneType'
