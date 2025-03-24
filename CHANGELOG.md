@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Updating readthedocs python and config file structure [#164]
 
 [#164]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/164
+[#163]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/163
+[#162]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/162
+[#161]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/161
 ## [0.15.1]
 
 ### Added
