@@ -1,15 +1,20 @@
 # Required
 version: 2
 
-python:
-  version: 3.7
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.10"
+
   # Install both sphinx AND the package itself; the package
   # is required to install package dependencies. The autodoc package
   # will import the code, which fails if the dependencies are not installed.
   # This will in turn break internal links in the documentation.
+python:
   install:
     - requirements: docs/requirements.txt
     - path: .
 
 sphinx:
+    configuration: docs/source/conf.py
     fail_on_warning: true

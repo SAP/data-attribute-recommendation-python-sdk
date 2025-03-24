@@ -224,6 +224,32 @@ release will then include both the feature and its test.
 Please see the documentation we have on the [maintenance of Test Evaluation Reports].
 
 [maintenance of Test Evaluation Reports]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/traceability.html
+## Build Documentation using Sphinx
+
+The documentation generation tool Sphinx is used to create and build the 
+[Data Attribute Recommendation SDK Documentation].
+
+[Data Attribute Recommendation SDK Documentation]: https://data-attribute-recommendation-python-sdk.readthedocs.io/en/latest/
+
+This is usually done and published automatically, but if you are working on
+documentation parts and want to build it locally with Sphinx, you can follow the below steps.
+
+To navigate to the [docs] folder where the source files and configuration file
+of the documentation exists:
+
+[docs]: https://github.com/SAP/data-attribute-recommendation-python-sdk/tree/main/docs
+```shell script
+$ cd docs
+```
+To install Sphinx:
+```shell script
+$ pip install -r requirements.txt
+```
+To generate the HTML documentation:
+```shell script
+$ make html
+```
+After a successful build, the HTML pages will be available in **docs/build/html** folder.
 
 ## Developer Certificate of Origin (DCO)
 
