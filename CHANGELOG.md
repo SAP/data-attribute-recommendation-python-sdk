@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.2]
+
+* Updating `requests` from v`2.25.1` to `2.32.2` [#149]
+* Updating readthedocs python and config file structure [#164]
+
+[#149]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/149
+[#164]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/164
+[#163]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/163
+[#162]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/162
+[#161]: https://github.com/SAP/data-attribute-recommendation-python-sdk/pull/161
+
 ## [0.15.1]
 
 ### Added
@@ -330,7 +341,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * First public release
 
-[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.1...HEAD
+[Unreleased]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.2...HEAD
+[0.15.2]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.1...rel/0.15.2
 [0.15.1]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.15.0...rel/0.15.1
 [0.15.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.14.0...rel/0.15.0
 [0.14.0]: https://github.com/SAP/data-attribute-recommendation-python-sdk/compare/rel/0.13.1...rel/0.14.0
