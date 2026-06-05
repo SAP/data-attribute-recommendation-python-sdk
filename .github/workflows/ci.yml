@@ -84,7 +84,7 @@ jobs:
             os: windows-latest
           - python-version: '3.10'
             toxenv: 'py310-cov'
-            os: macos-13
+            os: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
