@@ -1,7 +1,6 @@
 # Data Attribute Recommendation Python SDK
 
 A client SDK for the Data Attribute Recommendation service on SAP Business Technology Platform (SAP BTP).
-Part of [SAP AI Business Services].
 
 # Description
 
@@ -162,7 +161,6 @@ Apache License, v 2.0 except as noted otherwise in the [LICENSE] file.
 [TechED 2020 workshop materials]: https://github.com/SAP-samples/teched2020-INT260
 [Tutorials on Data Attribute Recommendation]: https://developers.sap.com/mission.cp-aibus-data-attribute.html
 [SDK tutorials]: https://developers.sap.com/group.cp-aibus-data-attribute-sdk.html
-[SAP AI Business Services]: https://help.sap.com/viewer/product/SAP_AI_BUS/SHIP/en-US
 [SDK Setup Tutorial]: https://developers.sap.com/tutorials/cp-aibus-dar-sdk-setup.html
 [Data Attribute Recommendation documentation]: https://help.sap.com/viewer/product/Data_Attribute_Recommendation/SHIP/en-US
 [Blog Articles on Data Attribute Recommendation]: https://blogs.sap.com/tags/73554900100800002858/
